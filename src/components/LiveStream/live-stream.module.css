@@ -1,0 +1,160 @@
+.chatHeader p {
+  color: #ffffff;
+  font-size: 17px;
+  padding-left: 10px;
+  font-weight: 600;
+}
+
+.LiveMain {
+  background-color: var(--color-white);
+}
+
+.member {
+  background: #222222;
+}
+.subName {
+  font-size: 12px;
+  font-weight: 600;
+  color: #888888;
+}
+.name {
+  font-size: 15px;
+  color: #ffffff;
+  font-weight: 700;
+}
+.chatText {
+  color: #c56565;
+  font-weight: 600;
+  padding-left: 10px;
+  font-size: 15px;
+}
+.chatView::-webkit-scrollbar {
+  display: none;
+}
+
+.chatInput input {
+  margin: 0 1px;
+  border-radius: 8px;
+}
+
+.closeBtn {
+  color: #9e9e9e;
+  font-size: 13px;
+  padding-right: 3px;
+}
+
+.closeView {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.75);
+  right: 5px;
+  top: 5px;
+  border-radius: 4px;
+}
+
+.userName {
+  font-size: 1.7rem;
+  font-weight: bold;
+  line-height: 1.7rem;
+  color: var(--font-color);
+}
+.content {
+  font-size: 1.3rem;
+  font-weight: bold;
+  line-height: 1.5rem;
+  color: var(--font-color);
+  text-transform: uppercase;
+}
+.content span {
+  font-size: 1.3rem;
+  font-weight: bold;
+  line-height: 1.5rem;
+  color: var(--text-light-100);
+  text-transform: uppercase;
+}
+.rating {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.2rem;
+  color: var(--font-color);
+}
+
+.activeBtn {
+  box-shadow: none;
+  color: #332042;
+  background-color: #ffe400 !important;
+  border-radius: 3px;
+  border: none;
+  padding: 4px 12px !important;
+}
+
+.contentBtn {
+  color: var(--font-color);
+  background: var(--bg-box);
+  border-radius: 3px;
+  font-weight: 700;
+  border: none;
+  margin-left: 5px;
+  padding: 4px 12px !important;
+}
+.lightView .userName,
+.lightView .content,
+.lightView .rating,
+.lightView .contentBtn {
+  color: #2f2f2f !important;
+}
+.lightView .contentBtn {
+  color: #2f2f2f !important;
+  background: rgba(98, 97, 97, 0.1) !important;
+}
+
+.lightView .content span {
+  color: #676767;
+}
+
+.videoLabel {
+  position: absolute;
+  border-radius: 30px;
+  padding: 3px 8px;
+  padding-left: 8px;
+  margin-top: 10px;
+  margin-left: 5px;
+  background: rgba(107, 105, 105, 0.4);
+}
+.videoText {
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+}
+.liveLabel {
+  position: absolute;
+  border-radius: 5px;
+  padding: 1px 8px;
+  padding-left: 8px;
+  margin-top: 10px;
+  margin-left: 5px;
+  background-color: #ed135d;
+  top: 0;
+}
+
+.backdrop {
+  background: rgb(58 58 58 / 73%) !important;
+}
+.corouselView .mb-4 {
+  margin: 0 !important;
+}
+/* 
+.midView{
+    display: none !important; 
+}
+
+@media screen and (max-height:992px) and (min-height:767px){
+    .midView{
+        display: block ;
+        margin-top: auto;
+    }
+    .userView{
+        display: none ;
+    }
+} */

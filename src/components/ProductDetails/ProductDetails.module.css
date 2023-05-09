@@ -1,0 +1,181 @@
+.darkBackground{
+    background: #16181C;
+}
+.cardDark{
+    background: #303030;
+    box-shadow: 0px 8px 16px 0px rgba(19, 19, 20, 0.2) !important;
+
+}
+.cardDark a{
+    color: #ffffff !important;
+}
+.cardDark h3{
+    color: #ffffff !important;
+}
+.cardDark h5{
+    color: #ffffff !important;
+}
+
+.title{
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.2 !important;
+    letter-spacing: 0.007em !important;
+    color: #2f2f2f;
+}
+.corouselItem{
+    display: none;
+    padding-left: 1rem;
+}
+.desktopView{
+    
+}
+
+@media screen and (max-width:768px) {
+    .corouselItem{
+        display: block;
+        margin-right: 15px;
+    } 
+    .desktopView{
+        display: none;
+    
+    }
+}
+
+.subTitle{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5 !important;
+    color: #2f2f2f;
+
+}
+
+.priceText{
+    font-size: 16px;
+    line-height: 1.5 !important;
+    color: #2f2f2f;
+
+}
+
+.buyCourse{
+    width: 100%;
+    color: #ffffff !important;
+    background-color: #ed135d !important;
+    transition: 0.5s;
+    font-weight: 700;
+    font-size: 16px;
+    border: none !important;
+}
+
+.sideView{
+    margin: 0 5rem 0 5rem;
+    padding-right: 4rem;
+    padding-left: 1rem;
+
+}
+
+@media only screen and  (max-width: 1500px) {
+    .sideView{
+        margin: 0 2rem 0 2rem;
+    padding-right: 2rem;
+
+    }
+  }
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+    .sideView{
+        margin: 0 1rem 0 0;
+    padding-right: 0rem;
+
+    }
+    /* .mainImage{
+        height: 500px !important;
+    } */
+  }
+@media only screen and (min-width: 992px) and (max-width: 1135px) {
+    .sideView{
+        margin: 0 0.5rem 0 0.5rem;
+    padding-right: 1rem;
+        
+    }
+  }
+  @media only screen and  (max-width: 613px) {
+    .sideView{
+        margin: 0 1rem 0 1rem;
+    padding-right: 1rem;
+
+    }
+  }
+.coursessidebar .info li span i {
+    color: #ed135d !important;
+    position: absolute;
+    left: 0;
+    font-weight: normal;
+    top: -2px;
+    font-size: 20px;
+}
+.lightView p{
+    color: #ffffff !important;
+}
+.lightView h1{
+    color: #ffffff !important;
+}
+.lightView h2{
+    color: #ffffff !important;
+}
+.about{
+    font-size: 20px;
+    line-height: 24px;
+    color: #2f2f2f;
+}
+.aboutText p{
+    font-size: 18px;
+    line-height: 24px;
+    color: #2f2f2f;
+    font-weight: 200;
+}
+.aboutText ul li{
+    font-size: 18px;
+    line-height: 24px;
+    color: #2f2f2f;
+    font-weight: 200;
+
+}
+.detailsLink{
+    padding-bottom: 3px;
+    border-bottom: 1px solid;
+}
+
+.modalView p{
+    font-size: 18px;
+    line-height: 24px;
+    color: #2f2f2f;
+    font-weight: 200;
+}
+
+.modalView h5{
+    color: #2f2f2f !important;
+    font-weight: 500 !important;
+}
+.modalView ul li{
+    color: #2f2f2f !important;
+    font-weight: 200;
+}
+
+.sideView a:hover{
+    color:#ed135d
+}
+
+.boxShadow{
+    border: none;
+    box-shadow: 0px 8px 16px 0px rgba(146, 184, 255, 0.2);
+}
+
+.boxShadow h3{
+    color: #2f2f2f;
+    font-weight: 700;
+}
+.boxShadow h5{
+    color: #2f2f2f;
+    font-weight: 500;
+
+}
