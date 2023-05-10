@@ -32,7 +32,7 @@ import { Dropdown, DropdownButton } from "react-bootstrap";
 const SideBar = ({ collapse, setCollapse }) => {
   const { width, height } = useWindowSize();
   const [dropMenu, setDropMenu] = useState();
-  console.log("🚀 ~ file: sideBar.js:35 ~ SideBar ~ dropMenu:", dropMenu);
+  // console.log("🚀 ~ file: sideBar.js:35 ~ SideBar ~ dropMenu:", dropMenu);
   return !collapse ? (
     <div
       className={`col-sm-3 col-md-3 col-lg-2 col-3 p-0 ${styles.topView}`}

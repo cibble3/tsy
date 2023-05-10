@@ -1,17 +1,31 @@
 import React, { useEffect, useState } from "react";
 import styles from "./dashbpard-dark-theme.module.css";
-import style from "../dark-theme/dashbpard-dark-theme.module.css";
+import style from "../dark-themeLive/dashbpard-dark-theme.module.css";
+import { useSelector, useDispatch } from 'react-redux';
+import { modechange } from '../../../store/reducer/darklightReducer';
+import { increment, decrement } from '../../../store/reducer/counterReducer';
 
 import { useRouter } from "next/router";
 
 const Footer = () => {
   const router = useRouter();
-  console.log("pathname", router.pathname);
+  const dispatch = useDispatch();
+  const handleIncrement = () => {
+    dispatch(increment());
+  };
+
+  const handleDecrement = () => {
+    dispatch(decrement());
+  };
+
+  // console.log("pathname", router.pathname);
   const [colorMode, setColorMode] = useState("dark");
 
   const toggleColorMode = () => {
     const newColorMode = colorMode === "light" ? "dark" : "light";
     setColorMode(newColorMode);
+    dispatch(modechange());
+
     document.cookie = `colorMode=${newColorMode}; path=/`;
     localStorage.setItem("theme", newColorMode);
   };
@@ -25,10 +39,12 @@ const Footer = () => {
     // if (mediaQuery.matches) {
     //   setColorMode("themeColor");
     // }
-    console.log(document.cookie);
+    // console.log(document.cookie);
   }, []);
   return (
+    
     <div className={styles.header} style={{ borderTop: "1px solid #707070" }}>
+      
       <div className="d-flex justify-content-center align-items-center h-100">
         <div className={styles?.dark}>Dark</div>
         <div>
@@ -58,6 +74,11 @@ const Footer = () => {
           --text-light: ${colorMode === "light" ? "#4f4f4f" : "#a1a2a4"};
           --text-light-100: ${colorMode === "light" ? "#4f4f4f" : "#c5c2c2"};
           --bg-label: ${colorMode === "light" ? "#82828233" : "#2e3033"};
+          --bg-dashboard: ${colorMode === "light" ? "#f6f6f6" : "#000"};
+          --color-radial: ${colorMode === "light"
+            ? "radial-gradient(50% 50%at 50% 50%, rgb(237 19 93 / 45%), var(--color-white))"
+            : "radial-gradient(50% 50%at 50% 50%, #ed135d, var(--color-white))"};
+          --color-light-200: ${colorMode === "light" ? "#000" : "#9a9a9a"};
         }
 
         body {

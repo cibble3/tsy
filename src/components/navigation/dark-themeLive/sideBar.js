@@ -28,31 +28,46 @@ import style from "../dark-theme/dashbpard-dark-theme.module.css";
 import Footer from "./footer";
 import useWindowSize from "@/hooks/useWindowSize";
 import { Dropdown, DropdownButton } from "react-bootstrap";
+import { useSelector, useDispatch } from 'react-redux';
+
 
 const SideBar = ({ collapse, setCollapse }) => {
   const { width, height } = useWindowSize();
-  const [dropMenu, setDropMenu] = useState()
-  console.log("🚀 ~ file: sideBar.js:35 ~ SideBar ~ dropMenu:", dropMenu)
+  const [dropMenu, setDropMenu] = useState();
+  // console.log("🚀 ~ file: sideBar.js:35 ~ SideBar ~ dropMenu:", dropMenu);
+  const colorMode = useSelector((state) => state.darklight);
+  // const count = useSelector((state) => state.counter);
+
+  // console.log(colorMode)
   return !collapse ? (
-    <div className={`col-sm-3 col-md-3 col-lg-2 col-3 p-0 ${styles.topView}`} style={{ overflow: "hidden", height: width > 670 ? height - 80 : height }}>
+    <div
+      className={`col-sm-3 col-md-3 col-lg-2 col-3 p-0 ${styles.topView}`}
+      style={{ overflow: "hidden", height: width > 670 ? height - 80 : height }}
+    >
       <div
         className={styles?.dashbpardDarkThemeItem}
         style={{ borderRight: "1px solid #707070", overflowY: "scroll" }}
       >
         <div>
-
           <div className={styles.sideHeader}>
-
             <div className="d-flex justify-content-between mt-3 mx-3 ">
               <img
-                src="/mul-vod-main--xcrave-xcavelogo-w@2x.png"
+                src={
+                  colorMode === "light"
+                    ? "/mul-vod-main--xcrave-xcavelogo@2x.png"
+                    : "/mul-vod-main--xcrave-xcavelogo-w@2x.png"
+                }
                 className={styles.mulVodSideXcraveXcavelogoIcon}
               />
-              <IoCloseSharp color="#818181" size={20} onClick={() => setCollapse(true)} />
+              <IoCloseSharp
+                color="#818181"
+                size={20}
+                onClick={() => setCollapse(true)}
+              />
             </div>
           </div>
         </div>
-        <div className="d-flex justify-contant-center align-items-center ms-3 pt-3" >
+        <div className="d-flex justify-contant-center align-items-center ms-3 pt-3 mt-3">
           <MdHistory size={25} color="#818181" />
           <div className={styles?.home}>History</div>
         </div>
@@ -73,31 +88,53 @@ const SideBar = ({ collapse, setCollapse }) => {
           onClick={() => setDropMenu(!dropMenu)}
         >
           <div>
-
-            <Dropdown >
-
-
-              <DropdownButton title="Category" className={"dropcustom"}>
-              </DropdownButton>
+            <Dropdown>
+              <DropdownButton
+                title="Category"
+                className={"dropcustom"}
+              ></DropdownButton>
             </Dropdown>
             <Dropdown.Menu show={dropMenu}>
-              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}><div className="mt-3">Astrology</div></Dropdown.Item>
-              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}><div className="mt-2">Tarot</div></Dropdown.Item>
-              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}><div className="mt-2">Clairvoyance</div></Dropdown.Item>
-              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}><div className="mt-2">Dream interpretation</div></Dropdown.Item>
-              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}><div className="mt-2">Healing</div></Dropdown.Item>
-              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}><div className="mt-2">Crystals</div></Dropdown.Item>
-              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}><div className="mt-2">Mediumship</div></Dropdown.Item>
-              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}><div className="mt-2">Crystal ball</div></Dropdown.Item>
-              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}><div className="mt-2">Numerology</div></Dropdown.Item>
-              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}><div className="mt-2">Runes</div></Dropdown.Item>
-              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}><div className="mt-2">Palm reading</div></Dropdown.Item>
-              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}><div className="mt-2 mb-3">Energy work</div></Dropdown.Item>
+              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}>
+                <div className="mt-3">Astrology</div>
+              </Dropdown.Item>
+              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}>
+                <div className="mt-2">Tarot</div>
+              </Dropdown.Item>
+              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}>
+                <div className="mt-2">Clairvoyance</div>
+              </Dropdown.Item>
+              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}>
+                <div className="mt-2">Dream interpretation</div>
+              </Dropdown.Item>
+              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}>
+                <div className="mt-2">Healing</div>
+              </Dropdown.Item>
+              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}>
+                <div className="mt-2">Crystals</div>
+              </Dropdown.Item>
+              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}>
+                <div className="mt-2">Mediumship</div>
+              </Dropdown.Item>
+              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}>
+                <div className="mt-2">Crystal ball</div>
+              </Dropdown.Item>
+              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}>
+                <div className="mt-2">Numerology</div>
+              </Dropdown.Item>
+              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}>
+                <div className="mt-2">Runes</div>
+              </Dropdown.Item>
+              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}>
+                <div className="mt-2">Palm reading</div>
+              </Dropdown.Item>
+              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}>
+                <div className="mt-2 mb-3">Energy work</div>
+              </Dropdown.Item>
             </Dropdown.Menu>
           </div>
           <div className="mt-4">
             <RxCaretUp size={25} color="white" className="" />
-
           </div>
           {/* <div className={styles?.home}>Category</div>
           <RxCaretUp size={25} color="white" /> */}
@@ -182,13 +219,14 @@ const SideBar = ({ collapse, setCollapse }) => {
             <div className={styles?.home}>Log out</div>
           </div>
           <Footer />
-
         </div>
-
       </div>
-    </div >
+    </div>
   ) : (
-    <div className={`${style.iconView} col-sm-1 col-lg-1 col-md-1 p-0`} style={{ width: "3.333333%", height: width > 670 ? height - 80 : height }}>
+    <div
+      className={`${style.iconView} col-sm-1 col-lg-1 col-md-1 p-0`}
+      style={{ width: "3.333333%", height: width > 670 ? height - 80 : height }}
+    >
       <div
         className={styles?.dashbpardDarkThemeItem}
         style={{ borderRight: "1px solid #707070", overflowY: "scroll" }}
@@ -219,6 +257,7 @@ const SideBar = ({ collapse, setCollapse }) => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
