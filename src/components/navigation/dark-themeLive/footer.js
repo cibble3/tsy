@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styles from "./dashbpard-dark-theme.module.css";
 import style from "../dark-themeLive/dashbpard-dark-theme.module.css";
-import { useSelector, useDispatch } from 'react-redux';
-import { modechange } from '../../../store/reducer/darklightReducer';
-import { increment, decrement } from '../../../store/reducer/counterReducer';
+import { useSelector, useDispatch } from "react-redux";
+import { modechange } from "../../../store/reducer/darklightReducer";
+import { increment, decrement } from "../../../store/reducer/counterReducer";
 
 import { useRouter } from "next/router";
 
@@ -42,9 +42,7 @@ const Footer = () => {
     // console.log(document.cookie);
   }, []);
   return (
-    
     <div className={styles.header} style={{ borderTop: "1px solid #707070" }}>
-      
       <div className="d-flex justify-content-center align-items-center h-100">
         <div className={styles?.dark}>Dark</div>
         <div>
@@ -79,6 +77,12 @@ const Footer = () => {
             ? "radial-gradient(50% 50%at 50% 50%, rgb(237 19 93 / 45%), var(--color-white))"
             : "radial-gradient(50% 50%at 50% 50%, #ed135d, var(--color-white))"};
           --color-light-200: ${colorMode === "light" ? "#000" : "#9a9a9a"};
+          --bg-light: ${colorMode === "light" ? "#f6f6f6" : "#16181c"};
+          --border-color: ${colorMode === "light" ? "#f1f1f1" : "#3d3d3d"};
+          --border-bg: ${colorMode === "light" ? "#f9f9f9" : "#353535"};
+          --box-bg-100: ${colorMode === "light" ? "#f2f2f2" : "#3d3d3d"};
+          --box-bg-200: ${colorMode === "light" ? "#fff" : "#16181c"};
+          --input-color: ${colorMode === "light" ? "#f2f2f2" : "#484747"};
         }
 
         body {
