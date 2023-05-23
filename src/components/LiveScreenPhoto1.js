@@ -1,50 +1,42 @@
 import { AiOutlineHeart } from "react-icons/ai";
 import { RxDotFilled } from "react-icons/rx";
-import styles from "../components/navigation/dark-themeLive/dashbpard-dark-theme.module.css";
+// import styles from "../components/navigation/dark-themeLive/dashbpard-dark-theme.module.css";
+import Link from "next/link";
 
-const LiveScreenPhoto1 = ({ image }) => {
+const LiveScreenPhoto1 = ({ image, name, tags, age }) => {
   return (
     <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 mt-4 ">
+      <Link href={`/chat/${name}`}>
       <img src={image} alt="" className="w-100" />
       <div className="text-white px-2" style={{ marginTop: "-30px" }}>
         <div className="d-flex justify-content-between align-items-center d-flex align-items-center">
           <div className="d-flex align-items-center d-flex align-items-center">
-            <RxDotFilled fontSize="22px" /> <span>LoveExpertise</span>
+            <RxDotFilled color="#8FC400" fontSize="22px" />
+            <span>
+              {name} ({age})
+            </span>
           </div>
           <div className="">
             <AiOutlineHeart fontSize="22px" />
           </div>
         </div>
       </div>
+      </Link>
+
       <div
         className="mt-3 text-white d-flex gap-1 flex-wrap"
         style={{ fontSize: "11px" }}
       >
-        <div
-          className="px-3 py-2 rounded-3"
-          style={{ backgroundColor: "#2E3033" }}
-          // className={`${styles.cardlabel} px-3 py-2 rounded-3`}
-        >
-          Career
-        </div>
-        <div
-          className="px-3 py-2 rounded-3"
-          style={{ backgroundColor: "#2E3033" }}
-        >
-          Career
-        </div>
-        <div
-          className="px-3 py-2 rounded-3"
-          style={{ backgroundColor: "#2E3033" }}
-        >
-          Career
-        </div>
-        <div
-          className="px-3 py-2 rounded-3"
-          style={{ backgroundColor: "#2E3033" }}
-        >
-          Career
-        </div>
+        {tags?.map((tag, i) => {
+          return (
+            <div
+              className="px-3 py-2 rounded-3"
+              style={{ backgroundColor: "#2E3033" }}
+            >
+              {tag}
+            </div>
+          );
+        })}
       </div>
     </div>
   );

@@ -25,3 +25,13 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+.rating span svg {
+  display: inline-block !important;
+}
+.siteContent > h1 {
+  font-size: 1.5em;
+}
+.siteContent > h2 {
+  font-size: 1em;
+  font-weight: 100;
+}
