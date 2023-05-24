@@ -19,6 +19,12 @@
   cursor: pointer;
   margin-left: 1rem;
 }
+@media screen and (max-width:400px){
+  .mulVodMainXcraveXcavelogoIcon {
+    width: 170px;
+    height: auto;
+  }
+}
 .dashbpardDarkThemeItem::-webkit-scrollbar {
   display: none;
 }

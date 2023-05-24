@@ -87,7 +87,7 @@ const DashbpardDarkTheme = ({ data }) => {
 export default DashbpardDarkTheme;
 
 export async function getServerSideProps(context) {
-  const response = await axiosInstance.get(`/blog/`);
+  const response = await axiosInstance.get(`/blog?limit=9`);
   const responseData = response.data;
 
   return {

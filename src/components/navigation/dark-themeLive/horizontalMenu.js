@@ -63,12 +63,13 @@ const HorizontalMenu = ({ collapse, setCollapse }) => {
               localStorage.setItem("collapse", !collapse);
             }}
           />
+       
           <Link href={"/"}>
             <img
               src={
-                colorMode === "light"
-                  ? "/mul-vod-main--xcrave-xcavelogo@2x.png"
-                  : "/mul-vod-main--xcrave-xcavelogo-w@2x.png"
+                colorMode === "dark"
+                  ? "/mul-vod-main--xcrave-xcavelogo-w@2x.png"
+                  : "/mul-vod-main--xcrave-xcavelogo@2x.png"
               }
               className={styles.mulVodMainXcraveXcavelogoIcon}
             />

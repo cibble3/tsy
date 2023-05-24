@@ -1,40 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
-  BsBroadcast,
   BsFileEarmarkText,
   BsLink45Deg,
   BsCalendar2Week,
-  BsFillEyeFill,
 } from "react-icons/bs";
-import {
-  MdApps,
-  MdNotificationsNone,
-  MdOutlineHome,
-  MdOutlineDashboard,
-  MdHistory,
-  MdOutlineSettings,
-  MdFormatListBulleted,
-  MdCollectionsBookmark,
-} from "react-icons/md";
+import { MdHistory, MdCollectionsBookmark } from "react-icons/md";
 import { RxCaretUp } from "react-icons/rx";
-import { RiMessage2Line } from "react-icons/ri";
-// import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
-// import { BiUpArrowAlt } from "react-icons/bi";
-// import { AiFillCaretDown, AiOutlineHeart } from "react-icons/ai";
-// import { GrAppsRounded } from "react-icons/gr";
 import { FiUserPlus } from "react-icons/fi";
 import { IoCloseSharp, IoLogOutOutline } from "react-icons/io5";
 import styles from "./dashbpard-dark-theme.module.css";
 import style from "../dark-theme/dashbpard-dark-theme.module.css";
 import Footer from "./footer";
 import useWindowSize from "@/hooks/useWindowSize";
-import { Dropdown, DropdownButton } from "react-bootstrap";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import Link from "next/link";
+import DropdownComponent from "./DropdownComponent";
+import menuData from "../../../context/menuData.json";
+import { AiOutlineHeart } from "react-icons/ai";
 
 const SideBar = ({ collapse, setCollapse }) => {
   const { width, height } = useWindowSize();
-  const [dropMenu, setDropMenu] = useState();
+  // const [dropMenu, setDropMenu] = useState();
   const colorMode = useSelector((state) => state.darklight);
   // const count = useSelector((state) => state.counter);
 
@@ -52,9 +38,9 @@ const SideBar = ({ collapse, setCollapse }) => {
             <div className="d-flex justify-content-between mt-3 mx-3 ">
               <img
                 src={
-                  colorMode === "light"
-                    ? "/mul-vod-main--xcrave-xcavelogo@2x.png"
-                    : "/mul-vod-main--xcrave-xcavelogo-w@2x.png"
+                  colorMode === "dark"
+                    ? "/mul-vod-main--xcrave-xcavelogo-w@2x.png"
+                    : "/mul-vod-main--xcrave-xcavelogo@2x.png"
                 }
                 className={styles.mulVodSideXcraveXcavelogoIcon}
               />
@@ -66,10 +52,11 @@ const SideBar = ({ collapse, setCollapse }) => {
             </div>
           </div>
         </div>
-        <div className="d-flex justify-contant-center align-items-center ms-3 pt-3 mt-3 mb-3">
+
+        {/* <div className="d-flex justify-contant-center align-items-center ms-3 pt-3 mt-3 mb-3">
           <MdHistory size={25} color="#818181" />
           <div className={styles?.home}>History</div>
-        </div>
+        </div> */}
 
         {/* <div className={styles.dashboard1}>
           <div className="d-flex justify-contant-center align-items-center ms-2">
@@ -78,131 +65,34 @@ const SideBar = ({ collapse, setCollapse }) => {
           </div>
         </div> */}
 
-        <div className="d-flex justify-contant-center align-items-center ms-3 pt-3 mb-3">
+        {/* <div className="d-flex justify-contant-center align-items-center ms-3 pt-3 mb-3">
           <RiMessage2Line size={25} color="#818181" />
           <div className={styles?.home}>Messenger</div>
-        </div>
+        </div> */}
 
-        <Link href={`/blog`}>
-          <div className="d-flex justify-contant-center align-items-center ms-3 pt-3 mb-3">
-            <MdCollectionsBookmark size={25} color="#818181" />
-            <div className={styles?.home}>Blog</div>
-          </div>
-        </Link>
+        {Object.keys(menuData).map((key) => (
+          <DropdownComponent
+            parentText={key}
+            menuItems={menuData[key]}
+            key={key}
+          />
+        ))}
 
-        <div
-          className="d-flex justify-content-between  px-3 pb-2 "
-          style={{ borderTop: "1px solid #494949", position: "relative" }}
-          onClick={() => setDropMenu(!dropMenu)}
-        >
-          <div>
-            <Dropdown>
-              <DropdownButton
-                title="Category"
-                className={"dropcustom"}
-              ></DropdownButton>
-            </Dropdown>
-            <Dropdown.Menu show={dropMenu}>
-              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}>
-                <div className="mt-3">Astrology</div>
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}>
-                <div className="mt-2">Tarot</div>
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}>
-                <div className="mt-2">Clairvoyance</div>
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}>
-                <div className="mt-2">Dream interpretation</div>
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}>
-                <div className="mt-2">Healing</div>
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}>
-                <div className="mt-2">Crystals</div>
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}>
-                <div className="mt-2">Mediumship</div>
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}>
-                <div className="mt-2">Crystal ball</div>
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}>
-                <div className="mt-2">Numerology</div>
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}>
-                <div className="mt-2">Runes</div>
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}>
-                <div className="mt-2">Palm reading</div>
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setDropMenu(!dropMenu)}>
-                <div className="mt-2 mb-3">Energy work</div>
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </div>
-          <div className="mt-4">
-            <RxCaretUp size={25} color="white" className="" />
-          </div>
-        </div>
-
-        <div
-          className="d-flex justify-content-between align-items-center px-3 py-3"
-          style={{ borderTop: "1px solid #494949" }}
-        >
-          <div className={styles?.home}>Topics</div>
-          <RxCaretUp size={25} color="white" />
-        </div>
-        <div
-          className="d-flex justify-content-between align-items-center px-3 py-3"
-          style={{ borderTop: "1px solid #494949" }}
-        >
-          <div className={styles?.home}>Topics</div>
-          <RxCaretUp size={25} color="white" />
-        </div>
-        <div
-          className="d-flex justify-content-between align-items-center px-3 py-3"
-          style={{ borderTop: "1px solid #494949" }}
-        >
-          <div className={styles?.home}>Years of experience</div>
-          <RxCaretUp size={25} color="white" />
-        </div>
-        <div
-          className="d-flex justify-content-between align-items-center px-3 py-3"
-          style={{ borderTop: "1px solid #494949" }}
-        >
-          <div className={styles?.home}>Category</div>
-          <RxCaretUp size={25} color="white" />
-        </div>
-        <div
-          className="d-flex justify-content-between align-items-center px-3 py-3"
-          style={{ borderTop: "1px solid #494949" }}
-        >
-          <div className={styles?.home}>Price</div>
-          <RxCaretUp size={25} color="white" />
-        </div>
-        <div
-          className="d-flex justify-content-between align-items-center px-3 py-3"
-          style={{ borderTop: "1px solid #494949" }}
-        >
-          <div className={styles?.home}>Session Type</div>
-          <RxCaretUp size={25} color="white" />
-        </div>
-        <div
+        {/* <div
           className="d-flex justify-content-between align-items-center px-3 py-3"
           style={{ borderTop: "1px solid #494949" }}
         >
           <div className={styles?.home}>Language</div>
           <RxCaretUp size={25} color="white" />
-        </div>
-        <div
-          className="d-flex justify-content-between align-items-center px-3 py-3"
-          style={{ borderTop: "1px solid #494949" }}
-        >
-          <div className={styles?.home}>Region</div>
-          <RxCaretUp size={25} color="white" />
-        </div>
+        </div> */}
+
         <div className={styles?.invite}>
+          <Link href={`/blog`}>
+            <div className="d-flex justify-contant-center align-items-center ms-3 pt-3 mb-3">
+              <MdCollectionsBookmark size={25} color="#818181" />
+              <div className={styles?.home}>Blog</div>
+            </div>
+          </Link>
           <div className="d-flex justify-contant-center align-items-center ms-3 mt-3">
             <FiUserPlus size={25} color="#ED135D" />
             <div className={styles?.home}>Invite Friend</div>

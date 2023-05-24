@@ -8,7 +8,7 @@ const ChatWidget = ({ performerId }) => {
       if (window.innerWidth > 767 && window.innerWidth < 991) {
         w = Math.abs(0.97 * window.outerWidth);
       }
-      var h = Math.abs(0.6 * w);
+      var h = Math.abs(0.7 * w);
       document.getElementById(id).style.width = w + "px";
       document.getElementById(id).style.height = h + "px";
       loadChatWidget();

@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const darklightSlice = createSlice({
   name: 'darklight',
-  initialState: typeof window !== 'undefined' && localStorage.getItem("theme")?localStorage.getItem("theme"):"light",
+  initialState: typeof window !== 'undefined' && localStorage.getItem("theme")?localStorage.getItem("theme"):"dark",
   reducers: {
   
     modechange: (state) => state=="light" ? "dark" : "light",

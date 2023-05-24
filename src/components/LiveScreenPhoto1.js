@@ -27,7 +27,7 @@ const LiveScreenPhoto1 = ({ image, name, tags, age }) => {
         className="mt-3 text-white d-flex gap-1 flex-wrap"
         style={{ fontSize: "11px" }}
       >
-        {tags?.slice(0, 4).map((tag, i) => {
+        {tags?.slice(0, 3).map((tag, i) => {
           return (
             <div
               key={i}

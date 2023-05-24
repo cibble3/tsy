@@ -5,12 +5,12 @@ import { renderProcessedContent } from "@/helper/helpers";
 
 const DarkSingleBlogPost = ({ image, title1, title2, post_url }) => {
   return (
-    <div className="col-md-6 col-sm-12 mt-4">
+    <div className="col-md-6 col-sm-12 col-lg-4 mt-4">
       <div className={styles?.Dashbpardcard}>
         <Link href={`/blog/${post_url}`}>
           <img
             className="card-img-top"
-            style={{ height: "350px" }}
+            style={{ height: "250px" }}
             src={image}
             alt="Card image cap"
             role="button"

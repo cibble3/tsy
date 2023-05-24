@@ -35,7 +35,6 @@ const LiveStreamComponent = ({ data }) => {
   const [rating, setRating] = useState(0);
   const [video, setVideo] = useState(false);
   const [photoModal, setPhotoModal] = useState(false);
-  const [chatOpen, setChatOpen] = useState(true);
 
   // Catch Rating value
   const handleRating = (rate) => {
@@ -57,7 +56,7 @@ const LiveStreamComponent = ({ data }) => {
         <div className="row justify-content-center p-0 m-0">
           <div
             className={`${
-              width < 576 ? "" : "px-4"
+              width < 576 ? "" : "px-2"
             } col-xl-9 col-lg-8 col-md-7 col-sm-12 mt-2 `}
           >
             <ChatWidget performerId={data.modelData.performerId} />
@@ -112,24 +111,6 @@ const LiveStreamComponent = ({ data }) => {
             style={{ height: videoHeight, maxHeight: 650 }}
           >
             <div style={{ position: "relative" }}>
-              <div
-                className={`${styles.closeView} d-flex align-items-center px-2 py-1`}
-                onClick={() => setChatOpen(!chatOpen)}
-              >
-                <p className={`${styles.closeBtn} mb-0`}>
-                  {chatOpen ? "Close" : "Open"}
-                </p>
-                {chatOpen ? (
-                  <BsBoxArrowInRight color="#9e9e9e" size={18} />
-                ) : (
-                  <BsBoxArrowInLeft
-                    color="#9e9e9e"
-                    size={18}
-                    className="ms-1"
-                  />
-                )}
-              </div>
-
               <img
                 src="/images/courses/yoga-img3.jpg"
                 alt=""
@@ -172,151 +153,7 @@ const LiveStreamComponent = ({ data }) => {
                   maxHeight: 162,
                 }}
               />
-              {chatOpen ? (
-                <div
-                  style={{
-                    position: "absolute",
-                    background: "rgba(0,0,0,0.75)",
-                    top: 0,
-                    height: "100%",
-                    width: "100%",
-                    borderRadius: "8px",
-                  }}
-                >
-                  <div className="d-flex justify-content-between my-3 px-3">
-                    <div
-                      className={`${styles.chatHeader} d-flex align-items-center`}
-                    >
-                      <SiWechat color={"#ffffff"} size={25} />
-                      <p>IntoLight's Chat</p>
-                    </div>
-                    <div>
-                      <TiArrowUnsorted color={"#ffffff"} size={20} />
-                    </div>
-                  </div>
-                  <div
-                    className={`${styles.member} d-flex justify-content-between align-items-center py-2  px-3`}
-                  >
-                    <div className="d-flex align-items-center">
-                      <div>
-                        <FaStar color={"#fcce01"} size={25} />
-                      </div>
-                      <div className="ms-2">
-                        <p className={`${styles.subName} mb-0`}>Top Member</p>
-                        <p className={`${styles.name} mb-0`}>glitterpixel</p>
-                      </div>
-                    </div>
-                    <div>
-                      <p className={`mb-0 ${styles.subName}`}>Spent</p>
-                      <p className={`${styles.name} mb-0`}>25 Credits</p>
-                    </div>
-                  </div>
-                  <div
-                    className={`px-3 my-1 ${styles.chatView}`}
-                    style={{
-                      height: blurHeight - 176,
-                      overflowY: "scroll",
-                      maxHeight: 309,
-                    }}
-                  >
-                    <div className="d-flex align-items-center pb-1">
-                      <TbCrown size={22} color={"#c56565"} />
-                      <div>
-                        <p className={styles.chatText}>
-                          broadwaystar88 : when will I leave
-                        </p>
-                      </div>
-                    </div>
-                    <div className="d-flex align-items-center pb-1">
-                      <TbCrown size={22} color={"#c56565"} />
-                      <div>
-                        <p className={styles.chatText}>broadwaystar88 : ok</p>
-                      </div>
-                    </div>
-                    <div className="d-flex align-items-center pb-1">
-                      <TbCrown size={22} color={"#c56565"} />
-                      <div>
-                        <p className={styles.chatText}>cindrella88 : thanks</p>
-                      </div>
-                    </div>
-                    <div className="d-flex align-items-center pb-1">
-                      <TbCrown size={22} color={"#c56565"} />
-                      <div>
-                        <p className={styles.chatText}>mindy88 : hey</p>
-                      </div>
-                    </div>
-                    <div className="d-flex align-items-center pb-1">
-                      <TbCrown size={22} color={"#c56565"} />
-                      <div>
-                        <p className={styles.chatText}>kaldetz88 : wow</p>
-                      </div>
-                    </div>
-                    <div className="d-flex align-items-center pb-1">
-                      <TbCrown size={22} color={"#c56565"} />
-                      <div>
-                        <p className={styles.chatText}>mindy88 : hru?</p>
-                      </div>
-                    </div>
-                    <div className="d-flex align-items-center pb-1">
-                      <TbCrown size={22} color={"#c56565"} />
-                      <div>
-                        <p className={styles.chatText}>kaldetz88 : wow</p>
-                      </div>
-                    </div>
-                    <div className="d-flex align-items-center pb-1">
-                      <TbCrown size={22} color={"#c56565"} />
-                      <div>
-                        <p className={styles.chatText}>broadwaystar88 : wow</p>
-                      </div>
-                    </div>
-                    <div className="d-flex align-items-center pb-1">
-                      <TbCrown size={22} color={"#c56565"} />
-                      <div>
-                        <p className={styles.chatText}>
-                          broadwaystar88 : thanks
-                        </p>
-                      </div>
-                    </div>
-                    <div className="d-flex align-items-center pb-1">
-                      <TbCrown size={22} color={"#c56565"} />
-                      <div>
-                        <p className={styles.chatText}>kaldetz88 : wow</p>
-                      </div>
-                    </div>
-                    <div className="d-flex align-items-center pb-1">
-                      <TbCrown size={22} color={"#c56565"} />
-                      <div>
-                        <p className={styles.chatText}>broadwaystar88 : bye</p>
-                      </div>
-                    </div>
-                    <div className="d-flex align-items-center pb-1">
-                      <TbCrown size={22} color={"#c56565"} />
-                      <div>
-                        <p className={styles.chatText}>
-                          broadwaystar88 : hello
-                        </p>
-                      </div>
-                    </div>
-                    <div className="d-flex align-items-center pb-1">
-                      <TbCrown size={22} color={"#c56565"} />
-                      <div>
-                        <p className={styles.chatText}>
-                          broadwaystar88 : when will I leave
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <InputGroup className={`${styles.chatInput} mb-3`}>
-                      <Form.Control
-                        placeholder="Say Something..."
-                        aria-label="Username"
-                        aria-describedby="basic-addon1"
-                      />
-                    </InputGroup>
-                  </div>
-                </div>
-              ) : null}
+              
             </div>
           </div>
         </div>

@@ -12,17 +12,23 @@ const DashbpardDarkTheme = () => {
   const [pageContent, setPageContent] = useState([]);
   const [pageNo, setPageNo] = useState(2);
   const [loading, setLoading] = useState(false);
+  const [isPageLoaded, setPageLoaded] = useState(false);
 
   useEffect(() => {
     axiosInstance
       .get("/")
       .then((response) => {
+        console.log(response.data);
         setModels(response.data.performers);
-        setPageContent(response.data.page_content);
+        setPageContent(response.data.pageContent);
       })
       .catch((error) => {
         console.error(error);
       });
+
+      setTimeout(() => {
+        setPageLoaded(true);
+      }, 2000); 
   }, []);
 
   const loadMoreModels = async () => {
@@ -86,7 +92,8 @@ const DashbpardDarkTheme = () => {
                   );
                 })}
               </div>
-              <div className="parent-loadbtn">
+
+             {isPageLoaded && <div className="parent-loadbtn">
                 <button
                   className="loading-btn"
                   onClick={loadMoreModels}
@@ -94,7 +101,14 @@ const DashbpardDarkTheme = () => {
                 >
                   {loading ? "Loading..." : "Load More Models"}
                 </button>
-              </div>
+              </div>}
+
+              <div
+                className="siteContent"
+                dangerouslySetInnerHTML={{
+                  __html: pageContent?.bottom_text,
+                }}
+              />
             </div>
           </div>
         </>
