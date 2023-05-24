@@ -31,7 +31,7 @@ const ChatWidget = ({ performerId }) => {
   }, []);
 
   return (
-    <div id="model-chat" class="model-tab-content">
+    <div id="model-chat" className="model-tab-content">
       <div id="chat-block">
         <div id="object_container"  style={{width : '100%', height : '100%'}}></div>
       </div>

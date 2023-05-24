@@ -14,13 +14,14 @@ import {
   MdHistory,
   MdOutlineSettings,
   MdFormatListBulleted,
+  MdCollectionsBookmark,
 } from "react-icons/md";
 import { RxCaretUp } from "react-icons/rx";
 import { RiMessage2Line } from "react-icons/ri";
-import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
-import { BiUpArrowAlt } from "react-icons/bi";
-import { AiFillCaretDown, AiOutlineHeart } from "react-icons/ai";
-import { GrAppsRounded } from "react-icons/gr";
+// import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
+// import { BiUpArrowAlt } from "react-icons/bi";
+// import { AiFillCaretDown, AiOutlineHeart } from "react-icons/ai";
+// import { GrAppsRounded } from "react-icons/gr";
 import { FiUserPlus } from "react-icons/fi";
 import { IoCloseSharp, IoLogOutOutline } from "react-icons/io5";
 import styles from "./dashbpard-dark-theme.module.css";
@@ -28,17 +29,15 @@ import style from "../dark-theme/dashbpard-dark-theme.module.css";
 import Footer from "./footer";
 import useWindowSize from "@/hooks/useWindowSize";
 import { Dropdown, DropdownButton } from "react-bootstrap";
-import { useSelector, useDispatch } from 'react-redux';
-
+import { useSelector, useDispatch } from "react-redux";
+import Link from "next/link";
 
 const SideBar = ({ collapse, setCollapse }) => {
   const { width, height } = useWindowSize();
   const [dropMenu, setDropMenu] = useState();
-  // console.log("🚀 ~ file: sideBar.js:35 ~ SideBar ~ dropMenu:", dropMenu);
   const colorMode = useSelector((state) => state.darklight);
   // const count = useSelector((state) => state.counter);
 
-  // console.log(colorMode)
   return !collapse ? (
     <div
       className={`col-sm-3 col-md-3 col-lg-2 col-3 p-0 ${styles.topView}`}
@@ -67,20 +66,29 @@ const SideBar = ({ collapse, setCollapse }) => {
             </div>
           </div>
         </div>
-        <div className="d-flex justify-contant-center align-items-center ms-3 pt-3 mt-3">
+        <div className="d-flex justify-contant-center align-items-center ms-3 pt-3 mt-3 mb-3">
           <MdHistory size={25} color="#818181" />
           <div className={styles?.home}>History</div>
         </div>
-        <div className={styles.dashboard1}>
+
+        {/* <div className={styles.dashboard1}>
           <div className="d-flex justify-contant-center align-items-center ms-2">
             <AiOutlineHeart size={25} color="#ED135D" />
             <div className={styles?.dashboard}>Favourite</div>
           </div>
-        </div>
+        </div> */}
+
         <div className="d-flex justify-contant-center align-items-center ms-3 pt-3 mb-3">
           <RiMessage2Line size={25} color="#818181" />
           <div className={styles?.home}>Messenger</div>
         </div>
+
+        <Link href={`/blog`}>
+          <div className="d-flex justify-contant-center align-items-center ms-3 pt-3 mb-3">
+            <MdCollectionsBookmark size={25} color="#818181" />
+            <div className={styles?.home}>Blog</div>
+          </div>
+        </Link>
 
         <div
           className="d-flex justify-content-between  px-3 pb-2 "
@@ -136,23 +144,8 @@ const SideBar = ({ collapse, setCollapse }) => {
           <div className="mt-4">
             <RxCaretUp size={25} color="white" className="" />
           </div>
-          {/* <div className={styles?.home}>Category</div>
-          <RxCaretUp size={25} color="white" /> */}
         </div>
-        {/* <div className="px-5 text-white">
-          <div className="mt-3">Astrology</div>
-          <div className="mt-2">Tarot</div>
-          <div className="mt-2">Clairvoyance</div>
-          <div className="mt-2">Dream interpretation</div>
-          <div className="mt-2">Healing</div>
-          <div className="mt-2">Crystals</div>
-          <div className="mt-2">Mediumship</div>
-          <div className="mt-2">Crystal ball</div>
-          <div className="mt-2">Numerology</div>
-          <div className="mt-2">Runes</div>
-          <div className="mt-2">Palm reading</div>
-          <div className="mt-2 mb-3">Energy work</div>
-        </div> */}
+
         <div
           className="d-flex justify-content-between align-items-center px-3 py-3"
           style={{ borderTop: "1px solid #494949" }}

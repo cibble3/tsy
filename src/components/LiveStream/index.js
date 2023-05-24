@@ -19,13 +19,13 @@ import VideoModal from "./videoModal";
 import PhotoAlbumModal from "./photoAlbumModal";
 import { BsBoxArrowInLeft, BsBoxArrowInRight } from "react-icons/bs";
 import useWindowSize from "@/hooks/useWindowSize";
-import { ThemeColors } from "@/context/themeColor";
+// import { ThemeColors } from "@/context/themeColor";
 import LiveStreamPhoto from "../LiveStreamPhoto";
 import LiveStreamVideo from "../LiveStreamVideo";
 import LiveStreamPose from "../LiveStreamPose";
 import ChatWidget from "./ChatWidget";
-import Image from "next/image";
-import Head from "next/head";
+import HeadMeta from "@/components/HeadMeta";
+// import Image from "next/image";
 
 const LiveStreamComponent = ({ data }) => {
   const { width, height } = useWindowSize();
@@ -43,7 +43,6 @@ const LiveStreamComponent = ({ data }) => {
   };
 
   useEffect(() => {
-    // console.log(data?.modelData?.details?.modelRating);
     setRating(data?.modelData?.details?.modelRating);
   }, []);
 
@@ -53,25 +52,7 @@ const LiveStreamComponent = ({ data }) => {
   const onPointerMove = (value, index) => console.log(value, index);
   return (
     <>
-      <Head>
-        <title>{data?.pageContent?.meta_title}</title>
-        <meta name="description" content={data?.pageContent?.meta_desc} />
-        <meta name="dc.description" content={data?.pageContent?.meta_desc} />
-
-        <meta
-          property="og:description"
-          content={data?.pageContent?.meta_desc}
-        />
-        <meta
-          name="twitter:description"
-          content={data?.pageContent?.meta_desc}
-        />
-        <meta
-          property="dc.keywords"
-          content={data?.pageContent?.meta_keywords}
-        />
-      </Head>
-
+    <HeadMeta pageContent={data?.pageContent}/>
       <div className={styles?.LiveMain}>
         <div className="row justify-content-center p-0 m-0">
           <div
