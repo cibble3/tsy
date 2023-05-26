@@ -41,13 +41,14 @@ const NestedDropdownComponent = ({
                     />
                   </div>
                 ) : (
-                  <Dropdown.Item
-                    key={key}
-                    href={`/${[...parentMenuNames, parentText]
-                      .join("/")
-                      .toLowerCase()}/${key.toLowerCase()}`} // Combine parent menu names in the URL
-                  >
-                    <div className="subMenu">{menuItems[key]}</div>
+                  <Dropdown.Item key={key}>
+                    <Link
+                      href={`/${[...parentMenuNames, parentText]
+                        .join("/")
+                        .toLowerCase()}/${key.toLowerCase()}`}
+                    >
+                      <div className="subMenu">{menuItems[key]}</div>
+                    </Link>
                   </Dropdown.Item>
                 )
               )}

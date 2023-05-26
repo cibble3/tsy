@@ -21,14 +21,14 @@ export async function getServerSideProps(context) {
   );
   const responseData = response.data;
 
-    // if (!responseData.status) {
-    //   return {
-    //     redirect: {
-    //       destination: "/videos",
-    //       permanent: false,
-    //     },
-    //   };
-    // }
+    if (!responseData.status) {
+      return {
+        redirect: {
+          destination: "/videos",
+          permanent: false,
+        },
+      };
+    }
   return {
     props: {
       data: responseData,

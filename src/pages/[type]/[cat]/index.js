@@ -1,43 +1,28 @@
-import styles from "../components/navigation/dark-themeLive/dashbpard-dark-theme.module.css";
-// import { AiOutlineHeart } from "react-icons/ai";
-// import { RxDotFilled } from "react-icons/rx";
-import DarkTheme from "../components/navigation/dark-themeLive";
+import styles from "@/components/navigation/dark-themeLive/dashbpard-dark-theme.module.css";
+import DarkTheme from "@/components/navigation/dark-themeLive";
 import LiveScreenPhoto from "@/components/LiveScreenPhoto1";
-// import LiveScreenPhoto2 from "@/components/LiveScreenPhoto2";
-import axiosInstance from "../instance/axiosInstance";
+import axiosInstance from "@/instance/axiosInstance";
 import { useEffect, useState } from "react";
 
-const DashbpardDarkTheme = () => {
-  const [models, setModels] = useState([]);
-  const [pageContent, setPageContent] = useState([]);
+const DashbpardDarkTheme = ({data, params}) => {
+  const [models, setModels] = useState(data?.performers );
+  const [pageContent, setPageContent] = useState(data?.pageContent);
   const [pageNo, setPageNo] = useState(2);
   const [loading, setLoading] = useState(false);
   const [isPageLoaded, setPageLoaded] = useState(false);
 
   useEffect(() => {
-    axiosInstance
-      .get("/")
-      .then((response) => {
-        setModels(response.data.performers);
-        setPageContent(response.data.pageContent);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-
-      setTimeout(() => {
-        setPageLoaded(true);
-      }, 2000); 
+    setTimeout(() => {
+      setPageLoaded(true);
+    }, 2000);
   }, []);
+
 
   const loadMoreModels = async () => {
     if (!loading) {
       setLoading(true);
       try {
-        const response = await axiosInstance.post("/fetch-more-models", {
-          category: pageContent?.category,
-          page: pageNo,
-        });
+        const response = await axiosInstance.get(`${params.type}/${params.cat}/?page=${pageNo}`);
         const data = response?.data?.performers;
         if (data === "") {
           console.log("No more models found");
@@ -68,16 +53,7 @@ const DashbpardDarkTheme = () => {
                   __html: pageContent?.top_text,
                 }}
               />
-              {/* <div className={styles?.liveHeading} style={{ fontSize: "18px" }}>
-              RECOMMENDED
-              <span className={styles?.livesubHeading}>
-                EXPERTS
-                <span className="ms-2" style={{ fontSize: "16px" }}>
-                  Top Favourites by our Members! You can't go wrong with our
-                  recommended Experts!
-                </span>
-              </span>
-            </div> */}
+             
               <div className="row">
                 {models?.map((element, i) => {
                   return (
@@ -117,3 +93,26 @@ const DashbpardDarkTheme = () => {
 };
 
 export default DashbpardDarkTheme;
+
+
+export async function getServerSideProps(context) {
+  const response = await axiosInstance.get(
+    `/${context.params.type}/${context.params.cat}`
+  );
+  const responseData = response.data;
+
+    // if (!responseData.status) {
+    //   return {
+    //     redirect: {
+    //       destination: "/",
+    //       permanent: false,
+    //     },
+    //   };
+    // }
+  return {
+    props: {
+      data: responseData,
+      params: context.params
+    },
+  };
+}
