@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Dropdown, DropdownButton } from "react-bootstrap";
-import { RxCaretDown, RxCaretUp } from "react-icons/rx";
+import { RxCaretDown } from "react-icons/rx";
+import Link from "next/link";
 import NestedDropdownComponent from "./NestedDropdownComponent";
 
-const DropdownComponent = ({ parentText, menuItems }) => {
+const DropdownComponent = ({ parentText, menuItems, parentMenuNames = [] }) => {
   const [dropMenu, setDropMenu] = useState(false);
 
   return (
@@ -14,31 +15,40 @@ const DropdownComponent = ({ parentText, menuItems }) => {
       >
         <div>
           <Dropdown>
-            <DropdownButton
-              title={parentText}
-              className={"dropcustom"}
-              show={dropMenu}
-              onClick={() => setDropMenu(!dropMenu)}
-            ></DropdownButton>
+            <Link href={`/${parentText.toLowerCase()}`}>
+              <DropdownButton
+                title={parentText}
+                className={"dropcustom"}
+                show={dropMenu}
+                onClick={() => setDropMenu(!dropMenu)}
+              ></DropdownButton>
+            </Link>
           </Dropdown>
 
-          <Dropdown.Menu show={dropMenu}>
-            {Object.keys(menuItems).map((key) => (
-              <Dropdown.Item key={key}>
-                {typeof menuItems[key] === "object" ? (
-                  <div className="submenu-container">
+          {dropMenu && (
+            <Dropdown.Menu show={dropMenu} className="nestedDropdownMenu">
+              {Object.keys(menuItems).map((key) =>
+                typeof menuItems[key] === "object" ? (
+                  <div className="submenu-container" key={key}>
                     <NestedDropdownComponent
                       parentText={key}
                       menuItems={menuItems[key]}
-                      key={key}
+                      parentMenuNames={[...parentMenuNames, parentText]}
                     />
                   </div>
                 ) : (
-                  <div className="subMenu">{menuItems[key]}</div>
-                )}
-              </Dropdown.Item>
-            ))}
-          </Dropdown.Menu>
+                  <Dropdown.Item
+                    key={key}
+                    href={`/${[...parentMenuNames, parentText]
+                      .join("/")
+                      .toLowerCase()}/${key.toLowerCase()}`}
+                  >
+                    <div className="subMenu">{menuItems[key]}</div>
+                  </Dropdown.Item>
+                )
+              )}
+            </Dropdown.Menu>
+          )}
         </div>
         <div className="dropArrow">
           <RxCaretDown
@@ -47,7 +57,6 @@ const DropdownComponent = ({ parentText, menuItems }) => {
             color="white"
             className={`dropdownArrow ${dropMenu ? "dropdown-open" : ""}`}
           />
-          {/* {!dropMenu &&<RxCaretDown onClick={() => setDropMenu(!dropMenu)} size={25} color="white" className="dropdownArrow" />} */}
         </div>
       </div>
     </>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import SideBar from "./sideBar";
-import Footer from "./footer";
 import styles from "../dark-theme/dashbpard-dark-theme.module.css";
 import useWindowSize from "@/hooks/useWindowSize";
 import HorizontalMenu from "../dark-themeLive/horizontalMenu";

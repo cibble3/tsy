@@ -18,7 +18,6 @@ const DashbpardDarkTheme = () => {
     axiosInstance
       .get("/")
       .then((response) => {
-        console.log(response.data);
         setModels(response.data.performers);
         setPageContent(response.data.pageContent);
       })

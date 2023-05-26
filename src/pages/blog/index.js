@@ -6,17 +6,15 @@ import DarkTheme from "../../components/navigation/dark-themeLive";
 import { Col, Container, Row } from "react-bootstrap";
 import DarkSingleBlogPost from "@/components/DarkSingleBlogPost";
 import axiosInstance from "@/instance/axiosInstance";
-import HeadMeta from "@/components/HeadMeta"
+import HeadMeta from "@/components/HeadMeta";
 import { useState } from "react";
 
-
 const DashbpardDarkTheme = ({ data }) => {
-
   const [blogs, setBlogs] = useState(data?.articles);
   const [pageContent, setPageContent] = useState(data?.pageContent);
   const [pageNo, setPageNo] = useState(2);
   const [loading, setLoading] = useState(false);
-  
+
   const loadMoreBlogs = async () => {
     if (!loading) {
       setLoading(true);
@@ -40,10 +38,9 @@ const DashbpardDarkTheme = ({ data }) => {
     }
   };
 
-  
   return (
     <>
-      <HeadMeta pageContent={pageContent}/>
+      <HeadMeta pageContent={pageContent} />
       <div>
         <DarkTheme>
           <div className={styles?.dasboardMain}>
@@ -57,13 +54,13 @@ const DashbpardDarkTheme = ({ data }) => {
               <div className="row">
                 {blogs?.map((element, i) => {
                   return (
-                      <DarkSingleBlogPost
-                        key={i}
-                        image={element?.feature_image}
-                        title1={element?.post_title}
-                        post_url={element?.post_url}
-                        title2={element?.post_content}
-                      />
+                    <DarkSingleBlogPost
+                      key={i}
+                      image={element?.feature_image}
+                      title1={element?.post_title}
+                      post_url={element?.post_url}
+                      title2={element?.post_content}
+                    />
                   );
                 })}
               </div>

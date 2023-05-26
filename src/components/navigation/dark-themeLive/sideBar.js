@@ -15,8 +15,8 @@ import useWindowSize from "@/hooks/useWindowSize";
 import { useSelector } from "react-redux";
 import Link from "next/link";
 import DropdownComponent from "./DropdownComponent";
-import menuData from "../../../context/menuData.json";
 import { AiOutlineHeart } from "react-icons/ai";
+import menuData from "../../../context/menuData.json";
 
 const SideBar = ({ collapse, setCollapse }) => {
   const { width, height } = useWindowSize();
