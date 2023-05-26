@@ -74,7 +74,7 @@ const DashbpardDarkTheme = ({ data, params }) => {
                         title={element?.title}
                         image={element?.thumbImage}
                         targetUrl={element?.targetUrl}
-                        parent={"videos"}
+                        parent={"video"}
                       />
                     );
                   })}
