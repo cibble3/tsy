@@ -153,3 +153,42 @@ a.blog-title:hover {
   margin: auto;
   transform: translate(-50%, -50%);
 }
+
+/* tab css */
+.nav.nav-tabs {
+  border-bottom: none;
+}
+.subMenu {
+  color: #fff;
+}
+.nav-tabs .nav-link{
+  color: #ffffff;
+  border: none !important;
+  outline: none !important;
+  border-width: inherit;
+  margin: 0;
+}
+.nav-tabs .nav-link.active{
+  border: none;
+  outline: none;
+  border-width: inherit;
+  margin: 0;
+  background-color: #d7d7d7 !important;
+}
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover{
+  border: none;
+  border-color:unset !important;
+  color: #ffffff ;
+  border-width: inherit;
+  outline: none;
+}
+.nav-item {
+  width: 50%;
+  text-align: center;
+}
+
+@media screen and (max-width:850px) {
+  .nav.nav-tabs {
+    margin-top: 39px;
+  }
+}

@@ -11,6 +11,7 @@ import { Provider } from "react-redux";
 import store from "../store";
 import "./globle.css";
 import Script from "next/script";
+import { SSRProvider } from "react-bootstrap";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -28,12 +29,13 @@ export default function App({ Component, pageProps }) {
           gtag('config', 'G-P9GVSQ4CFR');
         `}
       </Script> */}
-
-      <Provider store={store}>
-        <ThemeContext>
-          <Component {...pageProps} />
-        </ThemeContext>
-      </Provider>
+      <SSRProvider>
+        <Provider store={store}>
+          <ThemeContext>
+            <Component {...pageProps} />
+          </ThemeContext>
+        </Provider>
+      </SSRProvider>
     </>
   );
 }

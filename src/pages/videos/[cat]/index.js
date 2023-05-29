@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import LiveScreenVideo from "@/components/LiveScreenVideo";
 
 const DashbpardDarkTheme = ({ data, params }) => {
-  console.log('cat',params);
 
   const [videos, setVideos] = useState(data?.videos);
 

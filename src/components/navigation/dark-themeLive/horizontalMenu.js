@@ -1,31 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   BsBroadcast,
-  BsFileEarmarkText,
-  BsLink45Deg,
-  BsCalendar2Week,
-  BsFillEyeFill,
 } from "react-icons/bs";
 import {
   MdApps,
   MdNotificationsNone,
-  MdOutlineHome,
-  MdOutlineDashboard,
-  MdOutlineSettings,
-  MdFormatListBulleted,
 } from "react-icons/md";
-import { RiMessage2Line } from "react-icons/ri";
-import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
-import { BiUpArrowAlt } from "react-icons/bi";
-import { AiFillCaretDown } from "react-icons/ai";
-import { GrAppsRounded } from "react-icons/gr";
-import { FiUserPlus } from "react-icons/fi";
-import { IoLogOutOutline } from "react-icons/io5";
-import styles from "./dashbpard-dark-theme.module.css";
 
 import { useRouter } from "next/router";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import Link from "next/link";
+import styles from "./dashbpard-dark-theme.module.css";
+import { RiMessage2Line } from "react-icons/ri";
 
 const HorizontalMenu = ({ collapse, setCollapse }) => {
   const router = useRouter();
@@ -39,8 +25,6 @@ const HorizontalMenu = ({ collapse, setCollapse }) => {
 
   const colorMode = useSelector((state) => state.darklight);
   const count = useSelector((state) => state.counter);
-
-  // console.log(colorMode)
 
   return (
     <div
@@ -68,8 +52,8 @@ const HorizontalMenu = ({ collapse, setCollapse }) => {
             <img
               src={
                 colorMode === "dark"
-                  ? "/mul-vod-main--xcrave-xcavelogo-w@2x.png"
-                  : "/mul-vod-main--xcrave-xcavelogo@2x.png"
+                  ? "/logo_master.png"
+                  : "/logo_master.png"
               }
               className={styles.mulVodMainXcraveXcavelogoIcon}
             />
