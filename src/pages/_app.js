@@ -16,7 +16,7 @@ import { SSRProvider } from "react-bootstrap";
 export default function App({ Component, pageProps }) {
   return (
     <>
-      {/* <Script
+      <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-P9GVSQ4CFR"
         strategy="afterInteractive"
       />
@@ -28,7 +28,7 @@ export default function App({ Component, pageProps }) {
 
           gtag('config', 'G-P9GVSQ4CFR');
         `}
-      </Script> */}
+      </Script>
       <SSRProvider>
         <Provider store={store}>
           <ThemeContext>
