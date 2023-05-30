@@ -1,7 +1,6 @@
 import Head from "next/head";
 
 const HeadMeta = ({ pageContent, canonical }) => {
-  console.log(pageContent);
   return (
     <Head>
       <title>{pageContent?.meta_title}</title>

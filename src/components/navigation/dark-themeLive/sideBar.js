@@ -77,6 +77,7 @@ const SideBar = ({ collapse, setCollapse, parentMenuNames = [] }) => {
             {Object.keys(menuData).map((key) => (
               <Nav.Item key={key.toLowerCase()}>
                 <Nav.Link
+                href={key.toLowerCase()}
                   activekey={key.toLowerCase()}
                   className="rounded-0"
                   eventKey={key.toLowerCase()}

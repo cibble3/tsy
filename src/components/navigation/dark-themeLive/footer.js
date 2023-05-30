@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./dashbpard-dark-theme.module.css";
 import style from "../dark-themeLive/dashbpard-dark-theme.module.css";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { modechange } from "../../../store/reducer/darklightReducer";
 import { increment, decrement } from "../../../store/reducer/counterReducer";
 

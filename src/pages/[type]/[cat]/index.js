@@ -13,7 +13,6 @@ const DashbpardDarkTheme = ({ data, params }) => {
   const [isPageLoaded, setPageLoaded] = useState(false);
 
   useEffect(() => {
-    console.log(data);
     setModels(data.performers);
     setPageContent(data.pageContent);
     setTimeout(() => {
