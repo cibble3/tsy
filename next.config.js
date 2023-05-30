@@ -2,7 +2,7 @@
 const nextConfig = {
   // reactStrictMode: true,
   images: {
-    domains: ['nude-cam-model-pics.s3-us-west-2.amazonaws.com', 'mistressworld.xxx', 'pt.cdctwm.com'],
+    domains: ['galleryn0.vcmdiawe.com','galleryn1.vcmdiawe.com', 'galleryn2.vcmdiawe.com' ,'galleryn3.vcmdiawe.com'],
   }
 }
 

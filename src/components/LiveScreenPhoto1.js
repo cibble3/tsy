@@ -1,26 +1,32 @@
 import { AiOutlineHeart } from "react-icons/ai";
 import { RxDotFilled } from "react-icons/rx";
-// import styles from "../components/navigation/dark-themeLive/dashbpard-dark-theme.module.css";
 import Link from "next/link";
+import Image from "next/image";
 
 const LiveScreenPhoto1 = ({ image, name, tags, age }) => {
   return (
     <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 mt-4 ">
       <Link href={`/chat/${name}`}>
-      <img src={image} alt={name} className="w-100" />
-      <div className="text-white px-2" style={{ marginTop: "-30px" }}>
-        <div className="d-flex justify-content-between align-items-center d-flex align-items-center">
-          <div className="d-flex align-items-center d-flex align-items-center">
-            <RxDotFilled color="#8FC400" fontSize="22px" />
-            <span>
-              {name} ({age})
-            </span>
-          </div>
-          <div className="">
-            <AiOutlineHeart fontSize="22px" />
+        <Image
+          height={500}
+          width={500}
+          src={`https:${image}`}
+          alt={name}
+          className="w-100"
+        />
+        <div className="text-white px-2" style={{ marginTop: "-30px" }}>
+          <div className="d-flex justify-content-between align-items-center d-flex align-items-center">
+            <div className="d-flex align-items-center d-flex align-items-center">
+              <RxDotFilled color="#8FC400" fontSize="22px" />
+              <span>
+                {name} ({age})
+              </span>
+            </div>
+            <div className="">
+              <AiOutlineHeart fontSize="22px" />
+            </div>
           </div>
         </div>
-      </div>
       </Link>
 
       <div

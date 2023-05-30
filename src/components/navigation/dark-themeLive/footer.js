@@ -6,6 +6,7 @@ import { modechange } from "../../../store/reducer/darklightReducer";
 import { increment, decrement } from "../../../store/reducer/counterReducer";
 
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const Footer = () => {
   const router = useRouter();
@@ -46,7 +47,10 @@ const Footer = () => {
       <div className="d-flex justify-content-center align-items-center h-100">
         <div className={styles?.dark}>Dark</div>
         <div>
-          <img
+          <Image
+            height={50}
+            width={50}
+            alt="switch"
             src={colorMode === "light" ? "/path-632.svg" : "/path-631.svg"}
             className={style.themebtn}
             style={{ width: 63, height: 28, minWidth: 40, maxWidth: 63 }}

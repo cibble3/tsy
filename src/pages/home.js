@@ -1,11 +1,9 @@
 import styles from "../components/navigation/dark-themeLive/dashbpard-dark-theme.module.css";
-// import { AiOutlineHeart } from "react-icons/ai";
-// import { RxDotFilled } from "react-icons/rx";
 import DarkTheme from "../components/navigation/dark-themeLive";
 import LiveScreenPhoto from "@/components/LiveScreenPhoto1";
-// import LiveScreenPhoto2 from "@/components/LiveScreenPhoto2";
 import axiosInstance from "../instance/axiosInstance";
 import { useEffect, useState } from "react";
+import HeadMeta from "@/components/HeadMeta";
 
 const DashbpardDarkTheme = () => {
   const [models, setModels] = useState([]);
@@ -58,6 +56,7 @@ const DashbpardDarkTheme = () => {
 
   return (
     <div>
+      {isPageLoaded && <HeadMeta pageContent={pageContent}/>}
       <DarkTheme>
         <>
           <div className={styles?.dasboardMain2}>
@@ -68,16 +67,7 @@ const DashbpardDarkTheme = () => {
                   __html: pageContent?.top_text,
                 }}
               />
-              {/* <div className={styles?.liveHeading} style={{ fontSize: "18px" }}>
-              RECOMMENDED
-              <span className={styles?.livesubHeading}>
-                EXPERTS
-                <span className="ms-2" style={{ fontSize: "16px" }}>
-                  Top Favourites by our Members! You can't go wrong with our
-                  recommended Experts!
-                </span>
-              </span>
-            </div> */}
+              
               <div className="row">
                 {models?.map((element, i) => {
                   return (

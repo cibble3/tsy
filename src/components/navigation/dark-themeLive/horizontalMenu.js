@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import Link from "next/link";
 import styles from "./dashbpard-dark-theme.module.css";
 import { RiMessage2Line } from "react-icons/ri";
+import Image from "next/image";
 
 const HorizontalMenu = ({ collapse, setCollapse }) => {
   const router = useRouter();
@@ -20,7 +21,10 @@ const HorizontalMenu = ({ collapse, setCollapse }) => {
       <div></div>
       <div className={styles?.headerMenu}>
         <div className="d-flex">
-          <img
+          <Image
+            alt="button"
+            height={50}
+            width={50}
             src="/nounmenu6294661.svg"
             className={`${styles.collapseIcon} ms-3`}
             style={{ cursor: "pointer" }}
@@ -31,7 +35,10 @@ const HorizontalMenu = ({ collapse, setCollapse }) => {
           />
 
           <Link href={"/"}>
-            <img
+            <Image
+              height={50}
+              width={50}
+              alt="logo"
               src={
                 colorMode === "dark" ? "/logo_master.png" : "/logo_master.png"
               }
@@ -58,9 +65,17 @@ const HorizontalMenu = ({ collapse, setCollapse }) => {
               className="mx-3"
               onClick={() => router.push("/User/user-profile/")}
             >
-              <img src="/mask-group-37@2x.png" width={50} height={50} />
+              <Image
+                alt="user"
+                height={50}
+                width={50}
+                src="/mask-group-37@2x.png"
+              />
             </div>
-            <img
+            <Image
+              alt="button"
+              height={50}
+              width={50}
               src="/nounmenu6294661.svg"
               className={styles.menuRight}
               style={{ cursor: "pointer" }}

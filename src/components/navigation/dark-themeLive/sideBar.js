@@ -18,6 +18,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 import menuData from "../../../context/menuData.json";
 import { Nav, Tab } from "react-bootstrap";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const SideBar = ({ collapse, setCollapse, parentMenuNames = [] }) => {
   const { width, height } = useWindowSize();
@@ -47,13 +48,14 @@ const SideBar = ({ collapse, setCollapse, parentMenuNames = [] }) => {
         <div>
           <div className={styles.sideHeader}>
             <div className="d-flex justify-content-between ">
-              <img
+              <Image
+                height={50}
+                width={50}
+                alt="logo"
                 src={
-                  colorMode === "dark"
-                    ? "/logo_master.png"
-                    : "/logo_master.png"
+                  colorMode === "dark" ? "/logo_master.png" : "/logo_master.png"
                 }
-                className={styles.mulVodSideXcraveXcavelogoIcon}
+                className={styles.mulVodMainXcraveXcavelogoIcon}
               />
               <IoCloseSharp
                 color="#818181"

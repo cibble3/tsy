@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { slugify } from "@/helper/helpers";
+import Image from "next/image";
 
 const LiveScreenVideo = ({ image, targetUrl, parent, title }) => {
   const url = new URL(`http:${targetUrl}`);
@@ -15,8 +16,8 @@ const LiveScreenVideo = ({ image, targetUrl, parent, title }) => {
     <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 mt-4 video-block">
       <div className="relative video-items">
         <Link href={`/${parent}/${friendlyUrlWithPerformer}`}>
-          <img src={image} alt={performerName} className="w-100" />
-          <img src="/play_icon.png" className="video-icon" />
+          <Image width={500} height={500} src={`https:${image}`} alt={performerName} className="w-100" />
+          <Image width={500} height={500} src="/play_icon.png" className="video-icon" alt={`play ${performerName} free cam video`} />
         </Link>
 
         <div className="text-white px-2 overlay">
