@@ -8,11 +8,10 @@ const Index = ({ children }) => {
   const [collapse, setCollapse] = useState(true);
   const { width, height } = useWindowSize();
   useEffect(() => {
-    let collapse = localStorage.getItem("collapse");
-    // setCollapse(collapse || false)
-  }, []);
+    setCollapse(width <= 670);
+  }, [width]);
 
-  let style = collapse ? { width: "96.666667%" } : {};
+  let style = collapse ? { width: "96%" } : {};
   return (
     <div>
       <HorizontalMenu collapse={collapse} setCollapse={setCollapse} />

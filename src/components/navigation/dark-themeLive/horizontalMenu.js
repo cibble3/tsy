@@ -1,11 +1,6 @@
 import React from "react";
-import {
-  BsBroadcast,
-} from "react-icons/bs";
-import {
-  MdApps,
-  MdNotificationsNone,
-} from "react-icons/md";
+import { BsBroadcast } from "react-icons/bs";
+import { MdApps, MdNotificationsNone } from "react-icons/md";
 
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
@@ -15,27 +10,14 @@ import { RiMessage2Line } from "react-icons/ri";
 
 const HorizontalMenu = ({ collapse, setCollapse }) => {
   const router = useRouter();
-
-  // const [colorMode, setColorMode] = useState("dark");
-
-  // useEffect(() => {
-  //   let themeColor = localStorage.getItem("theme");
-  //   setColorMode(themeColor);
-  // }, []);
-
   const colorMode = useSelector((state) => state.darklight);
-  const count = useSelector((state) => state.counter);
 
   return (
     <div
       className={styles.header}
       style={{ borderBottom: "1px solid #707070" }}
     >
-      <div>
-        {/* <p>Count: {count}</p> */}
-        {/* <button onClick={handleIncrement}>Increment</button>
-      <button onClick={handleDecrement}>Decrement</button> */}
-      </div>
+      <div></div>
       <div className={styles?.headerMenu}>
         <div className="d-flex">
           <img
@@ -47,13 +29,11 @@ const HorizontalMenu = ({ collapse, setCollapse }) => {
               localStorage.setItem("collapse", !collapse);
             }}
           />
-       
+
           <Link href={"/"}>
             <img
               src={
-                colorMode === "dark"
-                  ? "/logo_master.png"
-                  : "/logo_master.png"
+                colorMode === "dark" ? "/logo_master.png" : "/logo_master.png"
               }
               className={styles.mulVodMainXcraveXcavelogoIcon}
             />
@@ -119,9 +99,6 @@ const HorizontalMenu = ({ collapse, setCollapse }) => {
               color: var(--text-color);
             }
           `}</style>
-          {/* <div className="mx-3">
-            <img src="/mask-group-37@2x.png" width={50} height={50} />
-          </div> */}
         </div>
       </div>
     </div>

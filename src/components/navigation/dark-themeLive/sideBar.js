@@ -137,7 +137,7 @@ const SideBar = ({ collapse, setCollapse, parentMenuNames = [] }) => {
   ) : (
     <div
       className={`${style.iconView} col-sm-1 col-lg-1 col-md-1 p-0`}
-      style={{ width: "3.333333%", height: width > 670 ? height - 80 : height }}
+      style={{ width: "4%", height: width > 670 ? height - 80 : height }}
     >
       <div
         className={styles?.dashbpardDarkThemeItem}

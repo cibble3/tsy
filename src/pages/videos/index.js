@@ -69,6 +69,7 @@ const DashbpardDarkTheme = ({ data }) => {
 
                 <div className="row">
                   {videos?.map((element, i) => {
+                    console.log(element)
                     return (
                       <LiveScreenVideo
                         key={i}
