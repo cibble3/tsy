@@ -9,11 +9,16 @@ const VideoWidget = ({ performerId, playerEmbedUrl }) => {
     }
 
     function videoWidget(id) {
-      var w = Math.abs(0.62 * window.outerWidth);
-      if (window.innerWidth > 767 && window.innerWidth < 991) {
-        w = Math.abs(0.97 * window.outerWidth);
+      var w = Math.abs(0.81 * window.outerWidth);
+      if (window.innerWidth < 991) {
+        w = Math.abs(0.95 * window.outerWidth);
       }
-      var h = Math.abs(0.68 * w);
+
+      if (window.innerWidth > 851 && window.innerWidth < 1368) {
+        w = Math.abs(0.90 * window.outerWidth);
+      }
+      
+      var h = Math.abs(0.52 * w);
       document.getElementById(id).style.width = w + "px";
       document.getElementById(id).style.height = h + "px";
       loadVideoWidget();

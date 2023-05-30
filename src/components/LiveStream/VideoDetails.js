@@ -30,7 +30,7 @@ const VideoDetails = ({ data }) => {
     <>
       <HeadMeta pageContent={data?.pageContent} />
       <div className={styles?.LiveMain}>
-        <div className="row justify-content-center p-0 m-0">
+        <div className="row p-0 m-0">
           <div
             className={`${
               width < 576 ? "" : "px-2"
@@ -60,10 +60,10 @@ const VideoDetails = ({ data }) => {
                       <Rating
                         initialValue={rating}
                         size={18}
-                        onClick={handleRating}
-                        onPointerEnter={onPointerEnter}
-                        onPointerLeave={onPointerLeave}
-                        onPointerMove={onPointerMove}
+                        // onClick={handleRating}
+                        // onPointerEnter={onPointerEnter}
+                        // onPointerLeave={onPointerLeave}
+                        // onPointerMove={onPointerMove}
                         /* Available Props */
                       />
                       <p className={`${styles.rating} m-0 ms-2`}>
@@ -77,63 +77,8 @@ const VideoDetails = ({ data }) => {
                     </div>
                   </div>
                 </div>
-                <div className={`${styles.livetext} mt-2`}>
-                  <p>
-                    Clairvoyant,Love Family and career reading.Love relationship
-                    virtual, natural healing ,dream analysis ,spiritual gu
-                  </p>
-                </div>
               </div>
             ) : null}
-          </div>
-          <div
-            className="col-xl-3 col-lg-4 col-md-5 col-sm-11 px-4 pe-4 mt-2"
-            style={{ height: videoHeight, maxHeight: 650 }}
-          >
-            <div style={{ position: "relative" }}>
-              <img
-                src="/images/courses/yoga-img3.jpg"
-                alt=""
-                className=""
-                style={{
-                  height: videoHeight / 4,
-                  width: "100%",
-                  maxHeight: 162,
-                }}
-              />
-            </div>
-            <div style={{ position: "relative" }}>
-              <img
-                src="/images/courses/yoga-img1.jpg"
-                alt=""
-                className=""
-                style={{
-                  height: videoHeight / 4,
-                  width: "100%",
-                  maxHeight: 162,
-                }}
-              />
-              <img
-                src="/images/courses/yoga-img2.jpg"
-                alt=""
-                className=""
-                style={{
-                  height: videoHeight / 4,
-                  width: "100%",
-                  maxHeight: 162,
-                }}
-              />
-              <img
-                src="/images/courses/yoga-img3.jpg"
-                alt=""
-                className=""
-                style={{
-                  height: videoHeight / 4,
-                  width: "100%",
-                  maxHeight: 162,
-                }}
-              />
-            </div>
           </div>
         </div>
         <div className="px-4">
@@ -153,14 +98,14 @@ const VideoDetails = ({ data }) => {
                   <Rating
                     initialValue={rating}
                     size={18}
-                    onClick={handleRating}
-                    onPointerEnter={onPointerEnter}
-                    onPointerLeave={onPointerLeave}
-                    onPointerMove={onPointerMove}
+                    // onClick={handleRating}
+                    // onPointerEnter={onPointerEnter}
+                    // onPointerLeave={onPointerLeave}
+                    // onPointerMove={onPointerMove}
                     /* Available Props */
                   />
                   <p className={`${styles.rating} m-0 ms-2`}>
-                    Ratings :{" "}
+                    Ratings :
                     <strong>
                       {Number(data?.modelData?.details?.modelRating).toFixed(1)}
                     </strong>
@@ -175,7 +120,6 @@ const VideoDetails = ({ data }) => {
                 {data?.modelData?.details?.about?.biography}
               </p>
             )}
-           
           </div>
         </div>
 

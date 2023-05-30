@@ -5,7 +5,7 @@ import useWindowSize from "@/hooks/useWindowSize";
 import HorizontalMenu from "../dark-themeLive/horizontalMenu";
 
 const Index = ({ children }) => {
-  const [collapse, setCollapse] = useState(false);
+  const [collapse, setCollapse] = useState(true);
   const { width, height } = useWindowSize();
   useEffect(() => {
     let collapse = localStorage.getItem("collapse");

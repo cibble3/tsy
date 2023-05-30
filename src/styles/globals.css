@@ -189,6 +189,6 @@ a.blog-title:hover {
 
 @media screen and (max-width:850px) {
   .nav.nav-tabs {
-    margin-top: 39px;
+    /* margin-top: 39px; */
   }
 }

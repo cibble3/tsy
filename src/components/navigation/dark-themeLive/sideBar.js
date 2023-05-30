@@ -46,12 +46,12 @@ const SideBar = ({ collapse, setCollapse, parentMenuNames = [] }) => {
       >
         <div>
           <div className={styles.sideHeader}>
-            <div className="d-flex justify-content-between mt-3 mx-3 ">
+            <div className="d-flex justify-content-between ">
               <img
                 src={
                   colorMode === "dark"
-                    ? "/mul-vod-main--xcrave-xcavelogo-w@2x.png"
-                    : "/mul-vod-main--xcrave-xcavelogo@2x.png"
+                    ? "/logo_master.png"
+                    : "/logo_master.png"
                 }
                 className={styles.mulVodSideXcraveXcavelogoIcon}
               />

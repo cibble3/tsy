@@ -32,8 +32,8 @@
   display: none;
 }
 .mulVodSideXcraveXcavelogoIcon {
-  width: 150px;
-  height: 25px;
+  /* width: 150px; */
+  height: 80px;
   cursor: pointer;
 }
 .collapseIcon {
