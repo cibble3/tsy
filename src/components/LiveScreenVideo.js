@@ -23,7 +23,7 @@ const LiveScreenVideo = ({ image, targetUrl, parent, title }) => {
           {/* <div className="text-white px-2" style={{ marginTop: "-50px" }}> */}
           <div className="d-flex justify-content-between align-items-center d-flex align-items-center relative h-100">
             <div className="text-content">
-              <span>{title}</span>
+              <span>{performerName} {title ? ' : ' + title : ''}</span>
             </div>
           </div>
 

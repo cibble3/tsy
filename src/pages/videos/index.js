@@ -6,19 +6,20 @@ import { useEffect, useState } from "react";
 import LiveScreenVideo from "@/components/LiveScreenVideo";
 
 const DashbpardDarkTheme = ({ data }) => {
-  const [videos, setVideos] = useState(data?.videos);
-
-  const [pageContent, setPageContent] = useState(data?.pageContent);
+  const [videos, setVideos] = useState([]);
+  const [pageContent, setPageContent] = useState([]);
   const [pageNo, setPageNo] = useState(2);
   const [loading, setLoading] = useState(false);
   const [isPageLoaded, setPageLoaded] = useState(false);
 
   useEffect(() => {
+    setVideos(data?.videos);
+    setPageContent(data?.pageContent);
     setTimeout(() => {
       setPageLoaded(true);
       syncVideos();
     }, 2000);
-  }, []);
+  }, [data]);
 
   const syncVideos = async () => {
     try {

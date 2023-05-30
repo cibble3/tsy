@@ -3,26 +3,31 @@ import DarkTheme from "@/components/navigation/dark-themeLive";
 import LiveScreenPhoto from "@/components/LiveScreenPhoto1";
 import axiosInstance from "@/instance/axiosInstance";
 import { useEffect, useState } from "react";
+import HeadMeta from "@/components/HeadMeta";
 
-const DashbpardDarkTheme = ({data, params}) => {
-  const [models, setModels] = useState(data?.performers );
-  const [pageContent, setPageContent] = useState(data?.pageContent);
+const DashbpardDarkTheme = ({ data, params }) => {
+  const [models, setModels] = useState([]);
+  const [pageContent, setPageContent] = useState([]);
   const [pageNo, setPageNo] = useState(2);
   const [loading, setLoading] = useState(false);
   const [isPageLoaded, setPageLoaded] = useState(false);
 
   useEffect(() => {
+    console.log(data);
+    setModels(data.performers);
+    setPageContent(data.pageContent);
     setTimeout(() => {
       setPageLoaded(true);
     }, 2000);
-  }, []);
-
+  }, [data]);
 
   const loadMoreModels = async () => {
     if (!loading) {
       setLoading(true);
       try {
-        const response = await axiosInstance.get(`${params.type}/${params.cat}/?page=${pageNo}`);
+        const response = await axiosInstance.get(
+          `${params.type}/${params.cat}/?page=${pageNo}`
+        );
         const data = response?.data?.performers;
         if (data === "") {
           console.log("No more models found");
@@ -43,6 +48,7 @@ const DashbpardDarkTheme = ({data, params}) => {
 
   return (
     <div>
+      <HeadMeta pageContent={pageContent} />
       <DarkTheme>
         <>
           <div className={styles?.dasboardMain2}>
@@ -53,7 +59,7 @@ const DashbpardDarkTheme = ({data, params}) => {
                   __html: pageContent?.top_text,
                 }}
               />
-             
+
               <div className="row">
                 {models?.map((element, i) => {
                   return (
@@ -68,15 +74,17 @@ const DashbpardDarkTheme = ({data, params}) => {
                 })}
               </div>
 
-             {isPageLoaded && <div className="parent-loadbtn">
-                <button
-                  className="loading-btn"
-                  onClick={loadMoreModels}
-                  disabled={loading}
-                >
-                  {loading ? "Loading..." : "Load More Models"}
-                </button>
-              </div>}
+              {isPageLoaded && (
+                <div className="parent-loadbtn">
+                  <button
+                    className="loading-btn"
+                    onClick={loadMoreModels}
+                    disabled={loading}
+                  >
+                    {loading ? "Loading..." : "Load More Models"}
+                  </button>
+                </div>
+              )}
 
               <div
                 className="siteContent"
@@ -94,25 +102,24 @@ const DashbpardDarkTheme = ({data, params}) => {
 
 export default DashbpardDarkTheme;
 
-
 export async function getServerSideProps(context) {
   const response = await axiosInstance.get(
     `/${context.params.type}/${context.params.cat}`
   );
   const responseData = response.data;
 
-    // if (!responseData.status) {
-    //   return {
-    //     redirect: {
-    //       destination: "/",
-    //       permanent: false,
-    //     },
-    //   };
-    // }
+  // if (!responseData.status) {
+  //   return {
+  //     redirect: {
+  //       destination: "/",
+  //       permanent: false,
+  //     },
+  //   };
+  // }
   return {
     props: {
       data: responseData,
-      params: context.params
+      params: context.params,
     },
   };
 }

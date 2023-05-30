@@ -24,7 +24,7 @@ const SideBar = ({ collapse, setCollapse, parentMenuNames = [] }) => {
   const colorMode = useSelector((state) => state.darklight);
   const router = useRouter();
   const activeTab = router.asPath.split("/");
-  const lowercaseKeys = Object.keys(menuData).map(key => key.toLowerCase());
+  const lowercaseKeys = Object.keys(menuData).map((key) => key.toLowerCase());
 
   const checkActiveTab = (activeTab) => {
     for (let i = 0; i < activeTab.length; i++) {
@@ -33,7 +33,7 @@ const SideBar = ({ collapse, setCollapse, parentMenuNames = [] }) => {
         return activeTab[i];
       }
     }
-  }
+  };
 
   return !collapse ? (
     <div
@@ -64,9 +64,13 @@ const SideBar = ({ collapse, setCollapse, parentMenuNames = [] }) => {
           </div>
         </div>
 
-        {/* <Tab.Container defaultActiveKey={activeTab}> */}
-        
-        <Tab.Container defaultActiveKey={checkActiveTab(activeTab) ? checkActiveTab(activeTab) : Object.keys(menuData)[0].toLowerCase()}>
+        <Tab.Container
+          defaultActiveKey={
+            checkActiveTab(activeTab)
+              ? checkActiveTab(activeTab)
+              : Object.keys(menuData)[0].toLowerCase()
+          }
+        >
           <Nav variant="tabs">
             {Object.keys(menuData).map((key) => (
               <Nav.Item key={key.toLowerCase()}>
@@ -82,10 +86,14 @@ const SideBar = ({ collapse, setCollapse, parentMenuNames = [] }) => {
           </Nav>
           <Tab.Content>
             {Object.keys(menuData).map((itemkey) => (
-              <Tab.Pane eventKey={itemkey.toLowerCase()} key={itemkey.toLowerCase()}>
+              <Tab.Pane
+                eventKey={itemkey.toLowerCase()}
+                key={itemkey.toLowerCase()}
+              >
                 {Object.keys(menuData[itemkey]).map((key) =>
                   key.toLowerCase() === "categories" ? (
                     <DropdownComponent
+                      key={key}
                       parentText={itemkey}
                       label={key}
                       menuItems={menuData[itemkey][key]}
@@ -93,6 +101,7 @@ const SideBar = ({ collapse, setCollapse, parentMenuNames = [] }) => {
                     />
                   ) : (
                     <DropdownComponent
+                      key={key}
                       label={key}
                       parentText={key}
                       menuItems={menuData[itemkey][key]}
@@ -101,26 +110,6 @@ const SideBar = ({ collapse, setCollapse, parentMenuNames = [] }) => {
                     />
                   )
                 )}
-
-                {/*
-                Object.keys(menuData[itemkey]).map((key) =>
-                  key === "categories" ? (
-                    Object.keys(menuData[itemkey][key]).map((item) => (
-                      <Link
-                        href={`/${itemkey.toLowerCase()}/${item.toLowerCase()}`}
-                      >
-                        <div className="subMenu">
-                          {menuData[itemkey][key][item]}
-                        </div>
-                      </Link>
-                    ))
-                  ) : (
-                    <DropdownComponent
-                      parentText={key}
-                      menuItems={menuData[itemkey][key]}
-                    />
-                  )
-                ) */}
               </Tab.Pane>
             ))}
           </Tab.Content>

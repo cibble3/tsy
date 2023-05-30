@@ -7,7 +7,6 @@ import HorizontalMenu from "../dark-themeLive/horizontalMenu";
 const Index = ({ children }) => {
   const [collapse, setCollapse] = useState(false);
   const { width, height } = useWindowSize();
-  // console.log(width)
   useEffect(() => {
     let collapse = localStorage.getItem("collapse");
     // setCollapse(collapse || false)

@@ -2285,3 +2285,7 @@ blockquote {
 .style-module_emptyIcons__Bg-FZ {
   display: flex !important;
 }
+.subMenu.active {
+  background-color: #d7d7d7 !important;
+  color: #555;
+}

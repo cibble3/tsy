@@ -3,19 +3,22 @@ import DarkTheme from "@/components/navigation/dark-themeLive";
 import LiveScreenPhoto from "@/components/LiveScreenPhoto1";
 import axiosInstance from "@/instance/axiosInstance";
 import { useEffect, useState } from "react";
+import HeadMeta from "@/components/HeadMeta";
 
 const DashbpardDarkTheme = ({data, params}) => {
-  const [models, setModels] = useState(data?.performers );
-  const [pageContent, setPageContent] = useState(data?.pageContent);
+  const [models, setModels] = useState([] );
+  const [pageContent, setPageContent] = useState([]);
   const [pageNo, setPageNo] = useState(2);
   const [loading, setLoading] = useState(false);
   const [isPageLoaded, setPageLoaded] = useState(false);
 
   useEffect(() => {
+    setModels(data.performers);
+    setPageContent(data.pageContent);
     setTimeout(() => {
       setPageLoaded(true);
     }, 2000);
-  }, []);
+  }, [data]);
 
   // useEffect(() => {
   //   axiosInstance
@@ -58,6 +61,7 @@ const DashbpardDarkTheme = ({data, params}) => {
 
   return (
     <div>
+      <HeadMeta pageContent={pageContent} />
       <DarkTheme>
         <>
           <div className={styles?.dasboardMain2}>

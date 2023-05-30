@@ -13,13 +13,11 @@ const DropdownComponent = ({
 }) => {
   const [dropMenu, setDropMenu] = useState(false);
   const router = useRouter();
-  const [activeItem, setActiveItem] = useState("");
 
   useEffect(() => {
     const currentPath = router.asPath.toLowerCase();
     const activeTab = currentPath.split("/")[1];
     if (activeTab === parentText.toLowerCase()) {
-      setActiveItem(activeTab);
       setDropMenu(true);
     } else if (router.pathname == "/") {
       if (Object.keys(menuData).includes(parentText)) {
@@ -36,37 +34,37 @@ const DropdownComponent = ({
       >
         <div>
           <Dropdown>
-            {/* <Link href={`/${parentText.toLowerCase()}`}> */}
             <DropdownButton
               title={label}
               className={"dropcustom"}
               show={dropMenu}
               onClick={() => setDropMenu(!dropMenu)}
             ></DropdownButton>
-            {/* </Link> */}
           </Dropdown>
 
           {dropMenu && (
             <Dropdown.Menu show={dropMenu} className="nestedDropdownMenu">
               {Object.keys(menuItems).map((key) => (
-                // typeof menuItems[key] === "object" ? (
-                //   <div className="submenu-container" key={key}>
-                //     <NestedDropdownComponent
-                //       parentText={key}
-                //       menuItems={menuItems[key]}
-                //       parentMenuNames={[...parentMenuNames, parentText]}
-                //     />
-                //   </div>
-                // ) :
-                // <Dropdown.Item key={key}>
                 <Link
+                  key={key}
                   href={`/${[parentText, ...parentMenuNames]
                     .join("/")
                     .toLowerCase()}/${key.toLowerCase()}`}
+                  passHref
                 >
-                  <div className="subMenu">{menuItems[key]}</div>
+                  <div
+                    key={key}
+                    className={`subMenu ${
+                      router.asPath
+                        .toLowerCase()
+                        .includes(`/${key.toLowerCase()}`)
+                        ? "active"
+                        : ""
+                    }`}
+                  >
+                    {menuItems[key]}
+                  </div>
                 </Link>
-                // </Dropdown.Item>
               ))}
             </Dropdown.Menu>
           )}
