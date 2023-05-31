@@ -1,6 +1,4 @@
 import styles from "@/components/navigation/dark-themeLive/dashbpard-dark-theme.module.css";
-// import { AiOutlineHeart } from "react-icons/ai";
-// import { RiMessage2Line } from "react-icons/ri";
 import DarkTheme from "@/components/navigation/dark-themeLive";
 import DarkLatestBlogPost from "@/components/DarkLatestBlogPost";
 import axiosInstance from "@/instance/axiosInstance";
@@ -82,12 +80,14 @@ const DashbpardDarkTheme = ({ data }) => {
                   <div className={"mt-3 tag-cloud " + styles?.blogside}>
                     <div className={styles?.headingblog}>Tags</div>
                     <ul>
-                      {Object.keys(data?.sidebar?.tagCloud).map((key) => (
-                        data?.sidebar?.tagCloud[key] !== "" &&
-                        <Link href={`/blog/tag/${key}`}>
-                          <li key={key}>{data?.sidebar?.tagCloud[key]}</li>
-                        </Link>
-                      ))}
+                      {Object.keys(data?.sidebar?.tagCloud).map(
+                        (key) =>
+                          data?.sidebar?.tagCloud[key] !== "" && (
+                            <Link href={`/blog/tag/${key}`}>
+                              <li key={key}>{data?.sidebar?.tagCloud[key]}</li>
+                            </Link>
+                          )
+                      )}
                     </ul>
                   </div>
                 </div>

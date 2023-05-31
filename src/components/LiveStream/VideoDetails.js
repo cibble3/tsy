@@ -5,6 +5,7 @@ import useWindowSize from "@/hooks/useWindowSize";
 import LiveStreamPose from "../LiveStreamPose";
 import VideoWidget from "./VideoWidget";
 import HeadMeta from "@/components/HeadMeta";
+import LiveScreenVideo from "../LiveScreenVideo";
 
 const VideoDetails = ({ data }) => {
   const { width, height } = useWindowSize();
@@ -125,13 +126,20 @@ const VideoDetails = ({ data }) => {
 
         <div className="mt-5 px-4 pb-4">
           <h3 className={`${styles.content} mb-3`}>
-            Other Recommended <span> Live Streams for You</span>
+            Other Recommended <span> Videos for You</span>
           </h3>
           <div className="row mb-5">
-            <LiveStreamPose image={"/pose.png"} />
-            <LiveStreamPose image={"/pose1.png"} />
-            <LiveStreamPose image={"/pose2.png"} />
-            <LiveStreamPose image={"/pose3.png"} />
+            {data.relatedVideos.data.videos?.map((element, i) => {
+              return (
+                <LiveScreenVideo
+                  key={i}
+                  title={element?.title}
+                  image={element?.thumbImage}
+                  targetUrl={element?.targetUrl}
+                  parent={"video"}
+                />
+              );
+            })}
           </div>
         </div>
       </div>
