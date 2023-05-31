@@ -1,31 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
-import { TbBrandWechat, TbCrown } from "react-icons/tb";
-import { SiWechat } from "react-icons/si";
-// import {
-//   MdArrowDropDown,
-//   MdArrowDropUp,
-//   MdOutlineSlowMotionVideo,
-// } from "react-icons/md";
-import { TiArrowUnsorted } from "react-icons/ti";
 import styles from "./live-stream.module.css";
-import { FaFolder, FaStar } from "react-icons/fa";
-import { Button, Form, InputGroup } from "react-bootstrap";
-// import { GrFormClose } from "react-icons/gr";
-// import { IoClose } from "react-icons/io5";
+import { Button } from "react-bootstrap";
 import { Rating } from "react-simple-star-rating";
-// import { RxDotFilled } from "react-icons/rx";
-// import { AiOutlineHeart } from "react-icons/ai";
 import VideoModal from "./videoModal";
 import PhotoAlbumModal from "./photoAlbumModal";
-import { BsBoxArrowInLeft, BsBoxArrowInRight } from "react-icons/bs";
 import useWindowSize from "@/hooks/useWindowSize";
-// import { ThemeColors } from "@/context/themeColor";
 import LiveStreamPhoto from "../LiveStreamPhoto";
 import LiveStreamVideo from "../LiveStreamVideo";
 import LiveStreamPose from "../LiveStreamPose";
 import ChatWidget from "./ChatWidget";
 import HeadMeta from "@/components/HeadMeta";
-// import Image from "next/image";
 
 const LiveStreamComponent = ({ data }) => {
   const { width, height } = useWindowSize();
@@ -51,7 +35,7 @@ const LiveStreamComponent = ({ data }) => {
   const onPointerMove = (value, index) => console.log(value, index);
   return (
     <>
-    <HeadMeta pageContent={data?.pageContent}/>
+      <HeadMeta pageContent={data?.pageContent} />
       <div className={styles?.LiveMain}>
         <div className="row justify-content-center p-0 m-0">
           <div
@@ -153,7 +137,6 @@ const LiveStreamComponent = ({ data }) => {
                   maxHeight: 162,
                 }}
               />
-              
             </div>
           </div>
         </div>
@@ -207,7 +190,7 @@ const LiveStreamComponent = ({ data }) => {
           </div> */}
           </div>
         </div>
-        <div className="mt-5 px-4">
+        {/* <div className="mt-5 px-4">
           <div className="d-flex justify-content-end mb-3">
             <Button className={styles.activeBtn}>All content</Button>
             <Button className={styles.contentBtn}>Free content</Button>
@@ -227,134 +210,8 @@ const LiveStreamComponent = ({ data }) => {
             <LiveStreamVideo video1={"/video/video.mp4"} />
             <LiveStreamVideo video1={"/video/woman.mp4"} />
             <LiveStreamVideo video1={"/video/video.mp4"} />
-            {/* <div className="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 mt-2">
-            <div style={{ position: "relative" }}>
-              <div
-                onClick={() => setVideo("/video/woman.mp4")}
-                style={{ position: "absolute", height: "400px", width: "100%" }}
-                className="d-flex justify-content-center align-items-center"
-              >
-                <MdOutlineSlowMotionVideo size={40} color="#ffffff" />
-              </div>
-              <div
-                className={` ${styles.videoLabel} d-flex justify-content-start align-items-start`}
-              >
-                <p className={styles.videoText}>Video</p>
-              </div>
-              <video
-                src="/video/woman.mp4"
-                onClick={() => setVideo("/video/woman.mp4")}
-                style={{ height: "400px", width: "100%", objectFit: "cover" }}
-              />
-            </div>
           </div>
-          <div className="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 mt-2">
-            <div style={{ position: "relative" }}>
-              <div
-                onClick={() => setVideo("/video/video.mp4")}
-                style={{ position: "absolute", height: "400px", width: "100%" }}
-                className="d-flex justify-content-center align-items-center"
-              >
-                <MdOutlineSlowMotionVideo size={40} color="#ffffff" />
-              </div>
-              <div
-                className={` ${styles.videoLabel} d-flex justify-content-start align-items-start`}
-              >
-                <p className={styles.videoText}>Video</p>
-              </div>
-              <video
-                src="/video/video.mp4"
-                onClick={() => setVideo("/video/video.mp4")}
-                style={{ height: "400px", width: "100%", objectFit: "cover" }}
-              />
-            </div>
-          </div>
-          <div className="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 mt-2">
-            <div style={{ position: "relative" }}>
-              <div
-                onClick={() => setVideo("/video/woman.mp4")}
-                style={{ position: "absolute", height: "400px", width: "100%" }}
-                className="d-flex justify-content-center align-items-center"
-              >
-                <MdOutlineSlowMotionVideo size={40} color="#ffffff" />
-              </div>
-              <div
-                className={` ${styles.videoLabel} d-flex justify-content-start align-items-start`}
-              >
-                <p className={styles.videoText}>Video</p>
-              </div>
-              <video
-                src="/video/woman.mp4"
-                onClick={() => setVideo("/video/woman.mp4")}
-                style={{ height: "400px", width: "100%", objectFit: "cover" }}
-              />
-            </div>
-          </div>
-          <div className="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 mt-2">
-            <div style={{ position: "relative" }}>
-              <div
-                onClick={() => setVideo("/video/video.mp4")}
-                style={{ position: "absolute", height: "400px", width: "100%" }}
-                className="d-flex justify-content-center align-items-center"
-              >
-                <MdOutlineSlowMotionVideo size={40} color="#ffffff" />
-              </div>
-              <div
-                className={` ${styles.videoLabel} d-flex justify-content-start align-items-start`}
-              >
-                <p className={styles.videoText}>Video</p>
-              </div>
-              <video
-                src="/video/video.mp4"
-                onClick={() => setVideo("/video/video.mp4")}
-                style={{ height: "400px", width: "100%", objectFit: "cover" }}
-              />
-            </div>
-          </div>
-          <div className="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 mt-2">
-            <div style={{ position: "relative" }}>
-              <div
-                onClick={() => setVideo("/video/woman.mp4")}
-                style={{ position: "absolute", height: "400px", width: "100%" }}
-                className="d-flex justify-content-center align-items-center"
-              >
-                <MdOutlineSlowMotionVideo size={40} color="#ffffff" />
-              </div>
-              <div
-                className={` ${styles.videoLabel} d-flex justify-content-start align-items-start`}
-              >
-                <p className={styles.videoText}>Video</p>
-              </div>
-              <video
-                src="/video/woman.mp4"
-                onClick={() => setVideo("/video/woman.mp4")}
-                style={{ height: "400px", width: "100%", objectFit: "cover" }}
-              />
-            </div>
-          </div>
-          <div className="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 mt-2">
-            <div style={{ position: "relative" }}>
-              <div
-                onClick={() => setVideo("/video/video.mp4")}
-                style={{ position: "absolute", height: "400px", width: "100%" }}
-                className="d-flex justify-content-center align-items-center"
-              >
-                <MdOutlineSlowMotionVideo size={40} color="#ffffff" />
-              </div>
-              <div
-                className={` ${styles.videoLabel} d-flex justify-content-start align-items-start`}
-              >
-                <p className={styles.videoText}>Video</p>
-              </div>
-              <video
-                src="/video/video.mp4"
-                onClick={() => setVideo("/video/video.mp4")}
-                style={{ height: "400px", width: "100%", objectFit: "cover" }}
-              />
-            </div>
-          </div> */}
-          </div>
-        </div>
+        </div> */}
         <div className="mt-5 px-4">
           <h3 className={`${styles.content} mb-3`}>
             Other Recommended <span> Live Streams for You</span>
@@ -364,109 +221,8 @@ const LiveStreamComponent = ({ data }) => {
             <LiveStreamPose image={"/pose1.png"} />
             <LiveStreamPose image={"/pose2.png"} />
             <LiveStreamPose image={"/pose3.png"} />
-            {/* <div className="col-lg-3 col-sm-6 col-12 mt-3">
-            <div style={{ position: "relative" }}>
-              <img
-                src="/pose.png"
-                alt=""
-                className="w-100"
-                style={{ height: 218 }}
-              />
-              <div
-                className={` ${styles.liveLabel} d-flex justify-content-start align-items-start`}
-              >
-                <p className={styles.videoText}>Live</p>
-              </div>
-              <div className="text-white px-2" style={{ marginTop: "-30px" }}>
-                <div className="d-flex justify-content-between align-items-center ">
-                  <div className="d-flex">
-                    <RxDotFilled fontSize="22px" /> <span>LoveExpertise</span>
-                  </div>
-                  <div className="">
-                    <AiOutlineHeart fontSize="22px" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-3 col-sm-6 col-12 mt-3">
-            <div style={{ position: "relative" }}>
-              <img
-                src="/pose1.png"
-                alt=""
-                className="w-100"
-                style={{ height: 218 }}
-              />
-              <div
-                className={` ${styles.liveLabel} d-flex justify-content-start align-items-start`}
-              >
-                <p className={styles.videoText}>Live</p>
-              </div>
-              <div className="text-white px-2" style={{ marginTop: "-30px" }}>
-                <div className="d-flex justify-content-between align-items-center ">
-                  <div className="">
-                    <RxDotFilled fontSize="22px" /> <span>LoveExpertise</span>
-                  </div>
-                  <div className="">
-                    <AiOutlineHeart fontSize="22px" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-3 col-sm-6 col-12 mt-3">
-            <div style={{ position: "relative" }}>
-              <img
-                src="/pose2.png"
-                alt=""
-                className="w-100"
-                style={{ height: 218 }}
-              />
-              <div
-                className={` ${styles.liveLabel} d-flex justify-content-start align-items-start`}
-              >
-                <p className={styles.videoText}>Live</p>
-              </div>
-              <div className="text-white px-2" style={{ marginTop: "-30px" }}>
-                <div className="d-flex justify-content-between align-items-center ">
-                  <div className="">
-                    <RxDotFilled fontSize="22px" /> <span>LoveExpertise</span>
-                  </div>
-                  <div className="">
-                    <AiOutlineHeart fontSize="22px" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-3 col-sm-6 col-12 mt-3">
-            <div style={{ position: "relative" }}>
-              <img
-                src="/pose3.png"
-                alt=""
-                className="w-100"
-                style={{ height: 218 }}
-              />
-              <div
-                className={` ${styles.liveLabel} d-flex justify-content-start align-items-start`}
-              >
-                <p className={styles.videoText}>Live</p>
-              </div>
-              <div className="text-white px-2" style={{ marginTop: "-30px" }}>
-                <div className="d-flex justify-content-between align-items-center ">
-                  <div className="">
-                    <RxDotFilled fontSize="22px" /> <span>LoveExpertise</span>
-                  </div>
-                  <div className="">
-                    <AiOutlineHeart fontSize="22px" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> */}
           </div>
           <h3 className={`${styles.content} `}>
-            {" "}
             ONLY ON ORANUM.COM <span> WE HAVE CLARITY</span>
           </h3>
 
