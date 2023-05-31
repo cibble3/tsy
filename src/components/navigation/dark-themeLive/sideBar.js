@@ -9,7 +9,7 @@ import { FiUserPlus } from "react-icons/fi";
 import { IoCloseSharp, IoLogOutOutline } from "react-icons/io5";
 import styles from "./dashbpard-dark-theme.module.css";
 import style from "../dark-theme/dashbpard-dark-theme.module.css";
-import Footer from "./footer";
+import Footer from "./menuFooter";
 import useWindowSize from "@/hooks/useWindowSize";
 import { useSelector } from "react-redux";
 import Link from "next/link";

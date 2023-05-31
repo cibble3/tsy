@@ -328,10 +328,77 @@
   min-width: 25px !important;
   color: var(--font-color);
 }
-.iconView svg {
+.lang_wrap svg {
   min-width: 25px !important;
 }
+.bottom_lang_container{
+  padding: 15px 0;
+  background-color: #000000;
+}
+.country_list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 0;
 
+}
+.flag-en{
+  width: 500px;
+  display: block;
+}
+.country_list_item{
+  margin: 0 8px;
+  padding: 8px;
+}
+.country_name{
+  display: inline-block;
+  font-weight: 700;
+  color: #dfdfdf;
+}
+.country_name:hover{
+  color: #fff;
+  text-decoration: underline;
+}
+.copyrights_dark{
+  color: #999;
+  text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+  border-top: 1px solid #282a2b;
+  padding: 15px 30px;
+  background-color: #000000;
+}
+.footer_menu{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.footer_menu_item{
+  color: #aaa;
+  padding: 10px;
+  display: inline-block;
+}
+.footer_menu_item:hover{
+  color: #ddd;
+  text-decoration: underline;
+}
+.bottom_statement{
+width: 100%;
+text-align: center;
+padding: 15px 0;
+background-color: #111212;
+}
+.statement_content{
+  color: #b0b0b0;
+}
+.statement_content:hover{
+  color: #fff;
+  text-decoration: underline;
+}
+
+.copy_right{
+  color: #ffffff;
+  margin-bottom: 20px;
+}
 @media screen and (max-width: 1400px) and (min-width: 1200px) {
   .iconView {
     width: 4% !important;

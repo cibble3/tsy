@@ -1,34 +1,42 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
-const VideoWidget = ({ performerId, playerEmbedUrl }) => {
+const VideoWidget = ({ playerEmbedUrl }) => {
+
+  function loadVideoWidget() {
+    var videoLoadScript = document.getElementById("videoLoadScript");
+    if (videoLoadScript) {
+      videoLoadScript.remove();
+    }
+
+    var s = document.createElement("script");
+    s.setAttribute("id", "videoLoadScript");
+    s.setAttribute("src", `${playerEmbedUrl}&c=object_container`);
+    document.body.appendChild(s);
+  }
+  function videoWidget(id) {
+    // document.getElementById(id).innerHTML = "";
+
+    var w = Math.abs(0.81 * window.outerWidth);
+    if (window.innerWidth < 991) {
+      w = Math.abs(0.95 * window.outerWidth);
+    }
+
+    if (window.innerWidth > 851 && window.innerWidth < 1368) {
+      w = Math.abs(0.9 * window.outerWidth);
+    }
+
+    var h = Math.abs(0.52 * w);
+    document.getElementById(id).style.width = w + "px";
+    document.getElementById(id).style.height = h + "px";
+    loadVideoWidget();
+  }
+
   useEffect(() => {
-    function loadVideoWidget() {
-      var s = document.createElement("script");
-      s.setAttribute("src", `${playerEmbedUrl}&c=object_container`);
-      document.body.appendChild(s);
-    }
-
-    function videoWidget(id) {
-      var w = Math.abs(0.81 * window.outerWidth);
-      if (window.innerWidth < 991) {
-        w = Math.abs(0.95 * window.outerWidth);
-      }
-
-      if (window.innerWidth > 851 && window.innerWidth < 1368) {
-        w = Math.abs(0.90 * window.outerWidth);
-      }
-      
-      var h = Math.abs(0.52 * w);
-      document.getElementById(id).style.width = w + "px";
-      document.getElementById(id).style.height = h + "px";
-      loadVideoWidget();
-    }
     videoWidget("object_container");
-
     window.onresize = function (e) {
       videoWidget("object_container");
     };
-  }, []);
+  }, [playerEmbedUrl]);
 
   return (
     <div id="model-chat" className="model-tab-content">

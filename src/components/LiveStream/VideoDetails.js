@@ -2,34 +2,43 @@ import React, { useEffect, useState } from "react";
 import styles from "./live-stream.module.css";
 import { Rating } from "react-simple-star-rating";
 import useWindowSize from "@/hooks/useWindowSize";
-import LiveStreamPose from "../LiveStreamPose";
 import VideoWidget from "./VideoWidget";
-import HeadMeta from "@/components/HeadMeta";
 import LiveScreenVideo from "../LiveScreenVideo";
+import axiosInstance from "@/instance/axiosInstance";
+import LiveStreamPose from "../LiveStreamPose";
 
-const VideoDetails = ({ data }) => {
+const VideoDetails = ({ video, relatedVideos }) => {
   const { width, height } = useWindowSize();
 
-  let videoHeight = width > 992 ? width / 2 : 510;
+  // let videoHeight = width > 992 ? width / 2 : 510;
   const [rating, setRating] = useState(0);
 
   // Catch Rating value
-  const handleRating = (rate) => {
-    setRating(rate);
-  };
+  // const handleRating = (rate) => {
+  //   setRating(rate);
+  // };
 
   useEffect(() => {
-    setRating(data?.modelData?.details?.modelRating);
-  }, []);
+    setRating(video?.modelData?.details?.modelRating);
+    relatedVideos?.videos && syncVideos(relatedVideos?.videos);
+  }, [video]);
+
+  const syncVideos = async (videos) => {
+    try {
+      await axiosInstance.post(`/videos-sync`, { videos });
+    } catch (error) {
+      console.error("Error loading videos:", error);
+    }
+  };
 
   // Optinal callback functions
-  const onPointerEnter = () => console.log("Enter");
-  const onPointerLeave = () => console.log("Leave");
-  const onPointerMove = (value, index) => console.log(value, index);
+  // const onPointerEnter = () => console.log("Enter");
+  // const onPointerLeave = () => console.log("Leave");
+  // const onPointerMove = (value, index) => console.log(value, index);
 
   return (
     <>
-      <HeadMeta pageContent={data?.pageContent} />
+      {/* <HeadMeta pageContent={video?.pageContent} /> */}
       <div className={styles?.LiveMain}>
         <div className="row p-0 m-0">
           <div
@@ -38,8 +47,8 @@ const VideoDetails = ({ data }) => {
             } col-xl-9 col-lg-8 col-md-7 col-sm-12 mt-2 `}
           >
             <VideoWidget
-              playerEmbedUrl={data.videoDetails.playerEmbedUrl}
-              performerId={data.modelData.performerId}
+              playerEmbedUrl={video?.videoDetails?.playerEmbedUrl}
+              performerId={video?.modelData?.performerId}
             />
 
             {width < 992 && width > 767 ? (
@@ -71,7 +80,7 @@ const VideoDetails = ({ data }) => {
                         Ratings :{" "}
                         <strong>
                           {Number(
-                            data?.modelData?.details?.modelRating
+                            video?.modelData?.details?.modelRating
                           ).toFixed(1)}
                         </strong>
                       </p>
@@ -87,13 +96,13 @@ const VideoDetails = ({ data }) => {
             <div className={`d-flex mt-5 ${styles.userView}`}>
               <div>
                 <img
-                  src={data?.modelData?.profilePictureUrl?.size1024x768}
+                  src={video?.modelData?.profilePictureUrl?.size1024x768}
                   style={{ width: "48px", height: "48px", borderRadius: "50%" }}
                 />
               </div>
               <div className="ps-3">
                 <h1 className={`${styles.userName} m-0`}>
-                  {data?.modelData?.displayName}
+                  {video?.modelData?.displayName}
                 </h1>
                 <div className="d-flex align-items-end rating">
                   <Rating
@@ -108,7 +117,9 @@ const VideoDetails = ({ data }) => {
                   <p className={`${styles.rating} m-0 ms-2`}>
                     Ratings :
                     <strong>
-                      {Number(data?.modelData?.details?.modelRating).toFixed(1)}
+                      {Number(video?.modelData?.details?.modelRating).toFixed(
+                        1
+                      )}
                     </strong>
                   </p>
                 </div>
@@ -118,7 +129,7 @@ const VideoDetails = ({ data }) => {
           <div className="mt-2">
             {width < 992 && width > 767 ? null : (
               <p className={` ${styles.userView}`}>
-                {data?.modelData?.details?.about?.biography}
+                {video?.modelData?.details?.about?.biography}
               </p>
             )}
           </div>
@@ -129,7 +140,13 @@ const VideoDetails = ({ data }) => {
             Other Recommended <span> Videos for You</span>
           </h3>
           <div className="row mb-5">
-            {data.relatedVideos.data.videos?.map((element, i) => {
+            <LiveStreamPose image={"/pose.png"} />
+            <LiveStreamPose image={"/pose1.png"} />
+            <LiveStreamPose image={"/pose2.png"} />
+            <LiveStreamPose image={"/pose3.png"} />
+          </div>
+          {/* <div className="row mb-5">
+            {relatedVideos?.videos.map((element, i) => {
               return (
                 <LiveScreenVideo
                   key={i}
@@ -140,7 +157,7 @@ const VideoDetails = ({ data }) => {
                 />
               );
             })}
-          </div>
+          </div> */}
         </div>
       </div>
     </>

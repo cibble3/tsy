@@ -3,6 +3,7 @@ import SideBar from "./sideBar";
 import styles from "../dark-theme/dashbpard-dark-theme.module.css";
 import useWindowSize from "@/hooks/useWindowSize";
 import HorizontalMenu from "../dark-themeLive/horizontalMenu";
+import Footer from "./footer";
 
 const Index = ({ children }) => {
   const [collapse, setCollapse] = useState(true);
@@ -32,6 +33,7 @@ const Index = ({ children }) => {
             style={{ ...style, height: height - 50, overflowY: "scroll" }}
           >
             {children}
+            <Footer />
           </div>
         }
       </div>
