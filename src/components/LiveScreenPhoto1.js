@@ -6,7 +6,7 @@ import Image from "next/image";
 const LiveScreenPhoto1 = ({ image, name, tags, age }) => {
   return (
     <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 mt-4 ">
-      <Link href={`/chat/${name}`}>
+      <Link href={`/chat/${name}`} className="relative">
         <Image
           height={500}
           width={500}
@@ -14,8 +14,8 @@ const LiveScreenPhoto1 = ({ image, name, tags, age }) => {
           alt={name}
           className="w-100"
         />
-        <div className="text-white px-2" style={{ marginTop: "-30px" }}>
-          <div className="d-flex justify-content-between align-items-center d-flex align-items-center">
+        <div className="text-white px-2 bg-overlay">
+          <div className="d-flex justify-content-between align-items-center relative" style={{zIndex: 1}}>
             <div className="d-flex align-items-center d-flex align-items-center">
               <RxDotFilled color="#8FC400" fontSize="22px" />
               <span>

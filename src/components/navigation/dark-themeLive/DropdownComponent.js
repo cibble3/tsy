@@ -17,9 +17,10 @@ const DropdownComponent = ({
   useEffect(() => {
     const currentPath = router.asPath.toLowerCase();
     const activeTab = currentPath.split("/")[1];
+
     if (activeTab === parentText.toLowerCase()) {
       setDropMenu(true);
-    } else if (router.pathname == "/") {
+    } else if (["", "chat", "video", "blog"].includes(activeTab)) {
       if (Object.keys(menuData).includes(parentText)) {
         setDropMenu(true);
       }
@@ -57,7 +58,9 @@ const DropdownComponent = ({
                     className={`subMenu ${
                       router.asPath
                         .toLowerCase()
-                        .includes(`/${key.toLowerCase()}`)
+                        .substring(
+                          router.asPath.toLowerCase().lastIndexOf("/") + 1
+                        ) === key.toLowerCase()
                         ? "active"
                         : ""
                     }`}

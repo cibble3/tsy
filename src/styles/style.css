@@ -1986,14 +1986,14 @@ Page Title Area CSS
   margin-bottom: 0 !important;
   margin-top: 5px;
 }
-.dropcustom{
+.dropcustom {
   padding-left: 5px;
   transition: all 0.4s linear;
 }
-.dropcustom:hover{
+.dropcustom:hover {
   background-color: #606060;
 }
-.dropdown-menu{
+.dropdown-menu {
   padding: 0;
 }
 .dropdown-menu.show {
@@ -2013,19 +2013,19 @@ Page Title Area CSS
   font-size: 23px;
   box-shadow: none !important;
 }
-.dropcustom .dropdown-toggle{
+.dropcustom .dropdown-toggle {
   font-size: 17px;
   padding: 10px 10px;
 }
-.dropdownArrow{
+.dropdownArrow {
   margin-top: 10px;
   transition: all 0.5s linear;
 }
 .dropdownArrow.dropdown-open {
   transform: rotate(180deg);
 }
-.dropcustom .dropdown-toggle::after{
-display: none;
+.dropcustom .dropdown-toggle::after {
+  display: none;
 }
 .dropArrow {
   position: absolute;
@@ -2037,10 +2037,10 @@ display: none;
   /* rotate: 90deg; */
   color: var(--color-white);
 }
-.menuWrapper{
+.menuWrapper {
   width: 100%;
 }
-.dropdown-item{
+.dropdown-item {
   padding: 0;
 }
 .dropdown-item:focus,
@@ -2048,7 +2048,7 @@ display: none;
   color: #ed135d !important;
   background-color: transparent;
 }
-.subMenu{
+.subMenu {
   padding: 10px 25px;
 }
 
@@ -2060,7 +2060,7 @@ blockquote {
   border-left: 3px solid #777;
   font-size: 17px;
   line-height: 1.4;
-  font-family: 'Droid Serif',Georgia,'Times New Roman',Times,serif;
+  font-family: "Droid Serif", Georgia, "Times New Roman", Times, serif;
   padding: 5px 0 5px 20px;
   text-shadow: 1px 1px 1px #fff;
   margin-left: 20px;
@@ -2287,5 +2287,12 @@ blockquote {
 }
 .subMenu.active {
   background-color: #d7d7d7 !important;
+  color: #555;
+}
+
+span.nav-link a {
+  color: #fff;
+}
+span.nav-link.active a {
   color: #555;
 }
