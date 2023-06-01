@@ -842,3 +842,12 @@
   border-radius: 0px 10px 10px 10px;
   max-width: 50%;
 }
+
+.main_wrapper{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.children_wrap{
+  flex: 1;
+}

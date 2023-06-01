@@ -205,6 +205,23 @@ a.blog-title:hover {
   padding: 15px;
   background: linear-gradient(180deg, rgb(255 255 255 / 0%) 0%, rgb(0 0 0) 96%);
 }
+.headlines{
+background-color:#151515;
+}
+.headlines h1 {
+  font-weight: 400;
+  padding: 0 0 20px;
+  color: #fff;
+  font-size: 2em;
+  line-height: 32px;
+  margin-bottom: 0;
+}
+.compliance_statement{
+  color: #777;
+  background-color: #000;
+  padding-bottom: 20px;
+  height: 100%;
+}
 
 @media screen and (max-width:850px) {
   .nav.nav-tabs {
