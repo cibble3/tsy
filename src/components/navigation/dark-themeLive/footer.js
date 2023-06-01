@@ -20,12 +20,12 @@ const Footer = () => {
                 Webmasters
               </a>
               <span className="link-divider">|</span>
-              <a className={styles.footer_menu_item}
+              <Link className={styles.footer_menu_item}
                 title="models wanted"
-                href="https://www.mistressworld.xxx/en/models-wanted"
+                href="/models-wanted"
               >
                 Cam Models Wanted
-              </a>
+              </Link>
               <span className="link-divider">|</span>
               <a className={styles.footer_menu_item}
                 tab="_blank"

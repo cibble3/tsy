@@ -20,12 +20,13 @@ const DropdownComponent = ({
 
     if (activeTab === parentText.toLowerCase()) {
       setDropMenu(true);
-    } else
-     if (["", "chat", "video"].includes(activeTab)) {
+    } else if (
+      ["", "chat", "video", "models-wanted", "18-2257"].includes(activeTab)
+    ) {
       if (Object.keys(menuData).includes(parentText)) {
         setDropMenu(true);
       }
-    } else if (currentPath.indexOf(parentText.toLowerCase()) >=0 ) {
+    } else if (currentPath.indexOf(parentText.toLowerCase()) >= 0) {
       setDropMenu(true);
     } else {
       setDropMenu(false);
