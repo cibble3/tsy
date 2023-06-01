@@ -25,7 +25,9 @@ const SideBar = ({ collapse, setCollapse, parentMenuNames = [] }) => {
   const colorMode = useSelector((state) => state.darklight);
   const router = useRouter();
   const activeTab = router.asPath.split("/");
-  const lowercaseKeys = Object.keys(menuData).map((key) => key.toLowerCase());
+  const lowercaseKeys = Object.keys(menuData).map(
+    (key) => !["blog"].includes(key.toLowerCase()) && key.toLowerCase()
+  );
 
   const checkActiveTab = (activeTab) => {
     for (let i = 0; i < activeTab.length; i++) {
@@ -65,7 +67,6 @@ const SideBar = ({ collapse, setCollapse, parentMenuNames = [] }) => {
             </div>
           </div>
         </div>
-
         <Tab.Container
           defaultActiveKey={
             checkActiveTab(activeTab)
@@ -74,18 +75,21 @@ const SideBar = ({ collapse, setCollapse, parentMenuNames = [] }) => {
           }
         >
           <Nav variant="tabs">
-            {Object.keys(menuData).map((key) => (
-              <Nav.Item key={key.toLowerCase()}>
-                <Nav.Link
-                  as="span"
-                  activekey={key.toLowerCase()}
-                  className="rounded-0"
-                  eventKey={key.toLowerCase()}
-                >
-                  <Link href={`/${key.toLowerCase()}`}>{key}</Link>
-                </Nav.Link>
-              </Nav.Item>
-            ))}
+            {Object.keys(menuData).map(
+              (key) =>
+                menuData[key].type === "tab" && (
+                  <Nav.Item key={key.toLowerCase()}>
+                    <Nav.Link
+                      as="span"
+                      activekey={key.toLowerCase()}
+                      className="rounded-0"
+                      eventKey={key.toLowerCase()}
+                    >
+                      <Link href={`/${key.toLowerCase()}`}>{key}</Link>
+                    </Nav.Link>
+                  </Nav.Item>
+                )
+            )}
           </Nav>
           <Tab.Content>
             {Object.keys(menuData).map((itemkey) => (
@@ -93,13 +97,13 @@ const SideBar = ({ collapse, setCollapse, parentMenuNames = [] }) => {
                 eventKey={itemkey.toLowerCase()}
                 key={itemkey.toLowerCase()}
               >
-                {Object.keys(menuData[itemkey]).map((key) =>
+                {Object.keys(menuData[itemkey].data).map((key) =>
                   key.toLowerCase() === "categories" ? (
                     <DropdownComponent
                       key={key}
                       parentText={itemkey}
                       label={key}
-                      menuItems={menuData[itemkey][key]}
+                      menuItems={menuData[itemkey].data[key]}
                       menuData={menuData}
                     />
                   ) : (
@@ -107,7 +111,7 @@ const SideBar = ({ collapse, setCollapse, parentMenuNames = [] }) => {
                       key={key}
                       label={key}
                       parentText={key}
-                      menuItems={menuData[itemkey][key]}
+                      menuItems={menuData[itemkey].data[key]}
                       menuData={menuData}
                       parentMenuNames={[...parentMenuNames, itemkey]}
                     />
@@ -118,21 +122,38 @@ const SideBar = ({ collapse, setCollapse, parentMenuNames = [] }) => {
           </Tab.Content>
         </Tab.Container>
 
+        {Object.keys(menuData).map(
+          (itemkey) =>
+            menuData[itemkey].type === "dropdown" &&
+            Object.keys(menuData[itemkey].data).map(
+              (key) =>
+                key.toLowerCase() === "categories" && (
+                  <DropdownComponent
+                    key={key}
+                    parentText={`${itemkey}/${key}`}
+                    label={itemkey}
+                    menuItems={menuData[itemkey].data[key]}
+                    menuData={menuData}
+                  />
+                )
+            )
+        )}
+
         <div className={styles?.invite}>
-          <Link href={`/blog`}>
+          {/* <Link href={`/blog`}>
             <div className="d-flex justify-contant-center align-items-center ms-3 pt-3 mb-3">
               <MdCollectionsBookmark size={25} color="#818181" />
               <div className={styles?.home}>Blog</div>
             </div>
-          </Link>
-          <div className="d-flex justify-contant-center align-items-center ms-3 mt-3">
+          </Link> */}
+          {/* <div className="d-flex justify-contant-center align-items-center ms-3 mt-3">
             <FiUserPlus size={25} color="#ED135D" />
             <div className={styles?.home}>Invite Friend</div>
-          </div>
-          <div className="d-flex justify-contant-center align-items-center ms-3 mt-3 mb-3">
+          </div> */}
+          {/* <div className="d-flex justify-contant-center align-items-center ms-3 mt-3 mb-3">
             <IoLogOutOutline size={25} color="#818181" />
             <div className={styles?.home}>Log out</div>
-          </div>
+          </div> */}
           <Footer />
         </div>
       </div>

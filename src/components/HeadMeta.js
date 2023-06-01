@@ -17,9 +17,9 @@ const HeadMeta = ({ pageContent, canonical }) => {
       <meta name="dc.subject" content="" />
       <meta name="dc.description" content={pageContent.meta_desc} />
       {/* <!--item prop--> */}
-      <meta itemprop="name" content="" />
-      <meta itemprop="description" content={pageContent.meta_desc} />
-      <meta itemprop="image" content="" />
+      <meta itemProp="name" content="" />
+      <meta itemProp="description" content={pageContent.meta_desc} />
+      <meta itemProp="image" content="" />
       {/* <!--Facebook meta tags--> */}
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content="mistressworld.xxx"/>

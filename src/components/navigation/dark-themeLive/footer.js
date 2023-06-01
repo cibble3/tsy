@@ -6,66 +6,66 @@ const Footer = () => {
 
   return (
     <div>
-      <div class="footer-container pb-4">
+      <div className="footer-container pb-4">
 
         <div id="copyrights" className={styles.copyrights_dark}>
-          <div class="container clearfix">
+          <div className="container clearfix">
             <div className={styles.footer_menu}>
               <a className={styles.footer_menu_item} href="https://www.mistressworld.xxx/en/sitemap">Sitemap</a>
-              <span class="link-divider"> | </span>
+              <span className="link-divider"> | </span>
               <a className={styles.footer_menu_item}
                 tab="_blank"
                 href="//awejmp.com/?siteId=awe&amp;pageName=home&amp;prm[referral_rs]=mikeeyy3"
               >
                 Webmasters
               </a>
-              <span class="link-divider">|</span>
+              <span className="link-divider">|</span>
               <a className={styles.footer_menu_item}
                 title="models wanted"
                 href="https://www.mistressworld.xxx/en/models-wanted"
               >
                 Cam Models Wanted
               </a>
-              <span class="link-divider">|</span>
+              <span className="link-divider">|</span>
               <a className={styles.footer_menu_item}
                 tab="_blank"
                 href="https://www.cams.mistressworld.xxx/en/privacy-policy#personaldata"
               >
                 Privacy
               </a>
-              <span class="link-divider">|</span>
+              <span className="link-divider">|</span>
               <a className={styles.footer_menu_item}
                 tab="_blank"
                 href="https://www.cams.mistressworld.xxx/en/terms-and-conditions"
               >
                 Terms
               </a>
-              <span class="link-divider">|</span>
+              <span className="link-divider">|</span>
               <a className={styles.footer_menu_item}
                 tab="_blank"
                 href="https://www.cams.mistressworld.xxx/en/contact-us?page=online-support"
               >
                 Contact US
               </a>
-              <span class="link-divider">|</span>
+              <span className="link-divider">|</span>
               <a className={styles.footer_menu_item}
                 tab="_blank"
                 href="https://www.instagram.com/mistressworldcams/"
               >
                 Instagram
               </a>
-              <span class="link-divider">|</span>
+              <span className="link-divider">|</span>
               <a className={styles.footer_menu_item}
                 tab="_blank"
                 href="https://www.youtube.com/channel/UCaGwZy3QLT5wMnzvQIwMJwA"
               >
                 Youtube
               </a>
-              <span class="link-divider">|</span>
+              <span className="link-divider">|</span>
               <a className={styles.footer_menu_item} tab="_blank" href="https://twitter.com/mistressworld4u/">
                 Twitter
               </a>
-              <span class="link-divider">|</span>
+              <span className="link-divider">|</span>
               <a className={styles.footer_menu_item} tab="_blank" href="https://www.facebook.com/livefetishcams/">
                 Facebook
               </a>

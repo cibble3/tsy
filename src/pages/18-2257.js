@@ -9,9 +9,9 @@ const DashbpardDarkTheme = () => {
           <div id="container" className="h-100">
             <div
               id="header-text"
-              class="header-text bg-black"
+              className="header-text bg-black"
             >
-              <div class="headlines" >
+              <div className="headlines" >
                 <h1 align="center" className="pt-5">
                   18-2257 Compliance Statement - MistressWorld.xxx
                 </h1>
@@ -31,7 +31,7 @@ const DashbpardDarkTheme = () => {
                 age on the date of principal photography.
               </p>
             </div>
-            <div class="clearfix"></div>
+            <div className="clearfix"></div>
           </div>
         </>
       </DarkTheme>

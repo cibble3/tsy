@@ -43,23 +43,23 @@ const Footer = () => {
     // console.log(document.cookie);
   }, []);
   return (
-    <div className={styles.header} style={{ borderTop: "1px solid #707070" }}>
-      <div className="d-flex justify-content-center align-items-center h-100">
-        <div className={styles?.dark}>Dark</div>
-        <div>
-          <Image
-            height={50}
-            width={50}
-            alt="switch"
-            src={colorMode === "light" ? "/path-632.svg" : "/path-631.svg"}
-            className={style.themebtn}
-            style={{ width: 63, height: 28, minWidth: 40, maxWidth: 63 }}
-            onClick={() => toggleColorMode()}
-          />
-        </div>
+    // <div className={styles.header} style={{ borderTop: "1px solid #707070" }}>
+    //   <div className="d-flex justify-content-center align-items-center h-100">
+    //     <div className={styles?.dark}>Dark</div>
+    //     <div>
+    //       <Image
+    //         height={50}
+    //         width={50}
+    //         alt="switch"
+    //         src={colorMode === "light" ? "/path-632.svg" : "/path-631.svg"}
+    //         className={style.themebtn}
+    //         style={{ width: 63, height: 28, minWidth: 40, maxWidth: 63 }}
+    //         onClick={() => toggleColorMode()}
+    //       />
+    //     </div>
 
-        <div className={styles?.light}>Light</div>
-      </div>
+    //     <div className={styles?.light}>Light</div>
+    //   </div>
 
       <style jsx global>{`
         :root {
@@ -94,7 +94,7 @@ const Footer = () => {
           color: var(--text-color);
         }
       `}</style>
-    </div>
+    // </div>
   );
 };
 
