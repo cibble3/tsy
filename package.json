@@ -25,6 +25,7 @@
     "react-redux": "^8.0.5",
     "react-responsive-carousel": "^3.2.23",
     "react-simple-star-rating": "^5.1.7",
+    "react-star-rating-component": "^1.4.1",
     "redux": "^4.2.1",
     "tailwindcss": "3.3.2"
   }

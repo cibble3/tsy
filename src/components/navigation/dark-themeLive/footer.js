@@ -6,7 +6,7 @@ const Footer = () => {
 
   return (
     <div>
-      <div class="footer-container">
+      <div class="footer-container pb-4">
 
         <div id="copyrights" className={styles.copyrights_dark}>
           <div class="container clearfix">

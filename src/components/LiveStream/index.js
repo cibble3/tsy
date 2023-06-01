@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import styles from "./live-stream.module.css";
 import { Button } from "react-bootstrap";
-import { Rating } from "react-simple-star-rating";
+// import { Rating } from "react-simple-star-rating";
+import Rating from "react-star-rating-component";
+
 import VideoModal from "./videoModal";
 import PhotoAlbumModal from "./photoAlbumModal";
 import useWindowSize from "@/hooks/useWindowSize";
@@ -20,19 +22,13 @@ const LiveStreamComponent = ({ data }) => {
   const [video, setVideo] = useState(false);
   const [photoModal, setPhotoModal] = useState(false);
 
-  // Catch Rating value
-  const handleRating = (rate) => {
-    setRating(rate);
-  };
-
   useEffect(() => {
     setRating(data?.modelData?.details?.modelRating);
   }, []);
 
-  // Optinal callback functions
-  const onPointerEnter = () => console.log("Enter");
-  const onPointerLeave = () => console.log("Leave");
-  const onPointerMove = (value, index) => console.log(value, index);
+  const handleStarClick = (nextValue, prevValue, name) => {
+    // setRating(nextValue);
+  };
   return (
     <>
       <HeadMeta pageContent={data?.pageContent} />
@@ -62,13 +58,13 @@ const LiveStreamComponent = ({ data }) => {
                     <h1 className={`${styles.userName} m-0`}>OraPredictor</h1>
                     <div className="d-flex align-items-end">
                       <Rating
-                        initialValue={rating}
-                        size={18}
-                        onClick={handleRating}
-                        onPointerEnter={onPointerEnter}
-                        onPointerLeave={onPointerLeave}
-                        onPointerMove={onPointerMove}
-                        /* Available Props */
+                        value={rating}
+                        onStarClick={(nextValue, prevValue, name) =>
+                          handleStarClick(nextValue, prevValue, name)
+                        }
+                        starCount={5}
+                        starColor={"#ffb400"}
+                        emptyStarColor={"#ccc"}
                       />
                       <p className={`${styles.rating} m-0 ms-2`}>
                         Ratings :{" "}
@@ -155,14 +151,15 @@ const LiveStreamComponent = ({ data }) => {
                 </h1>
                 <div className="d-flex align-items-end rating">
                   <Rating
-                    initialValue={rating}
-                    size={18}
-                    onClick={handleRating}
-                    onPointerEnter={onPointerEnter}
-                    onPointerLeave={onPointerLeave}
-                    onPointerMove={onPointerMove}
-                    /* Available Props */
+                    value={rating}
+                    onStarClick={(nextValue, prevValue, name) =>
+                      handleStarClick(nextValue, prevValue, name)
+                    }
+                    starCount={5}
+                    starColor={"#ffb400"}
+                    emptyStarColor={"#ccc"}
                   />
+
                   <p className={`${styles.rating} m-0 ms-2`}>
                     Ratings :{" "}
                     <strong>

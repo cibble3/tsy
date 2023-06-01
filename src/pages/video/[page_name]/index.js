@@ -6,7 +6,9 @@ import HeadMeta from "@/components/HeadMeta";
 import styles from "@/components/LiveStream/live-stream.module.css";
 import useWindowSize from "@/hooks/useWindowSize";
 import VideoWidget from "@/components/LiveStream/VideoWidget";
-import { Rating } from "react-simple-star-rating";
+// import { Rating } from "react-simple-star-rating";
+import Rating from "react-star-rating-component";
+
 import LiveScreenVideo from "@/components/LiveScreenVideo";
 import LiveStreamPose from "@/components/LiveStreamPose";
 
@@ -19,7 +21,11 @@ const LiveStream = ({
   pageContent,
 }) => {
   const { width, height } = useWindowSize();
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(modelData?.details?.modelRating);
+
+  const handleStarClick = (nextValue, prevValue, name) => {
+    // setRating(nextValue);
+  };
 
   return (
     <DarkTheme>
@@ -51,13 +57,13 @@ const LiveStream = ({
                     <h1 className={`${styles.userName} m-0`}>OraPredictor</h1>
                     <div className="d-flex align-items-end">
                       <Rating
-                        initialValue={rating}
-                        size={18}
-                        // onClick={handleRating}
-                        // onPointerEnter={onPointerEnter}
-                        // onPointerLeave={onPointerLeave}
-                        // onPointerMove={onPointerMove}
-                        /* Available Props */
+                        value={rating}
+                        onStarClick={(nextValue, prevValue, name) =>
+                          handleStarClick(nextValue, prevValue, name)
+                        }
+                        starCount={5}
+                        starColor={"#ffb400"}
+                        emptyStarColor={"#ccc"}
                       />
                       <p className={`${styles.rating} m-0 ms-2`}>
                         Ratings :{" "}
@@ -87,13 +93,13 @@ const LiveStream = ({
                 </h1>
                 <div className="d-flex align-items-end rating">
                   <Rating
-                    initialValue={rating}
-                    size={18}
-                    // onClick={handleRating}
-                    // onPointerEnter={onPointerEnter}
-                    // onPointerLeave={onPointerLeave}
-                    // onPointerMove={onPointerMove}
-                    /* Available Props */
+                    value={rating}
+                    onStarClick={(nextValue, prevValue, name) =>
+                      handleStarClick(nextValue, prevValue, name)
+                    }
+                    starCount={5}
+                    starColor={"#ffb400"}
+                    emptyStarColor={"#ccc"}
                   />
                   <p className={`${styles.rating} m-0 ms-2`}>
                     Ratings :
