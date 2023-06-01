@@ -3,7 +3,7 @@ import { RxDotFilled } from "react-icons/rx";
 import Link from "next/link";
 import Image from "next/image";
 
-const LiveScreenPhoto1 = ({ image, name, tags, age }) => {
+const LiveScreenPhoto1 = ({ image, name, tags, age, ethnicity }) => {
   return (
     <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 mt-4 ">
       <Link href={`/chat/${name}`} className="relative">
@@ -11,7 +11,8 @@ const LiveScreenPhoto1 = ({ image, name, tags, age }) => {
           height={500}
           width={500}
           src={`https:${image}`}
-          alt={name}
+          // alt={name}
+          alt={`live ${ethnicity} cam performance by ${name}`}
           className="w-100"
         />
         <div className="text-white px-2 bg-overlay">

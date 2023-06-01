@@ -20,22 +20,6 @@ const DashbpardDarkTheme = ({data, params}) => {
     }, 2000);
   }, [data]);
 
-  // useEffect(() => {
-  //   axiosInstance
-  //     .get("/")
-  //     .then((response) => {
-  //       setModels(response.data.performers);
-  //       setPageContent(response.data.pageContent);
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-
-  //     setTimeout(() => {
-  //       setPageLoaded(true);
-  //     }, 2000); 
-  // }, []);
-
   const loadMoreModels = async () => {
     if (!loading) {
       setLoading(true);
@@ -72,16 +56,7 @@ const DashbpardDarkTheme = ({data, params}) => {
                   __html: pageContent?.top_text,
                 }}
               />
-              {/* <div className={styles?.liveHeading} style={{ fontSize: "18px" }}>
-              RECOMMENDED
-              <span className={styles?.livesubHeading}>
-                EXPERTS
-                <span className="ms-2" style={{ fontSize: "16px" }}>
-                  Top Favourites by our Members! You can't go wrong with our
-                  recommended Experts!
-                </span>
-              </span>
-            </div> */}
+              
               <div className="row">
                 {models?.map((element, i) => {
                   return (
@@ -91,6 +66,7 @@ const DashbpardDarkTheme = ({data, params}) => {
                       name={element?.displayName}
                       age={element?.persons[0]?.age}
                       tags={element?.details?.willingnesses}
+                      ethnicity={element?.ethnicity}
                     />
                   );
                 })}

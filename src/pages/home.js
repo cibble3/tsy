@@ -77,6 +77,7 @@ const DashbpardDarkTheme = () => {
                       name={element?.displayName}
                       age={element?.persons[0]?.age}
                       tags={element?.details?.willingnesses}
+                      category={element?.ethnicity}
                     />
                   );
                 })}
