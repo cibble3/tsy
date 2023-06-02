@@ -1,22 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef } from "react";
 
 const VideoWidget = ({ playerEmbedUrl }) => {
+  const objectContainerRef = useRef(null);
 
   function loadVideoWidget() {
-    var videoLoadScript = document.getElementById("videoLoadScript");
-    if (videoLoadScript) {
-      videoLoadScript.remove();
+    let videoLoadIframe = document.getElementById("videoLoadIframe");
+    if (videoLoadIframe) {
+      videoLoadIframe.remove();
     }
 
-    var s = document.createElement("script");
-    s.setAttribute("id", "videoLoadScript");
-    s.setAttribute("src", `${playerEmbedUrl}&c=object_container`);
-    document.body.appendChild(s);
+    const iframe = document.createElement("iframe");
+    iframe.setAttribute("id", "videoLoadIframe");
+    iframe.setAttribute("src", `${playerEmbedUrl}`);
+    iframe.setAttribute("allowfullscreen", "true");
+    iframe.style.width = "100%";
+    iframe.style.height = "100%";
+    objectContainerRef.current.innerHTML = ""; // Clear previous content
+    objectContainerRef.current.appendChild(iframe);
   }
-  function videoWidget(id) {
-    // document.getElementById(id).innerHTML = "";
 
-    var w = Math.abs(0.81 * window.outerWidth);
+  function videoWidget() {
+    let w = Math.abs(0.81 * window.outerWidth);
     if (window.innerWidth < 991) {
       w = Math.abs(0.95 * window.outerWidth);
     }
@@ -25,25 +29,32 @@ const VideoWidget = ({ playerEmbedUrl }) => {
       w = Math.abs(0.9 * window.outerWidth);
     }
 
-    var h = Math.abs(0.52 * w);
-    document.getElementById(id).style.width = w + "px";
-    document.getElementById(id).style.height = h + "px";
-    loadVideoWidget();
+    const h = Math.abs(0.52 * w);
+    objectContainerRef.current.style.width = `${w}px`;
+    objectContainerRef.current.style.height = `${h}px`;
+
+    // Call loadVideoWidget after the iframe element has been added
+    setTimeout(loadVideoWidget, 0);
   }
 
   useEffect(() => {
     videoWidget("object_container");
-    window.onresize = function (e) {
-      videoWidget("object_container");
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
     };
   }, [playerEmbedUrl]);
+
+  function handleResize() {
+    videoWidget("object_container");
+  }
 
   return (
     <div id="model-chat" className="model-tab-content">
       <div id="chat-block">
         <div
           data-awe-container-id="object_container"
-          id="object_container"
+          ref={objectContainerRef}
           style={{ width: "100%", height: "100%" }}
         ></div>
       </div>

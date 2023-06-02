@@ -21,23 +21,14 @@ const LiveStream = ({
   const { width, height } = useWindowSize();
   const [rating, setRating] = useState(modelData?.details?.modelRating);
 
-  const handleStarClick = (nextValue, prevValue, name) => {
-    // setRating(nextValue);
-  };
+  // const handleStarClick = (nextValue, prevValue, name) => {
+  //   // setRating(nextValue);
+  // };
 
-  useEffect(() => {
-    syncVideos();
-  }, [relatedVideos]);
-
-  const syncVideos = async () => {
-    try {
-      await axiosInstance.post(`/videos-sync`, {
-        videos: relatedVideos.videos,
-      });
-    } catch (error) {
-      console.error("Error loading videos:", error);
-    }
-  };
+  const modifiedPlayerEmbedUrl = videoDetails?.playerEmbedUrl.replace(
+    "https://pt.cdctwm.com/embed/tbplyr",
+    "https://pt.cdctwm.com/tube-player"
+  );
 
   return (
     <DarkTheme>
@@ -50,7 +41,7 @@ const LiveStream = ({
               width < 576 ? "" : "px-2"
             } col-xl-9 col-lg-8 col-md-7 col-sm-12 mt-2 `}
           >
-            <VideoWidget playerEmbedUrl={videoDetails?.playerEmbedUrl} />
+            <VideoWidget playerEmbedUrl={modifiedPlayerEmbedUrl} />
 
             {width < 992 && width > 767 ? (
               <div className={`${styles.midView}`}>
@@ -65,7 +56,7 @@ const LiveStream = ({
                       }}
                     />
                   </div>
-                  <div className="ps-3">
+                  {/* <div className="ps-3">
                     <h1 className={`${styles.userName} m-0`}>OraPredictor</h1>
                     <div className="d-flex align-items-end">
                       <Rating
@@ -84,7 +75,7 @@ const LiveStream = ({
                         </strong>
                       </p>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             ) : null}
@@ -133,7 +124,7 @@ const LiveStream = ({
           <div className="mt-2">
             {width < 992 && width > 767 ? null : (
               <p className="video-tags">
-                {<span>Video Tags : </span>}
+                {videoDetails.tags && <span>Video Tags : </span>}
 
                 {videoDetails.tags?.map((tag, i) => (
                   <>
