@@ -16,7 +16,10 @@ const LiveScreenPhoto1 = ({ image, name, tags, age, ethnicity }) => {
           className="w-100"
         />
         <div className="text-white px-2 bg-overlay">
-          <div className="d-flex justify-content-between align-items-center relative" style={{zIndex: 1}}>
+          <div
+            className="d-flex justify-content-between align-items-center relative"
+            style={{ zIndex: 1 }}
+          >
             <div className="d-flex align-items-center d-flex align-items-center">
               <RxDotFilled color="#8FC400" fontSize="22px" />
               <span>

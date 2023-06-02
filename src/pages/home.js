@@ -23,9 +23,9 @@ const DashbpardDarkTheme = () => {
         console.error(error);
       });
 
-      setTimeout(() => {
-        setPageLoaded(true);
-      }, 2000); 
+    setTimeout(() => {
+      setPageLoaded(true);
+    }, 2000);
   }, []);
 
   const loadMoreModels = async () => {
@@ -56,7 +56,7 @@ const DashbpardDarkTheme = () => {
 
   return (
     <div>
-      {isPageLoaded && <HeadMeta pageContent={pageContent}/>}
+      {isPageLoaded && <HeadMeta pageContent={pageContent} />}
       <DarkTheme>
         <>
           <div className={styles?.dasboardMain2}>
@@ -67,7 +67,7 @@ const DashbpardDarkTheme = () => {
                   __html: pageContent?.top_text,
                 }}
               />
-              
+
               <div className="row">
                 {models?.map((element, i) => {
                   return (
@@ -77,21 +77,23 @@ const DashbpardDarkTheme = () => {
                       name={element?.displayName}
                       age={element?.persons[0]?.age}
                       tags={element?.details?.willingnesses}
-                      category={element?.ethnicity}
+                      ethnicity={element?.ethnicity}
                     />
                   );
                 })}
               </div>
 
-             {isPageLoaded && <div className="parent-loadbtn">
-                <button
-                  className="loading-btn"
-                  onClick={loadMoreModels}
-                  disabled={loading}
-                >
-                  {loading ? "Loading..." : "Load More Models"}
-                </button>
-              </div>}
+              {isPageLoaded && (
+                <div className="parent-loadbtn">
+                  <button
+                    className="loading-btn"
+                    onClick={loadMoreModels}
+                    disabled={loading}
+                  >
+                    {loading ? "Loading..." : "Load More Models"}
+                  </button>
+                </div>
+              )}
 
               <div
                 className="siteContent"

@@ -20,7 +20,7 @@ const LiveScreenVideo = ({ image, targetUrl, parent, title }) => {
             width={500}
             height={500}
             src={`https:${image}`}
-            alt={`play ${performerName} free cam video`}
+            alt={`${performerName}${title ? " : " + title : ""}`}
             className="w-100"
           />
           <Image
