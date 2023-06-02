@@ -1,4 +1,3 @@
-import VideoDetails from "@/components/LiveStream/VideoDetails";
 import DarkTheme from "@/components/navigation/dark-themeLive";
 import React, { useEffect, useState } from "react";
 import axiosInstance from "@/instance/axiosInstance";
@@ -6,11 +5,9 @@ import HeadMeta from "@/components/HeadMeta";
 import styles from "@/components/LiveStream/live-stream.module.css";
 import useWindowSize from "@/hooks/useWindowSize";
 import VideoWidget from "@/components/LiveStream/VideoWidget";
-// import { Rating } from "react-simple-star-rating";
 import Rating from "react-star-rating-component";
-
+import Link from "next/link";
 import LiveScreenVideo from "@/components/LiveScreenVideo";
-import LiveStreamPose from "@/components/LiveStreamPose";
 
 const LiveStream = ({
   videoId,
@@ -19,12 +16,27 @@ const LiveStream = ({
   modelData,
   relatedVideos,
   pageContent,
+  performerCategory,
 }) => {
   const { width, height } = useWindowSize();
   const [rating, setRating] = useState(modelData?.details?.modelRating);
 
   const handleStarClick = (nextValue, prevValue, name) => {
     // setRating(nextValue);
+  };
+
+  useEffect(() => {
+    syncVideos();
+  }, [relatedVideos]);
+
+  const syncVideos = async () => {
+    try {
+      await axiosInstance.post(`/videos-sync`, {
+        videos: relatedVideos.videos,
+      });
+    } catch (error) {
+      console.error("Error loading videos:", error);
+    }
   };
 
   return (
@@ -118,19 +130,30 @@ const LiveStream = ({
               </p>
             )}
           </div>
+          <div className="mt-2">
+            {width < 992 && width > 767 ? null : (
+              <p className="video-tags">
+                {<span>Video Tags : </span>}
+
+                {videoDetails.tags?.map((tag, i) => (
+                  <>
+                    <Link key={i} href={`/videos/${performerCategory}/${tag}`}>
+                      {tag}
+                    </Link>
+                    {i !== videoDetails.tags.length - 1 && ", "}
+                  </>
+                ))}
+              </p>
+            )}
+          </div>
         </div>
 
         <div className="mt-5 px-4 pb-4">
           <h3 className={`${styles.content} mb-3`}>
             Other Recommended <span> Videos for You</span>
           </h3>
+
           <div className="row mb-5">
-            <LiveStreamPose image={"/pose.png"} />
-            <LiveStreamPose image={"/pose1.png"} />
-            <LiveStreamPose image={"/pose2.png"} />
-            <LiveStreamPose image={"/pose3.png"} />
-          </div>
-          {/* <div className="row mb-5">
             {relatedVideos?.videos?.map((element, i) => {
               return (
                 <LiveScreenVideo
@@ -142,7 +165,7 @@ const LiveStream = ({
                 />
               );
             })}
-          </div> */}
+          </div>
         </div>
       </div>
     </DarkTheme>
@@ -173,6 +196,7 @@ export async function getServerSideProps(context) {
       modelData: responseData.modelData,
       relatedVideos: responseData.relatedVideos.data,
       pageContent: responseData.pageContent,
+      performerCategory: responseData.performerCategory,
     },
   };
 }

@@ -2,7 +2,13 @@ import Link from "next/link";
 import { slugify } from "@/helper/helpers";
 import Image from "next/image";
 
-const LiveScreenVideo = ({ image, targetUrl, parent, title }) => {
+const LiveScreenVideo = ({
+  image,
+  targetUrl,
+  parent,
+  title,
+  isFeatured = false,
+}) => {
   const url = new URL(`http:${targetUrl}`);
   const query = new URLSearchParams(url.search);
   const performerName = query.get("performerName");
@@ -13,7 +19,11 @@ const LiveScreenVideo = ({ image, targetUrl, parent, title }) => {
     .toLocaleLowerCase();
   const friendlyUrlWithPerformer = `${performerNameWithoutSpaces}-${friendlyUrl}`;
   return (
-    <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 mt-4 video-block">
+    <div
+      className={`${
+        !isFeatured && "col-xl-3 col-lg-4"
+      } col-md-6 col-sm-6 mt-4 video-block`}
+    >
       <div className="relative video-items">
         <Link href={`/${parent}/${friendlyUrlWithPerformer}`}>
           <Image

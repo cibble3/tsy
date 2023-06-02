@@ -4,10 +4,14 @@ import LiveScreenPhoto from "@/components/LiveScreenPhoto1";
 import axiosInstance from "../instance/axiosInstance";
 import { useEffect, useState } from "react";
 import HeadMeta from "@/components/HeadMeta";
+import LiveScreenVideo from "@/components/LiveScreenVideo";
+import DarkSingleBlogPost from "@/components/DarkSingleBlogPost";
 
 const DashbpardDarkTheme = () => {
   const [models, setModels] = useState([]);
   const [pageContent, setPageContent] = useState([]);
+  const [blogs, setBlogs] = useState([]);
+  const [videos, setVideos] = useState([]);
   const [pageNo, setPageNo] = useState(2);
   const [loading, setLoading] = useState(false);
   const [isPageLoaded, setPageLoaded] = useState(false);
@@ -18,6 +22,8 @@ const DashbpardDarkTheme = () => {
       .then((response) => {
         setModels(response.data.performers);
         setPageContent(response.data.pageContent);
+        setBlogs(response.data.articles);
+        setVideos(response.data.videos);
       })
       .catch((error) => {
         console.error(error);
@@ -102,6 +108,47 @@ const DashbpardDarkTheme = () => {
                 }}
               />
             </div>
+
+            {blogs && (
+              <div className="py-4 px-3">
+                <div className="row">
+                  <h2 align="center">The MistressWorld Live Fetish Blog</h2>
+                  {blogs?.map((element, i) => {
+                    return (
+                      <DarkSingleBlogPost
+                        key={i}
+                        image={element?.feature_image}
+                        title1={element?.post_title}
+                        post_url={element?.post_url}
+                        title2={element?.post_content}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {videos && (
+              <div className="py-4 px-3">
+                <div className="row">
+                  <h2 align="center">
+                    MistressWorld Free BDSM Cam &amp; Fetish Webcam Model Videos
+                  </h2>
+                  {videos?.map((element, i) => {
+                    return (
+                      <LiveScreenVideo
+                        isFeatured={true}
+                        key={i}
+                        title={element?.title}
+                        image={element?.thumbImage}
+                        targetUrl={element?.targetUrl}
+                        parent={"video"}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </div>
         </>
       </DarkTheme>

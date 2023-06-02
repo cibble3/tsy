@@ -23,10 +23,10 @@ const DashbpardDarkTheme = ({ data }) => {
 
   const syncVideos = async () => {
     try {
-        await axiosInstance.post(`/videos-sync`, {videos});
-      } catch (error) {
-        console.error("Error loading videos:", error);
-      }
+      await axiosInstance.post(`/videos-sync`, { videos });
+    } catch (error) {
+      console.error("Error loading videos:", error);
+    }
   };
   const loadMoreVideos = async () => {
     if (!loading) {

@@ -4,6 +4,8 @@ import LiveScreenPhoto from "@/components/LiveScreenPhoto1";
 import axiosInstance from "@/instance/axiosInstance";
 import { useEffect, useState } from "react";
 import HeadMeta from "@/components/HeadMeta";
+import LiveScreenVideo from "@/components/LiveScreenVideo";
+import DarkSingleBlogPost from "@/components/DarkSingleBlogPost";
 
 const DashbpardDarkTheme = ({ data, params }) => {
   const [models, setModels] = useState([]);
@@ -11,10 +13,15 @@ const DashbpardDarkTheme = ({ data, params }) => {
   const [pageNo, setPageNo] = useState(2);
   const [loading, setLoading] = useState(false);
   const [isPageLoaded, setPageLoaded] = useState(false);
+  const [blogs, setBlogs] = useState([]);
+  const [videos, setVideos] = useState([]);
 
   useEffect(() => {
     setModels(data.performers);
     setPageContent(data.pageContent);
+    setBlogs(data.articles);
+    setVideos(data.videos);
+
     setTimeout(() => {
       setPageLoaded(true);
     }, 2000);
@@ -93,6 +100,47 @@ const DashbpardDarkTheme = ({ data, params }) => {
                 }}
               />
             </div>
+
+            {blogs && (
+              <div className="py-4 px-3">
+                <div className="row">
+                  <h2 align="center">The MistressWorld Live Fetish Blog</h2>
+                  {blogs?.map((element, i) => {
+                    return (
+                      <DarkSingleBlogPost
+                        key={i}
+                        image={element?.feature_image}
+                        title1={element?.post_title}
+                        post_url={element?.post_url}
+                        title2={element?.post_content}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {videos && (
+              <div className="py-4 px-3">
+                <div className="row">
+                  <h2 align="center">
+                    MistressWorld Free BDSM Cam &amp; Fetish Webcam Model Videos
+                  </h2>
+                  {videos?.map((element, i) => {
+                    return (
+                      <LiveScreenVideo
+                        isFeatured={true}
+                        key={i}
+                        title={element?.title}
+                        image={element?.thumbImage}
+                        targetUrl={element?.targetUrl}
+                        parent={"video"}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </div>
         </>
       </DarkTheme>

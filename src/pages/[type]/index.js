@@ -4,17 +4,23 @@ import LiveScreenPhoto from "@/components/LiveScreenPhoto1";
 import axiosInstance from "@/instance/axiosInstance";
 import { useEffect, useState } from "react";
 import HeadMeta from "@/components/HeadMeta";
+import LiveScreenVideo from "@/components/LiveScreenVideo";
+import DarkSingleBlogPost from "@/components/DarkSingleBlogPost";
 
-const DashbpardDarkTheme = ({data, params}) => {
-  const [models, setModels] = useState([] );
+const DashbpardDarkTheme = ({ data, params }) => {
+  const [models, setModels] = useState([]);
   const [pageContent, setPageContent] = useState([]);
   const [pageNo, setPageNo] = useState(2);
   const [loading, setLoading] = useState(false);
   const [isPageLoaded, setPageLoaded] = useState(false);
+  const [blogs, setBlogs] = useState([]);
+  const [videos, setVideos] = useState([]);
 
   useEffect(() => {
     setModels(data.performers);
     setPageContent(data.pageContent);
+    setBlogs(data.articles);
+    setVideos(data.videos);
     setTimeout(() => {
       setPageLoaded(true);
     }, 2000);
@@ -24,7 +30,9 @@ const DashbpardDarkTheme = ({data, params}) => {
     if (!loading) {
       setLoading(true);
       try {
-        const response = await axiosInstance.get(`${params.type}/?page=${pageNo}`);
+        const response = await axiosInstance.get(
+          `${params.type}/?page=${pageNo}`
+        );
         const data = response?.data?.performers;
         if (data === "") {
           console.log("No more models found");
@@ -56,7 +64,7 @@ const DashbpardDarkTheme = ({data, params}) => {
                   __html: pageContent?.top_text,
                 }}
               />
-              
+
               <div className="row">
                 {models?.map((element, i) => {
                   return (
@@ -72,15 +80,17 @@ const DashbpardDarkTheme = ({data, params}) => {
                 })}
               </div>
 
-             {isPageLoaded && <div className="parent-loadbtn">
-                <button
-                  className="loading-btn"
-                  onClick={loadMoreModels}
-                  disabled={loading}
-                >
-                  {loading ? "Loading..." : "Load More Models"}
-                </button>
-              </div>}
+              {isPageLoaded && (
+                <div className="parent-loadbtn">
+                  <button
+                    className="loading-btn"
+                    onClick={loadMoreModels}
+                    disabled={loading}
+                  >
+                    {loading ? "Loading..." : "Load More Models"}
+                  </button>
+                </div>
+              )}
 
               <div
                 className="siteContent"
@@ -89,6 +99,47 @@ const DashbpardDarkTheme = ({data, params}) => {
                 }}
               />
             </div>
+
+            {blogs && (
+              <div className="py-4 px-3">
+                <div className="row">
+                  <h2 align="center">The MistressWorld Live Fetish Blog</h2>
+                  {blogs?.map((element, i) => {
+                    return (
+                      <DarkSingleBlogPost
+                        key={i}
+                        image={element?.feature_image}
+                        title1={element?.post_title}
+                        post_url={element?.post_url}
+                        title2={element?.post_content}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {videos && (
+              <div className="py-4 px-3">
+                <div className="row">
+                  <h2 align="center">
+                    MistressWorld Free BDSM Cam &amp; Fetish Webcam Model Videos
+                  </h2>
+                  {videos?.map((element, i) => {
+                    return (
+                      <LiveScreenVideo
+                        isFeatured={true}
+                        key={i}
+                        title={element?.title}
+                        image={element?.thumbImage}
+                        targetUrl={element?.targetUrl}
+                        parent={"video"}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </div>
         </>
       </DarkTheme>
@@ -98,25 +149,22 @@ const DashbpardDarkTheme = ({data, params}) => {
 
 export default DashbpardDarkTheme;
 
-
 export async function getServerSideProps(context) {
-  const response = await axiosInstance.get(
-    `/${context.params.type}`
-  );
+  const response = await axiosInstance.get(`/${context.params.type}`);
   const responseData = response.data;
 
-    // if (!responseData.status) {
-    //   return {
-    //     redirect: {
-    //       destination: "/",
-    //       permanent: false,
-    //     },
-    //   };
-    // }
+  // if (!responseData.status) {
+  //   return {
+  //     redirect: {
+  //       destination: "/",
+  //       permanent: false,
+  //     },
+  //   };
+  // }
   return {
     props: {
       data: responseData,
-      params: context.params
+      params: context.params,
     },
   };
 }
