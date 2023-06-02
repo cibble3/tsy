@@ -11,7 +11,7 @@ const Footer = () => {
         <div id="copyrights" className={styles.copyrights_dark}>
           <div className="container clearfix">
             <div className={styles.footer_menu}>
-              <a className={styles.footer_menu_item} href="https://www.mistressworld.xxx/en/sitemap">Sitemap</a>
+              <Link className={styles.footer_menu_item} href="/sitemap">Sitemap</Link>
               <span className="link-divider"> | </span>
               <a className={styles.footer_menu_item}
                 tab="_blank"
