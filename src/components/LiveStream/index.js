@@ -1,26 +1,28 @@
 import React, { useContext, useEffect, useState } from "react";
 import styles from "./live-stream.module.css";
-import { Button } from "react-bootstrap";
-// import { Rating } from "react-simple-star-rating";
 import Rating from "react-star-rating-component";
-
-import VideoModal from "./videoModal";
-import PhotoAlbumModal from "./photoAlbumModal";
 import useWindowSize from "@/hooks/useWindowSize";
-import LiveStreamPhoto from "../LiveStreamPhoto";
-import LiveStreamVideo from "../LiveStreamVideo";
-import LiveStreamPose from "../LiveStreamPose";
 import ChatWidget from "./ChatWidget";
 import HeadMeta from "@/components/HeadMeta";
+import Image from "next/image";
 
 const LiveStreamComponent = ({ data }) => {
   const { width, height } = useWindowSize();
 
-  let videoHeight = width > 992 ? width / 2 : 510;
-  let blurHeight = (videoHeight * 3) / 4;
+  let videoHeight = 510;
+
+  if (width >= 768 && width < 850) {
+    // For tablet
+    videoHeight = (width + 252) / 2;
+  } else if (width >= 850 && width < 1440) {
+    // For laptop
+  } else if (width >= 1440 && width <= 2560) {
+    // For laptop-large
+  } else {
+    // For 4k
+  }
+
   const [rating, setRating] = useState(0);
-  const [video, setVideo] = useState(false);
-  const [photoModal, setPhotoModal] = useState(false);
 
   useEffect(() => {
     setRating(data?.modelData?.details?.modelRating);
@@ -37,7 +39,7 @@ const LiveStreamComponent = ({ data }) => {
           <div
             className={`${
               width < 576 ? "" : "px-2"
-            } col-xl-9 col-lg-8 col-md-7 col-sm-12 mt-2 `}
+            } col-xl-9 col-lg-8 col-md-8 col-sm-12 mt-2 `}
           >
             <ChatWidget performerId={data.modelData.performerId} />
 
@@ -55,7 +57,9 @@ const LiveStreamComponent = ({ data }) => {
                     />
                   </div>
                   <div className="ps-3">
-                    <h1 className={`${styles.userName} m-0`}>OraPredictor</h1>
+                    <h1 className={`${styles.userName} m-0`}>
+                      {data?.modelData?.displayName}
+                    </h1>
                     <div className="d-flex align-items-end">
                       <Rating
                         value={rating}
@@ -87,52 +91,29 @@ const LiveStreamComponent = ({ data }) => {
             ) : null}
           </div>
           <div
-            className="col-xl-3 col-lg-4 col-md-5 col-sm-11 px-4 pe-4 mt-2"
+            className="col-xl-3 col-lg-4 col-md-4 col-sm-11 mt-2"
             style={{ height: videoHeight, maxHeight: 650 }}
           >
             <div style={{ position: "relative" }}>
-              <img
-                src="/images/courses/yoga-img3.jpg"
-                alt=""
-                className=""
-                style={{
-                  height: videoHeight / 4,
-                  width: "100%",
-                  maxHeight: 162,
-                }}
-              />
-            </div>
-            <div style={{ position: "relative" }}>
-              <img
-                src="/images/courses/yoga-img1.jpg"
-                alt=""
-                className=""
-                style={{
-                  height: videoHeight / 4,
-                  width: "100%",
-                  maxHeight: 162,
-                }}
-              />
-              <img
-                src="/images/courses/yoga-img2.jpg"
-                alt=""
-                className=""
-                style={{
-                  height: videoHeight / 4,
-                  width: "100%",
-                  maxHeight: 162,
-                }}
-              />
-              <img
-                src="/images/courses/yoga-img3.jpg"
-                alt=""
-                className=""
-                style={{
-                  height: videoHeight / 4,
-                  width: "100%",
-                  maxHeight: 162,
-                }}
-              />
+              {data.relatedModels?.map((element, i) => {
+                if (element.title != "")
+                  return (
+                    <a href={`https:${element.chatRoomUrl}`} target="_blank">
+                      <Image
+                        height={200}
+                        width={200}
+                        src={`https:${element.profilePictureUrl.size320x240}`}
+                        alt=""
+                        className="mb-1"
+                        style={{
+                          height: videoHeight / 4,
+                          width: "100%",
+                          maxHeight: 162,
+                        }}
+                      />
+                    </a>
+                  );
+              })}
             </div>
           </div>
         </div>
@@ -170,7 +151,7 @@ const LiveStreamComponent = ({ data }) => {
               </div>
             </div>
           )}
-          <div className="mt-2">
+          <div className="mt-2 pb-4">
             {width < 992 && width > 767 ? null : (
               <p className={` ${styles.userView}`}>
                 {data?.modelData?.details?.about?.biography}
@@ -209,7 +190,7 @@ const LiveStreamComponent = ({ data }) => {
             <LiveStreamVideo video1={"/video/video.mp4"} />
           </div>
         </div> */}
-        <div className="mt-5 px-4">
+        {/* <div className="mt-5 px-4">
           <h3 className={`${styles.content} mb-3`}>
             Other Recommended <span> Live Streams for You</span>
           </h3>
@@ -243,10 +224,10 @@ const LiveStreamComponent = ({ data }) => {
               </p>
             </div>
           </div>
-        </div>
+        </div> */}
 
-        <VideoModal show={video} onHide={setVideo} />
-        <PhotoAlbumModal show={photoModal} onHide={setPhotoModal} />
+        {/* <VideoModal show={video} onHide={setVideo} /> */}
+        {/* <PhotoAlbumModal show={photoModal} onHide={setPhotoModal} /> */}
       </div>
     </>
   );

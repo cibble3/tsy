@@ -3,12 +3,38 @@ import React, { useEffect } from "react";
 const ChatWidget = ({ performerId }) => {
   useEffect(() => {
     function chatWidget(id) {
-      //   console.log(window.outerWidth, window.innerWidth);
-      var w = Math.abs(0.60 * window.outerWidth);
-      if (window.innerWidth > 767 && window.innerWidth < 991) {
-        w = Math.abs(0.97 * window.outerWidth);
+      var w = 0;
+      var h = 0;
+      // console.log(window.innerWidth);
+      if (window.innerWidth >= 320 && window.innerWidth < 375) {
+        // For mobile-small
+        w = Math.abs(0.92 * window.innerWidth);
+        h = Math.abs(0.99 * window.innerWidth);
+      } else if (window.innerWidth >= 375 && window.innerWidth < 425) {
+        // For mobile-large
+        w = Math.abs(0.93 * window.innerWidth);
+        h = Math.abs(0.99 * window.innerWidth);
+      } else if (window.innerWidth >= 425 && window.innerWidth < 768) {
+        // For mobile-large
+        w = Math.abs(0.94 * window.innerWidth);
+        h = Math.abs(0.99 * window.innerWidth);
+      } else if (window.innerWidth >= 768 && window.innerWidth < 850) {
+        // For tablet
+        w = Math.abs(0.67 * window.innerWidth);
+        h = Math.abs(0.68 * window.innerWidth);
+      } else if (window.innerWidth >= 850 && window.innerWidth < 1440) {
+        // For laptop
+        w = Math.abs(0.555 * window.innerWidth);
+        h = Math.abs(0.511 * window.innerWidth);
+      } else if (window.innerWidth >= 1440 && window.innerWidth <= 2560) {
+        // For laptop-large
+        w = Math.abs(0.615 * window.innerWidth);
+        h = Math.abs(0.34 * window.innerWidth);
+      } else {
+        // For 4k
+        w = Math.abs(1.5 * window.innerWidth);
       }
-      var h = Math.abs(0.7 * w);
+
       document.getElementById(id).style.width = w + "px";
       document.getElementById(id).style.height = h + "px";
       loadChatWidget();
@@ -33,7 +59,10 @@ const ChatWidget = ({ performerId }) => {
   return (
     <div id="model-chat" className="model-tab-content">
       <div id="chat-block">
-        <div id="object_container"  style={{width : '100%', height : '100%'}}></div>
+        <div
+          id="object_container"
+          style={{ width: "100%", height: "100%" }}
+        ></div>
       </div>
     </div>
   );
