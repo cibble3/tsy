@@ -1,5 +1,5 @@
-import React from "react";
-import { BsBroadcast } from "react-icons/bs";
+import React, { useState } from "react";
+import { BsBroadcast, BsCaretDownFill } from "react-icons/bs";
 import { MdApps, MdNotificationsNone } from "react-icons/md";
 
 import { useRouter } from "next/router";
@@ -8,10 +8,20 @@ import Link from "next/link";
 import styles from "./dashbpard-dark-theme.module.css";
 import { RiMessage2Line } from "react-icons/ri";
 import Image from "next/image";
+import { FaHeart, FaTrophy } from "react-icons/fa";
+import { IoIosMail } from "react-icons/io";
+import { GiUsaFlag } from "react-icons/gi";
+import { IoPersonCircleSharp } from "react-icons/io5";
 
 const HorizontalMenu = ({ collapse, setCollapse }) => {
   const router = useRouter();
   const colorMode = useSelector((state) => state.darklight);
+
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
 
   return (
     <div
@@ -23,8 +33,8 @@ const HorizontalMenu = ({ collapse, setCollapse }) => {
         <div className="d-flex">
           <Image
             alt="button"
-            height={50}
-            width={50}
+            height={30}
+            width={30}
             src="/nounmenu6294661.svg"
             className={`${styles.collapseIcon} ms-3`}
             style={{ cursor: "pointer" }}
@@ -47,20 +57,86 @@ const HorizontalMenu = ({ collapse, setCollapse }) => {
           </Link>
         </div>
         <div className="d-flex justify-contant-center align-items-center flex-wrap">
-          <span className={styles.goLive}>Go Live</span>
-          <div className={styles?.groupChild41}>
-            <BsBroadcast size={27} color="white" />
-          </div>
-          <div className={styles?.groupChild40}>
-            <MdApps size={27} color="white" />
-          </div>
-          <div className={styles?.groupChild40}>
-            <RiMessage2Line size={27} color="white" />
-          </div>
-          <div className={styles?.groupChild40}>
-            <MdNotificationsNone size={27} color="white" />
-          </div>
-          <div className="d-flex">
+          <ul className={styles.navList}>
+            <li
+              className={`${styles.tabletVisible} ${styles.mobileVisible} me-4`}
+            >
+              Promotions
+            </li>
+            <li
+              className={`${styles.tabletVisible} ${styles.mobileVisible} me-4`}
+            >
+              Club Elite
+            </li>
+            <li
+              className={`${styles.tabletVisible} ${styles.mobileVisible} me-4`}
+            >
+              Top Models
+            </li>
+            <li className={`${styles.navTrophy} me-4`}>
+              <FaTrophy className={styles.trophyIcon} />
+            </li>
+            <li className={`${styles.navMail} me-4`}>
+              <IoIosMail className={styles.MailIcon} />
+            </li>
+            <li className={`${styles.navHeart} me-4`}>
+              <FaHeart className={styles.heartIcon} />
+            </li>
+            <li
+              className={`${styles.tabletVisible} ${styles.mobileVisible} me-4`}
+            >
+              Get Credits
+            </li>
+            <li className={`${styles.navDrop} d-flex gap-2 me-4`}>
+              <div className={styles.mobileVisible}>EN</div>
+              <GiUsaFlag className={`${styles.navFlag}`} />
+              <BsCaretDownFill className={`${styles.navDown}`} />
+            </li>
+            <li className={`me-4`}>
+              <div className="d-flex gap-2">
+                <span
+                  className={`${styles.tabletVisible} ${styles.mobileVisible}`}
+                >
+                  Login
+                </span>
+                <IoPersonCircleSharp
+                  onClick={toggleDropdown}
+                  className={styles.navPerson}
+                />
+                {/* <BsCaretDownFill
+                  onClick={toggleDropdown}
+                  className={styles.navDown1}
+                /> */}
+                {showDropdown && (
+                  <ul className={styles.dropdownMenu}>
+                    <li>Promotions</li>
+                    <li>Club Elite</li>
+                    <li>Top Models</li>
+                    <button className={`${styles.navBtn} mx-4`}>
+                      Join Now for FREE
+                    </button>
+                  </ul>
+                )}
+              </div>
+            </li>
+          </ul>
+          <button
+            className={`${styles.navBtn} ${styles.tabletVisible} ${styles.mobileVisible} mx-4`}
+          >
+            Join Now for FREE
+          </button>
+          <Image
+            height={30}
+            width={30}
+            src="/nounmenu6294661.svg"
+            className={`${styles.menuRight} ms-2`}
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              setCollapse(!collapse);
+              localStorage.setItem("collapse", !collapse);
+            }}
+          />
+          {/* <div className="d-flex">
             <div
               className="mx-3"
               onClick={() => router.push("/User/user-profile/")}
@@ -84,7 +160,7 @@ const HorizontalMenu = ({ collapse, setCollapse }) => {
                 localStorage.setItem("collapse", !collapse);
               }}
             />
-          </div>
+          </div> */}
           <style jsx global>{`
             :root {
               --color-white: ${colorMode === "light" ? "#fff" : "#303030"};

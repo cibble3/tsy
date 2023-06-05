@@ -14,27 +14,17 @@
 }
 
 .mulVodMainXcraveXcavelogoIcon {
-  /* width: 230px; 
-  height: 35px;
-  */
   width: auto;
   height: 85px;
   cursor: pointer;
   margin-left: 1rem;
 }
-
-@media screen and (max-width: 400px) {
-  .mulVodMainXcraveXcavelogoIcon {
-    /* width: 170px; */
-    /* height: auto; */
-  }
-}
 .dashbpardDarkThemeItem::-webkit-scrollbar {
   display: none;
 }
 .mulVodSideXcraveXcavelogoIcon {
-  /* width: 150px; */
-  height: 80px;
+  width: 150px;
+  height: 25px;
   cursor: pointer;
 }
 .collapseIcon {
@@ -47,7 +37,7 @@
 }
 .goLive {
   font-size: var(--font-size-4xl);
-  /* font-family: var(--font-hp-simplified-jpan); */
+  font-family: var(--font-hp-simplified-jpan);
   color: var(--font-color);
   width: 80px;
 }
@@ -328,77 +318,10 @@
   min-width: 25px !important;
   color: var(--font-color);
 }
-.lang_wrap svg {
+.iconView svg {
   min-width: 25px !important;
 }
-.bottom_lang_container{
-  padding: 15px 0;
-  background-color: #000000;
-}
-.country_list{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 0;
 
-}
-.flag-en{
-  width: 500px;
-  display: block;
-}
-.country_list_item{
-  margin: 0 8px;
-  padding: 8px;
-}
-.country_name{
-  display: inline-block;
-  font-weight: 700;
-  color: #dfdfdf;
-}
-.country_name:hover{
-  color: #fff;
-  text-decoration: underline;
-}
-.copyrights_dark{
-  color: #999;
-  text-shadow: 1px 1px 1px rgba(0,0,0,.3);
-  border-top: 1px solid #282a2b;
-  padding: 15px 30px;
-  background-color: #000000;
-}
-.footer_menu{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.footer_menu_item{
-  color: #aaa;
-  padding: 10px;
-  display: inline-block;
-}
-.footer_menu_item:hover{
-  color: #ddd;
-  text-decoration: underline;
-}
-.bottom_statement{
-width: 100%;
-text-align: center;
-padding: 15px 0;
-background-color: #111212;
-}
-.statement_content{
-  color: #b0b0b0;
-}
-.statement_content:hover{
-  color: #fff;
-  text-decoration: underline;
-}
-
-.copy_right{
-  color: #ffffff;
-  margin-bottom: 20px;
-}
 @media screen and (max-width: 1400px) and (min-width: 1200px) {
   .iconView {
     width: 4% !important;
@@ -1080,5 +1003,241 @@ background-color: #111212;
   .blogimgtext {
     width: auto;
     margin-top: 5px;
+  }
+}
+
+.navList {
+  display: flex;
+  margin-bottom: 0 !important;
+}
+
+.navBtn {
+  background-color: #ed135d;
+  padding: 15px 25px;
+  border-radius: 2px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.trophyIcon {
+  font-size: 20px;
+  margin-top: 3px;
+}
+
+.MailIcon {
+  font-size: 25px;
+}
+
+.heartIcon {
+  font-size: 20px;
+  margin-top: 3px;
+}
+
+.navFlag {
+  font-size: 20px;
+  margin-top: 3px;
+}
+
+.navDown {
+  margin-top: 5px;
+}
+
+.navPerson {
+  display: none;
+}
+
+.mobileVisible {
+  margin-top: 3px;
+}
+
+.dropdownMenu {
+  box-shadow: 0 2px 8px 2px rgba(178, 178, 178, 0.406);
+  position: absolute;
+  background-color: var(--color-white);
+  right: 11%;
+  top: 9%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media (max-width: 1280px) {
+  .tabletVisible {
+    display: none;
+  }
+
+  .navPerson {
+    display: block;
+    font-size: 25px;
+  }
+
+  .dropdownMenu {
+    right: 3% !important;
+    top: 10%;
+  }
+}
+
+@media (max-width: 913px) {
+  .dropdownMenu {
+    right: 9% !important;
+    top: 5% !important;
+  }
+}
+
+@media (max-width: 850px) {
+  .dropdownMenu {
+    right: 11% !important;
+    top: 6.5% !important;
+  }
+}
+
+@media (max-width: 570px) {
+  .mulVodMainXcraveXcavelogoIcon {
+    width: auto;
+    height: 70px;
+  }
+
+  .menuRight {
+    width: 30px;
+  }
+}
+
+@media (max-width: 545px) {
+  .navList {
+    padding-left: 1px;
+  }
+  .mobileVisible {
+    display: none;
+  }
+  .mobileDisplay {
+    display: block;
+  }
+  .mulVodMainXcraveXcavelogoIcon {
+    width: auto;
+    height: 70px;
+  }
+
+  .menuRight {
+    width: 30px;
+  }
+
+  .navDrop {
+    gap: 3px !important;
+  }
+
+  .navHeart {
+    margin-right: 0 !important;
+  }
+
+  .navPerson {
+    display: block;
+    font-size: 25px;
+    margin-right: -15px;
+  }
+
+  .navFlag {
+    margin-left: 20px;
+  }
+  .navDown {
+    margin-right: -5px;
+  }
+}
+
+@media (max-width: 416px) {
+  .mulVodMainXcraveXcavelogoIcon {
+    width: auto;
+    height: 70px;
+  }
+
+  .menuRight {
+    width: 23px;
+  }
+}
+
+@media (max-width: 376px) {
+  .mulVodMainXcraveXcavelogoIcon {
+    width: auto;
+    height: 60px;
+  }
+
+  .menuRight {
+    width: 19px;
+  }
+}
+
+@media (max-width: 347px) {
+  .mulVodMainXcraveXcavelogoIcon {
+    width: auto;
+    height: 60px;
+  }
+
+  .menuRight {
+    width: 19px;
+  }
+
+  .trophyIcon {
+    font-size: 17px;
+  }
+
+  .MailIcon {
+    font-size: 22px;
+  }
+
+  .heartIcon {
+    font-size: 17px;
+  }
+
+  .navFlag {
+    font-size: 17px;
+  }
+
+  .navPerson {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 329px) {
+  .trophyIcon {
+    font-size: 15px;
+  }
+
+  .MailIcon {
+    font-size: 20px;
+  }
+
+  .heartIcon {
+    font-size: 15px;
+  }
+
+  .navFlag {
+    font-size: 15px;
+  }
+
+  .navDown {
+    font-size: 11px;
+  }
+
+  .navPerson {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 324px) {
+  .navList {
+    padding-left: 0.5px;
+  }
+  .navTrophy {
+    margin-right: 8px !important;
+  }
+
+  .navMail {
+    margin-right: 8px !important;
+  }
+
+  .navHeart {
+    margin-right: -8px !important;
   }
 }
