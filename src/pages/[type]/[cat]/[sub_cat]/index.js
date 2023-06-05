@@ -16,11 +16,6 @@ const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
   const [blogs, setBlogs] = useState([]);
   const [videos, setVideos] = useState([]);
 
-  const isPageFree = pathUrl
-    .split("/")
-    .map((key) => ["free"].includes(key.toLowerCase()))
-    .includes(true);
-
   useEffect(() => {
     setModels(data.performers);
     setPageContent(data.pageContent);
@@ -31,6 +26,11 @@ const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
       setPageLoaded(true);
     }, 2000);
   }, [data]);
+
+  const isPageFree = pathUrl
+    .split("/")
+    .map((key) => ["free"].includes(key.toLowerCase()))
+    .includes(true);
 
   const loadMoreModels = async () => {
     if (!loading) {
@@ -174,7 +174,7 @@ export default DashbpardDarkTheme;
 
 export async function getServerSideProps(context) {
   const response = await axiosInstance.get(
-    `/${context.params.type}/${context.params.cat}`
+    `/${context.params.type}/${context.params.cat}/${context.params.sub_cat}`
   );
   const responseData = response.data;
 

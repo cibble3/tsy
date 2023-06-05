@@ -25,6 +25,7 @@ const nextConfig = {
       "galleryn1.vcmdiawe.com",
       "galleryn2.vcmdiawe.com",
       "galleryn3.vcmdiawe.com",
+      "roomimg.stream.highwebmedia.com",
     ],
   },
   plugins: [

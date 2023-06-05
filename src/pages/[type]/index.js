@@ -7,7 +7,12 @@ import HeadMeta from "@/components/HeadMeta";
 import LiveScreenVideo from "@/components/LiveScreenVideo";
 import DarkSingleBlogPost from "@/components/DarkSingleBlogPost";
 
-const DashbpardDarkTheme = ({ data, params }) => {
+const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
+  const isPageFree = pathUrl
+    .split("/")
+    .map((key) => ["free"].includes(key.toLowerCase()))
+    .includes(true);
+
   const [models, setModels] = useState([]);
   const [pageContent, setPageContent] = useState([]);
   const [pageNo, setPageNo] = useState(2);
@@ -66,21 +71,38 @@ const DashbpardDarkTheme = ({ data, params }) => {
               />
 
               <div className="row">
-                {models?.map((element, i) => {
-                  return (
-                    <LiveScreenPhoto
-                      key={i}
-                      image={element?.profilePictureUrl?.size320x240}
-                      name={element?.displayName}
-                      age={element?.persons[0]?.age}
-                      tags={element?.details?.willingnesses}
-                      ethnicity={element?.ethnicity}
-                    />
-                  );
-                })}
+                {isPageFree &&
+                  models?.map((element, i) => {
+                    return (
+                      <LiveScreenPhoto
+                        key={i}
+                        image={element?.profilePictureUrl?.size320x240}
+                        name={element?.displayName}
+                        age={element?.persons[0]?.age}
+                        tags={element?.details?.willingnesses}
+                        ethnicity={element?.ethnicity}
+                        isPageFree={isPageFree}
+                      />
+                    );
+                  })}
+
+                {!isPageFree &&
+                  models?.map((element, i) => {
+                    return (
+                      <LiveScreenPhoto
+                        key={i}
+                        image={element?.profilePictureUrl?.size320x240}
+                        name={element?.displayName}
+                        age={element?.persons[0]?.age}
+                        tags={element?.details?.willingnesses}
+                        ethnicity={element?.ethnicity}
+                        isPageFree={isPageFree}
+                      />
+                    );
+                  })}
               </div>
 
-              {isPageLoaded && (
+              {!isPageFree && isPageLoaded && (
                 <div className="parent-loadbtn">
                   <button
                     className="loading-btn"
@@ -165,6 +187,7 @@ export async function getServerSideProps(context) {
     props: {
       data: responseData,
       params: context.params,
+      pathUrl: context.req.url,
     },
   };
 }
