@@ -5,8 +5,8 @@ const HeadMeta = ({ pageContent, canonical }) => {
     <Head>
       <title>{pageContent?.meta_title}</title>
 
-      <meta name="Rating" content="Mature" />   
-      <meta name="dc.language" content="US"/> 
+      <meta name="Rating" content="Mature" />
+      <meta name="dc.language" content="US" />
       <meta name="description" content={pageContent.meta_desc} />
       <meta name="keywords" content={pageContent.meta_keywords} />
       <meta name="robots" content="index, follow" />
@@ -22,8 +22,8 @@ const HeadMeta = ({ pageContent, canonical }) => {
       <meta itemProp="image" content="" />
       {/* <!--Facebook meta tags--> */}
       <meta property="og:type" content="website" />
-      <meta property="og:site_name" content="mistressworld.xxx"/>
-      <meta property="og:url" content=""/>
+      <meta property="og:site_name" content="mistressworld.xxx" />
+      <meta property="og:url" content="" />
       <meta property="og:title" content={pageContent.meta_title} />
       <meta property="og:description" content={pageContent.meta_desc} />
       {/* <!--Twitter meta cards--> */}
@@ -33,7 +33,7 @@ const HeadMeta = ({ pageContent, canonical }) => {
       <meta name="twitter:title" content={pageContent.meta_title} />
       <meta name="twitter:description" content={pageContent.meta_desc} />
       <meta name="twitter:image" content="" />
-      <link rel="canonical" href={canonical}/>
+      <link rel="canonical" href={canonical} />
     </Head>
   );
 };

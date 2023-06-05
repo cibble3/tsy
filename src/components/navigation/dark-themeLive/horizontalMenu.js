@@ -126,6 +126,7 @@ const HorizontalMenu = ({ collapse, setCollapse }) => {
             Join Now for FREE
           </button>
           <Image
+            alt="button"
             height={30}
             width={30}
             src="/nounmenu6294661.svg"
