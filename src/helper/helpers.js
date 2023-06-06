@@ -15,16 +15,19 @@ export const removeHtmlEntities = (str) => {
   return str.replace(/&[^\s;]+;/g, "");
 };
 
-export const renderProcessedContent = (text, limit = 250) => {
-  return truncateString(removeHtmlEntities(stripTags(he.decode(text))), limit);
+export const renderProcessedContent = (text, limit = 160) => {
+  return truncateString(
+    removeHtmlEntities(stripTags(he.decode(text))),
+    limit
+  ).toLowerCase();
 };
 
 export const slugify = (str) => {
   return str
     .toLowerCase()
-    .replace(/\s+/g, '-')
-    .replace(/[^\w\-]+/g, '')
-    .replace(/\-\-+/g, '-')
-    .replace(/^-+/, '')
-    .replace(/-+$/, '');
-}
+    .replace(/\s+/g, "-")
+    .replace(/[^\w\-]+/g, "")
+    .replace(/\-\-+/g, "-")
+    .replace(/^-+/, "")
+    .replace(/-+$/, "");
+};

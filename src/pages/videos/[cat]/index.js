@@ -96,7 +96,7 @@ const DashbpardDarkTheme = ({ data, params }) => {
                 )}
 
                 <div
-                  className="siteContent"
+                  className="siteContent mt-5 padding_container"
                   dangerouslySetInnerHTML={{
                     __html: pageContent?.bottom_text,
                   }}

@@ -26,6 +26,8 @@ const nextConfig = {
       "galleryn2.vcmdiawe.com",
       "galleryn3.vcmdiawe.com",
       "roomimg.stream.highwebmedia.com",
+      "nude-cam-model-pics.s3-us-west-2.amazonaws.com",
+      "galleryn3.awemwh.com",
     ],
   },
   plugins: [

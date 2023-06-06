@@ -15,11 +15,13 @@ const DashbpardDarkTheme = () => {
   const [pageNo, setPageNo] = useState(2);
   const [loading, setLoading] = useState(false);
   const [isPageLoaded, setPageLoaded] = useState(false);
+  const [category, setCategory] = useState("");
 
   useEffect(() => {
     axiosInstance
       .get("/")
       .then((response) => {
+        setCategory(response.data.category);
         setModels(response.data.performers);
         setPageContent(response.data.pageContent);
         setBlogs(response.data.articles);
@@ -104,7 +106,7 @@ const DashbpardDarkTheme = () => {
                 )}
 
                 <div
-                  className="siteContent"
+                  className="siteContent mt-5 padding_container"
                   dangerouslySetInnerHTML={{
                     __html: pageContent?.bottom_text,
                   }}
@@ -112,9 +114,12 @@ const DashbpardDarkTheme = () => {
               </div>
 
               {blogs && (
-                <div className="py-4 px-3">
+                <div className="py-4 padding_container">
                   <div className="row">
-                    <h2 align="center">The MistressWorld Live Fetish Blog</h2>
+                    <h2 align="center">
+                      The MistressWorld Live{" "}
+                      <span className="blog_span">{category}</span> Blog
+                    </h2>
                     {blogs?.map((element, i) => {
                       return (
                         <DarkSingleBlogPost
@@ -131,10 +136,11 @@ const DashbpardDarkTheme = () => {
               )}
 
               {videos && (
-                <div className="py-4 px-3">
+                <div className="py-4 padding_container">
                   <div className="row">
                     <h2 align="center">
-                      MistressWorld Free BDSM Cam &amp; Fetish Webcam Model
+                      MistressWorld Free BDSM Cam &{" "}
+                      <span className="blog_span">{category}</span> Webcam Model
                       Videos
                     </h2>
                     {videos?.map((element, i) => {

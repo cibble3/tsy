@@ -15,6 +15,7 @@ const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
   const [isPageLoaded, setPageLoaded] = useState(false);
   const [blogs, setBlogs] = useState([]);
   const [videos, setVideos] = useState([]);
+  const [category, setCategory] = useState("");
 
   const isPageFree = pathUrl
     .split("/")
@@ -22,6 +23,7 @@ const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
     .includes(true);
 
   useEffect(() => {
+    setCategory(data.category);
     setModels(data.performers);
     setPageContent(data.pageContent);
     setBlogs(data.articles);
@@ -116,7 +118,7 @@ const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
               )}
 
               <div
-                className="siteContent"
+                className="siteContent mt-5 padding_container"
                 dangerouslySetInnerHTML={{
                   __html: pageContent?.bottom_text,
                 }}
@@ -124,9 +126,12 @@ const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
             </div>
 
             {blogs && (
-              <div className="py-4 px-3">
+              <div className="py-4 padding_container">
                 <div className="row">
-                  <h2 align="center">The MistressWorld Live Fetish Blog</h2>
+                  <h2 align="center">
+                    The MistressWorld Live{" "}
+                    <span className="blog_span">{category}</span> Blog
+                  </h2>
                   {blogs?.map((element, i) => {
                     return (
                       <DarkSingleBlogPost
@@ -143,10 +148,12 @@ const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
             )}
 
             {videos && (
-              <div className="py-4 px-3">
+              <div className="py-4 padding_container">
                 <div className="row">
                   <h2 align="center">
-                    MistressWorld Free BDSM Cam &amp; Fetish Webcam Model Videos
+                    MistressWorld Free BDSM Cam &{" "}
+                    <span className="blog_span">{category}</span> Webcam Model
+                    Videos
                   </h2>
                   {videos?.map((element, i) => {
                     return (

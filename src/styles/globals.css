@@ -574,3 +574,11 @@ li.categories_items a:hover {
     line-height: 45px;
   }
 }
+
+.padding_container {
+  padding: 0% 10% 0% 10%;
+}
+
+.blog_span {
+  text-transform: capitalize !important;
+}

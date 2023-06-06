@@ -37,7 +37,7 @@
 }
 .goLive {
   font-size: var(--font-size-4xl);
-  font-family: var(--font-hp-simplified-jpan);
+  /* font-family: var(--font-hp-simplified-jpan); */
   color: var(--font-color);
   width: 80px;
 }
@@ -989,6 +989,7 @@
 
 .cardtext {
   color: var(--font-color);
+  text-transform: "capitalize";
 }
 
 .Dashbpardcard {
