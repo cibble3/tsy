@@ -22,7 +22,7 @@ const LiveScreenVideo = ({
     <div
       className={`${
         !isFeatured && "col-xl-3 col-lg-4"
-      } col-md-6 col-sm-6 mt-4 video-block`}
+      } col-md-4 col-sm-6 mt-4 video-block`}
     >
       <div className="relative video-items">
         <Link href={`/${parent}/${friendlyUrlWithPerformer}`}>

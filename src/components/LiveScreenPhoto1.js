@@ -34,7 +34,7 @@ const LiveScreenPhoto1 = ({
               <div className="d-flex align-items-center d-flex align-items-center">
                 <RxDotFilled color="#8FC400" fontSize="22px" />
                 <span>
-                  {name} ({age})
+                  {name} {age && `(${age})`}
                 </span>
               </div>
               <div className="">
