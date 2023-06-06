@@ -522,24 +522,41 @@ li.categories_items a:hover {
 .side-images-wrapper {
   display: flex;
   flex-direction: column;
-  height: 100%;
   gap: 4px;
 }
 .side-images-wrapper a {
   flex-basis: 25%;
   flex-grow: 1;
   flex-shrink: 1;
-  padding: 0;
   position: relative;
-  -webkit-user-select: none;
-  user-select: none;
-  overflow: hidden;
 }
-.side-images-wrapper a img {
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  object-position: top;
+.side-images-wrapper a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 42px;
+  bottom: 0px;
+  padding: 15px;
+  background: linear-gradient(180deg, rgb(255 255 255 / 0%) 0%, rgb(0 0 0) 96%);
+}
+.related-models {
+  overflow-y: auto !important;
+}
+.related-models::-webkit-scrollbar {
+  display: none;
+}
+.model_details_container {
+  max-width: 1600px;
+  margin: auto;
+  width: 100%;
+}
+.model-name {
+  position: absolute;
+  z-index: 2;
+  left: 10px;
+  bottom: 10px;
+  color: #fff;
 }
 @media screen and (max-width: 850px) {
   .nav.nav-tabs {

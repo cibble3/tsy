@@ -15,7 +15,7 @@
 
 .mulVodMainXcraveXcavelogoIcon {
   width: auto;
-  height: 85px;
+  height: 60px;
   cursor: pointer;
   margin-left: 1rem;
 }
@@ -74,6 +74,16 @@
 }
 .sideHeader {
   display: none;
+  position: relative;
+}
+.sidebar_login {
+  box-shadow: none !important;
+}
+.sidebar_register {
+  border-radius: 0;
+  background-color: #ed135d !important;
+  border-color: #ed135d !important;
+  box-shadow: none !important;
 }
 .home {
   color: var(--font-color);
@@ -1129,7 +1139,14 @@
   align-items: center;
   gap: 1rem;
 }
-
+.sign_btn_group {
+  padding: 30px 10px 15px;
+}
+.sidebar_close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
 @media (max-width: 1280px) {
   .tabletVisible {
     display: none;

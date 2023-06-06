@@ -49,9 +49,7 @@ const HorizontalMenu = ({ collapse, setCollapse }) => {
               height={50}
               width={50}
               alt="logo"
-              src={
-                colorMode === "dark" ? "/logo_master.png" : "/logo_master.png"
-              }
+              src={colorMode === "dark" ? "/logo.png" : "/logo.png"}
               className={styles.mulVodMainXcraveXcavelogoIcon}
             />
           </Link>

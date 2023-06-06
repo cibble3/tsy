@@ -5,6 +5,7 @@ import useWindowSize from "@/hooks/useWindowSize";
 import ChatWidget from "./ChatWidget";
 import HeadMeta from "@/components/HeadMeta";
 import Image from "next/image";
+import { RxDotFilled } from "react-icons/rx";
 
 const LiveStreamComponent = ({ data }) => {
   const { width, height } = useWindowSize();
@@ -37,132 +38,147 @@ const LiveStreamComponent = ({ data }) => {
     <>
       <HeadMeta pageContent={data?.pageContent} />
       <div className={styles?.LiveMain}>
-        <div className="row justify-content-center p-0 m-0">
-          <div
-            className={`${
-              width < 576 ? "" : "px-2"
-            } col-xl-9 col-lg-8 col-md-8 col-sm-12 mt-2 `}
-          >
-            <ChatWidget performerId={data.modelData.performerId} />
-
-            {width < 992 && width > 767 ? (
-              <div className={`${styles.midView}`}>
-                <div className={`d-flex mt-3`}>
-                  <div>
-                    <img
-                      src="/mask-group-3@2x.png"
-                      style={{
-                        width: "48px",
-                        height: "48px",
-                        borderRadius: "50%",
-                      }}
-                    />
-                  </div>
-                  <div className="ps-3">
-                    <h1 className={`${styles.userName} m-0`}>
-                      {data?.modelData?.displayName}
-                    </h1>
-                    <div className="d-flex align-items-end">
-                      <Rating
-                        value={rating}
-                        onStarClick={(nextValue, prevValue, name) =>
-                          handleStarClick(nextValue, prevValue, name)
-                        }
-                        starCount={5}
-                        starColor={"#ffb400"}
-                        emptyStarColor={"#ccc"}
-                      />
-                      <p className={`${styles.rating} m-0 ms-2`}>
-                        Ratings :{" "}
-                        <strong>
-                          {Number(
-                            data?.modelData?.details?.modelRating
-                          ).toFixed(1)}
-                        </strong>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className={`${styles.livetext} mt-2`}>
-                  <p>
-                    Clairvoyant,Love Family and career reading.Love relationship
-                    virtual, natural healing ,dream analysis ,spiritual gu
-                  </p>
-                </div>
-              </div>
-            ) : null}
-          </div>
-          <div
-            className="col-xl-3 col-lg-4 col-md-4 col-sm-11 mt-2"
-            style={{ height: videoHeight, maxHeight: 650 }}
-          >
+        <div className="model_details_container">
+          <div className="row justify-content-center p-0 m-0">
             <div
-              style={{ position: "relative" }}
-              className="side-images-wrapper"
+              style={{ height: videoHeight, maxHeight: 800 }}
+              className={`${
+                width < 576 ? "" : "px-2"
+              } col-xl-9 col-lg-8 col-md-8 col-sm-12 mt-2 `}
             >
-              {data.relatedModels?.map((element, i) => {
-                if (element.title != "")
-                  return (
-                    <a href={`https:${element.chatRoomUrl}`} target="_blank">
-                      <Image
-                        height={200}
-                        width={200}
-                        src={`https:${element.profilePictureUrl.size320x240}`}
-                        alt=""
-                        // className="mb-1"
+              <ChatWidget performerId={data.modelData.performerId} />
+
+              {width < 992 && width > 767 ? (
+                <div className={`${styles.midView}`}>
+                  <div className={`d-flex mt-3`}>
+                    <div>
+                      <img
+                        src="/mask-group-3@2x.png"
                         style={{
-                          // height: (videoHeight - 12) / 4,
-                          width: "100%",
-                          // maxHeight: 162,
+                          width: "48px",
+                          height: "48px",
+                          borderRadius: "50%",
                         }}
                       />
-                    </a>
-                  );
-              })}
+                    </div>
+                    <div className="ps-3">
+                      <h1 className={`${styles.userName} m-0`}>
+                        {data?.modelData?.displayName}
+                      </h1>
+                      <div className="d-flex align-items-end">
+                        <Rating
+                          value={rating}
+                          onStarClick={(nextValue, prevValue, name) =>
+                            handleStarClick(nextValue, prevValue, name)
+                          }
+                          starCount={5}
+                          starColor={"#ffb400"}
+                          emptyStarColor={"#ccc"}
+                        />
+                        <p className={`${styles.rating} m-0 ms-2`}>
+                          Ratings :{" "}
+                          <strong>
+                            {Number(
+                              data?.modelData?.details?.modelRating
+                            ).toFixed(1)}
+                          </strong>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  {/* <div className={`${styles.livetext} mt-2`}>
+                    <p>
+                      Clairvoyant,Love Family and career reading.Love
+                      relationship virtual, natural healing ,dream analysis
+                      ,spiritual gu
+                    </p>
+                  </div> */}
+                </div>
+              ) : null}
+            </div>
+            <div
+              className="col-xl-3 col-lg-4 col-md-4 col-sm-11 mt-2 related-models"
+              style={{ height: videoHeight, maxHeight: 800 }}
+            >
+              <div
+                style={{ position: "relative" }}
+                className="side-images-wrapper"
+              >
+                {data.relatedModels?.map((element, i) => {
+                  if (element.title != "")
+                    return (
+                      <a href={`https:${element.chatRoomUrl}`} target="_blank">
+                        <Image
+                          height={200}
+                          width={200}
+                          src={`https:${element.profilePictureUrl.size320x240}`}
+                          alt=""
+                          // className="mb-1"
+                          style={{
+                            // height: (videoHeight - 12) / 4,
+                            width: "100%",
+                            // maxHeight: 162,
+                          }}
+                        />
+                        <div className="d-flex align-items-center d-flex align-items-center model-name">
+                          <RxDotFilled color="#8FC400" fontSize="22px" />
+                          <span>
+                            {element.displayName} ({element?.persons[0]?.age})
+                          </span>
+                        </div>
+                      </a>
+                    );
+                })}
+              </div>
             </div>
           </div>
-        </div>
-        <div className="px-4">
-          {width < 992 && width > 767 ? null : (
-            <div className={`d-flex mt-5 ${styles.userView}`}>
-              <div>
-                <img
-                  src={data?.modelData?.profilePictureUrl?.size1024x768}
-                  style={{ width: "48px", height: "48px", borderRadius: "50%" }}
-                />
-              </div>
-              <div className="ps-3">
-                <h1 className={`${styles.userName} m-0`}>
-                  {data?.modelData?.displayName}
-                </h1>
-                <div className="d-flex align-items-end rating">
-                  <Rating
-                    value={rating}
-                    onStarClick={(nextValue, prevValue, name) =>
-                      handleStarClick(nextValue, prevValue, name)
-                    }
-                    starCount={5}
-                    starColor={"#ffb400"}
-                    emptyStarColor={"#ccc"}
+          <div className="px-4">
+            {width < 992 && width > 767 ? null : (
+              <div className={`d-flex mt-5 ${styles.userView}`}>
+                <div>
+                  <img
+                    src={data?.modelData?.profilePictureUrl?.size1024x768}
+                    style={{
+                      width: "48px",
+                      height: "48px",
+                      borderRadius: "50%",
+                    }}
                   />
+                </div>
+                <div className="ps-3">
+                  <h1 className={`${styles.userName} m-0`}>
+                    {data?.modelData?.displayName}
+                  </h1>
+                  <div className="d-flex align-items-end rating">
+                    <Rating
+                      value={rating}
+                      onStarClick={(nextValue, prevValue, name) =>
+                        handleStarClick(nextValue, prevValue, name)
+                      }
+                      starCount={5}
+                      starColor={"#ffb400"}
+                      emptyStarColor={"#ccc"}
+                    />
 
-                  <p className={`${styles.rating} m-0 ms-2`}>
-                    Ratings :{" "}
-                    <strong>
-                      {Number(data?.modelData?.details?.modelRating).toFixed(1)}
-                    </strong>
-                  </p>
+                    <p className={`${styles.rating} m-0 ms-2`}>
+                      Ratings :{" "}
+                      <strong>
+                        {Number(data?.modelData?.details?.modelRating).toFixed(
+                          1
+                        )}
+                      </strong>
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
-          <div className="mt-2 pb-4">
-            {width < 992 && width > 767 ? null : (
-              <p className={` ${styles.userView}`}>
-                {data?.modelData?.details?.about?.biography}
-              </p>
             )}
-            {/* <div className="mt-4">
+            <div className="mt-2 pb-4">
+              {width < 992 && width > 767 ? null : (
+                <p className={` ${styles.userView}`}>
+                  {data?.modelData?.details?.about?.biography}
+                </p>
+              )}
+              {/* <div className="mt-4">
             <h3 className={`${styles.content} mb-1`}>
               Exclusive Content<span> from OraPredictar</span>
             </h3>
@@ -171,6 +187,7 @@ const LiveStreamComponent = ({ data }) => {
               their exclusive content.
             </p>
           </div> */}
+            </div>
           </div>
         </div>
         {/* <div className="mt-5 px-4">

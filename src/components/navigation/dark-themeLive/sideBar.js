@@ -16,7 +16,7 @@ import Link from "next/link";
 import DropdownComponent from "./DropdownComponent";
 import { AiOutlineHeart } from "react-icons/ai";
 import menuData from "../../../context/menuData.json";
-import { Nav, Tab } from "react-bootstrap";
+import { Button, Nav, Tab } from "react-bootstrap";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
@@ -49,22 +49,24 @@ const SideBar = ({ collapse, setCollapse, parentMenuNames = [] }) => {
       >
         <div>
           <div className={styles.sideHeader}>
-            <div className="d-flex justify-content-between ">
-              <Image
-                height={50}
-                width={50}
-                alt="logo"
-                src={
-                  colorMode === "dark" ? "/logo_master.png" : "/logo_master.png"
-                }
-                className={styles.mulVodMainXcraveXcavelogoIcon}
-              />
-              <IoCloseSharp
-                color="#818181"
-                size={20}
-                onClick={() => setCollapse(true)}
-              />
+            <div
+              className={`d-flex justify-content-between ${styles.sign_btn_group}`}
+            >
+              <Button
+                className={`bg-transparent border-0 ${styles.sidebar_login}`}
+              >
+                Login
+              </Button>
+              <Button className={styles.sidebar_register}>
+                Join Now for Free
+              </Button>
             </div>
+            <IoCloseSharp
+              color="#818181"
+              size={20}
+              onClick={() => setCollapse(true)}
+              className={styles.sidebar_close}
+            />
           </div>
         </div>
         <Tab.Container
