@@ -9,18 +9,20 @@ import Image from "next/image";
 const LiveStreamComponent = ({ data }) => {
   const { width, height } = useWindowSize();
 
-  let videoHeight = 510;
+  // let videoHeight = 510;
 
-  if (width >= 768 && width < 850) {
-    // For tablet
-    videoHeight = (width + 252) / 2;
-  } else if (width >= 850 && width < 1440) {
-    // For laptop
-  } else if (width >= 1440 && width <= 2560) {
-    // For laptop-large
-  } else {
-    // For 4k
-  }
+  // if (width >= 768 && width < 850) {
+  //   // For tablet
+  //   videoHeight = (width + 252) / 2;
+  // } else if (width >= 850 && width < 1440) {
+  //   // For laptop
+  // } else if (width >= 1440 && width <= 2560) {
+  //   // For laptop-large
+  // } else {
+  //   // For 4k
+  // }
+
+  let videoHeight = width > 992 ? width / 2 : 510;
 
   const [rating, setRating] = useState(0);
 
@@ -94,7 +96,10 @@ const LiveStreamComponent = ({ data }) => {
             className="col-xl-3 col-lg-4 col-md-4 col-sm-11 mt-2"
             style={{ height: videoHeight, maxHeight: 650 }}
           >
-            <div style={{ position: "relative" }}>
+            <div
+              style={{ position: "relative" }}
+              className="side-images-wrapper"
+            >
               {data.relatedModels?.map((element, i) => {
                 if (element.title != "")
                   return (
@@ -104,11 +109,11 @@ const LiveStreamComponent = ({ data }) => {
                         width={200}
                         src={`https:${element.profilePictureUrl.size320x240}`}
                         alt=""
-                        className="mb-1"
+                        // className="mb-1"
                         style={{
-                          height: videoHeight / 4,
+                          // height: (videoHeight - 12) / 4,
                           width: "100%",
-                          maxHeight: 162,
+                          // maxHeight: 162,
                         }}
                       />
                     </a>
