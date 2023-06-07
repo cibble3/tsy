@@ -30,14 +30,15 @@ const DarkSingleBlogPost = ({ image, title1, title2, post_url }) => {
           </div>
           <div className={`${styles?.cardtext} fs-12 lh mt-2 mb-2`}>
             {renderProcessedContent(title2)}
-            <Link
+            {/* <Link
               href={`/blog/${post_url}`}
               title={title1}
               className={`${styles?.cardtext} text-decoration-underline`}
-              role="button"
+              aria-label={`Learn more about ${title1}`}
             >
-              Read More
-            </Link>
+              {" "}
+              Learn more
+            </Link> */}
           </div>
         </div>
       </div>

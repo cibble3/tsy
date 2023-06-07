@@ -32,9 +32,9 @@ const DashbpardDarkTheme = () => {
         console.error(error);
       });
 
-    // setTimeout(() => {
-    //   setPageLoaded(true);
-    // }, 2000);
+    setTimeout(() => {
+      setPageLoaded(true);
+    }, 5000);
   }, []);
 
   const loadMoreModels = async () => {
@@ -79,18 +79,19 @@ const DashbpardDarkTheme = () => {
                 />
 
                 <div className="row">
-                  {models?.map((element, i) => {
-                    return (
-                      <LiveScreenPhoto
-                        key={i}
-                        image={element?.profilePictureUrl?.size320x240}
-                        name={element?.displayName}
-                        age={element?.persons[0]?.age}
-                        tags={element?.details?.willingnesses}
-                        ethnicity={element?.ethnicity}
-                      />
-                    );
-                  })}
+                  {models &&
+                    models?.map((element, i) => {
+                      return (
+                        <LiveScreenPhoto
+                          key={i}
+                          image={element?.profilePictureUrl?.size320x240}
+                          name={element?.displayName}
+                          age={element?.persons[0]?.age}
+                          tags={element?.details?.willingnesses}
+                          ethnicity={element?.ethnicity}
+                        />
+                      );
+                    })}
                 </div>
 
                 {isPageLoaded && (
@@ -113,7 +114,7 @@ const DashbpardDarkTheme = () => {
                 />
 
                 {blogs && (
-                  <div className="py-4 mt-2 padding_container">
+                  <div className="py-4 mt-2padding_container">
                     <div className="row">
                       <h2 align="center">
                         The MistressWorld Live{" "}
@@ -135,7 +136,7 @@ const DashbpardDarkTheme = () => {
                 )}
 
                 {videos && (
-                  <div className="py-4 mt-2 padding_container">
+                  <div className="py-4  mt-2 padding_container">
                     <div className="row">
                       <h2 align="center">
                         MistressWorld Free BDSM Cam &{" "}

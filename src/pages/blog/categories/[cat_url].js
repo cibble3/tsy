@@ -8,7 +8,7 @@ import HeadMeta from "@/components/HeadMeta";
 const DashbpardDarkTheme = ({ data }) => {
   return (
     <>
-      <HeadMeta pageContent={data?.pageContent}/>
+      <HeadMeta pageContent={data?.pageContent} />
       <div>
         <DarkTheme>
           <div className={styles?.dasboardMain}>
@@ -22,13 +22,13 @@ const DashbpardDarkTheme = ({ data }) => {
               <div className="row">
                 {data?.articles?.map((element, i) => {
                   return (
-                      <DarkSingleBlogPost
-                        key={i}
-                        image={element?.feature_image}
-                        title1={element?.post_title}
-                        post_url={element?.post_url}
-                        title2={element?.post_content}
-                      />
+                    <DarkSingleBlogPost
+                      key={i}
+                      image={element?.feature_image}
+                      title1={element?.post_title}
+                      post_url={element?.post_url}
+                      title2={element?.post_content}
+                    />
                   );
                 })}
               </div>
@@ -43,21 +43,29 @@ const DashbpardDarkTheme = ({ data }) => {
 export default DashbpardDarkTheme;
 
 export async function getServerSideProps(context) {
-    const response = await axiosInstance.get(`/blog/categories/${context.params.cat_url}`);
-    const responseData = response.data;
-  
-    if (!responseData.status) {
-      return {
-        redirect: {
-          destination: "/blog",
-          permanent: false,
-        },
-      };
-    }
+  const { req, res } = context;
+
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=10, stale-while-revalidate=59"
+  );
+
+  const response = await axiosInstance.get(
+    `/blog/categories/${context.params.cat_url}`
+  );
+  const responseData = response.data;
+
+  if (!responseData.status) {
     return {
-      props: {
-        data: responseData,
+      redirect: {
+        destination: "/blog",
+        permanent: false,
       },
     };
   }
-  
+  return {
+    props: {
+      data: responseData,
+    },
+  };
+}

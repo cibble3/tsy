@@ -124,7 +124,7 @@ const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
               />
 
               {blogs && (
-                <div className="py-4 mt-2 padding_container">
+                <div className="py-4  mt-2 padding_container">
                   <div className="row">
                     <h2 align="center">
                       The MistressWorld Live{" "}
@@ -146,7 +146,7 @@ const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
               )}
 
               {videos && (
-                <div className="py-4 mt-2 padding_container">
+                <div className="py-4  mt-2 padding_container">
                   <div className="row">
                     <h2 align="center">
                       MistressWorld Free BDSM Cam &{" "}
@@ -179,6 +179,13 @@ const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
 export default DashbpardDarkTheme;
 
 export async function getServerSideProps(context) {
+  const { req, res } = context;
+
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=10, stale-while-revalidate=59"
+  );
+
   const response = await axiosInstance.get(`/${context.params.type}`);
   const responseData = response.data;
 

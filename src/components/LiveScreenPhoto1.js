@@ -30,6 +30,8 @@ const LiveScreenPhoto1 = ({
             src={`https:${image}`}
             alt={`live ${ethnicity} cam performance by ${name}`}
             className="w-100"
+            loading="eager"
+            priority={true}
           />
           <div className="text-white px-2 bg-overlay">
             <div
@@ -56,6 +58,8 @@ const LiveScreenPhoto1 = ({
             src={`https:${image}`}
             alt={`live ${ethnicity} cam performance by ${name}`}
             className="w-100"
+            // loading="eager"
+            // priority={true}
           />
           <div className="text-white px-2 bg-overlay">
             <div

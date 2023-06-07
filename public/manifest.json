@@ -9,14 +9,25 @@
   "theme_color": "#fff",
   "display": "standalone",
   "description": "MistressWorld.xxx provides the best live mistress cams, naughty live Dominatrix webcam & online Domination. Join our Mistresses & fetish cam models now for erotic live sex in private chatrooms , live fetish & mistress chat.",
+  "prefer_related_applications": true,
   "icons": [
     {
-      "src": "/logo_master192x192.svg",
-      "sizes": "192x192"
+      "src": "logo_master144x144.svg",
+      "sizes": "144x144",
+      "type": "image/svg+xml",
+      "purpose": "any"
     },
     {
-      "src": "/logo_master512x512.svg",
-      "sizes": "512x512"
+      "src": "logo_master192x192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "logo_master512x512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
     }
   ]
 }

@@ -175,6 +175,13 @@ const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
 export default DashbpardDarkTheme;
 
 export async function getServerSideProps(context) {
+  const { req, res } = context;
+
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=10, stale-while-revalidate=59"
+  );
+
   const response = await axiosInstance.get(
     `/videos/${context.params.cat}/${context.params.sub_cat}`
   );

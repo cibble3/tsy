@@ -10,6 +10,12 @@ const HeadMeta = ({ pageContent, canonical }) => {
       <meta name="description" content={pageContent.meta_desc} />
       <meta name="keywords" content={pageContent.meta_keywords} />
       <meta name="robots" content="index, follow" />
+      <meta name="theme-color" content="#3d3d3d" />
+      <meta
+        name="preconnect"
+        content={`${process.env.NEXT_PUBLIC_PRE_CONNECT_URL}`}
+      />
+
       {/* <!--DC meta tags--> */}
       <meta name="dc.source" content="" />
       <meta name="dc.title" content={pageContent.meta_title} />

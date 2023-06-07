@@ -81,8 +81,8 @@
 }
 .sidebar_register {
   border-radius: 0;
-  background-color: #ed135d !important;
-  border-color: #ed135d !important;
+  background-color: #ab1243 !important;
+  border-color: #ab1243 !important;
   box-shadow: none !important;
 }
 .home {
@@ -91,7 +91,7 @@
   margin-left: 10px;
 }
 .dashboard {
-  color: #ed135d;
+  color: #ab1243;
   font-size: 23px;
   margin-left: 10px;
 }
@@ -1089,7 +1089,7 @@
 }
 
 .navBtn {
-  background-color: #ed135d;
+  background-color: #ab1243;
   padding: 15px 25px;
   border-radius: 2px;
   color: #ffffff;
