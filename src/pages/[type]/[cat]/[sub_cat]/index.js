@@ -123,53 +123,53 @@ const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
                   __html: pageContent?.bottom_text,
                 }}
               />
+
+              {blogs && (
+                <div className="py-4 mt-2 padding_container">
+                  <div className="row">
+                    <h2 align="center">
+                      The MistressWorld Live{" "}
+                      <span className="blog_span">{category}</span> Blog
+                    </h2>
+                    {blogs?.map((element, i) => {
+                      return (
+                        <DarkSingleBlogPost
+                          key={i}
+                          image={element?.feature_image}
+                          title1={element?.post_title}
+                          post_url={element?.post_url}
+                          title2={element?.post_content}
+                        />
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {videos && (
+                <div className="py-4 mt-2 padding_containertainer">
+                  <div className="row">
+                    <h2 align="center">
+                      MistressWorld Free BDSM Cam &{" "}
+                      <span className="blog_span">{category}</span> Webcam Model
+                      Videos
+                    </h2>
+                    {videos?.map((element, i) => {
+                      return (
+                        <LiveScreenVideo
+                          isFeatured={true}
+                          key={i}
+                          title={element?.title}
+                          image={element?.thumbImage}
+                          targetUrl={element?.targetUrl}
+                          parent={"video"}
+                        />
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
             </div>
-
-            {blogs && (
-              <div className="py-4 padding_container">
-                <div className="row">
-                  <h2 align="center">
-                    The MistressWorld Live{" "}
-                    <span className="blog_span">{category}</span> Blog
-                  </h2>
-                  {blogs?.map((element, i) => {
-                    return (
-                      <DarkSingleBlogPost
-                        key={i}
-                        image={element?.feature_image}
-                        title1={element?.post_title}
-                        post_url={element?.post_url}
-                        title2={element?.post_content}
-                      />
-                    );
-                  })}
-                </div>
-              </div>
-            )}
-
-            {videos && (
-              <div className="py-4 padding_container">
-                <div className="row">
-                  <h2 align="center">
-                    MistressWorld Free BDSM Cam &{" "}
-                    <span className="blog_span">{category}</span> Webcam Model
-                    Videos
-                  </h2>
-                  {videos?.map((element, i) => {
-                    return (
-                      <LiveScreenVideo
-                        isFeatured={true}
-                        key={i}
-                        title={element?.title}
-                        image={element?.thumbImage}
-                        targetUrl={element?.targetUrl}
-                        parent={"video"}
-                      />
-                    );
-                  })}
-                </div>
-              </div>
-            )}
           </div>
         </>
       </DarkTheme>

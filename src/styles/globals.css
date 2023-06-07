@@ -576,9 +576,14 @@ li.categories_items a:hover {
 }
 
 .padding_container {
-  padding: 0% 10% 0% 10%;
+  padding: 2% 10% 2% 10%;
+  background-color: #3d3d3d;
 }
 
 .blog_span {
   text-transform: capitalize !important;
+}
+
+.video-thumb {
+  border-radius: 5px;
 }

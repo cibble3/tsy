@@ -117,7 +117,7 @@ const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
                 />
 
                 {blogs && (
-                  <div className="py-4 padding_container">
+                  <div className="py-4 mt-2 padding_container">
                     <div className="row">
                       <h2 align="center">
                         The MistressWorld Live{" "}
@@ -139,7 +139,7 @@ const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
                 )}
 
                 {models && (
-                  <div className="py-4 padding_container">
+                  <div className="py-4 mt-2 padding_container">
                     <div className="row">
                       <h2 align="center">
                         The MistressWorld Live{" "}

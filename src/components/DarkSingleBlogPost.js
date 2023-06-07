@@ -10,7 +10,7 @@ const DarkSingleBlogPost = ({ image, title1, title2, post_url }) => {
         <Link title={title1} href={`/blog/${post_url}`}>
           <img
             className="card-img-top"
-            style={{ height: "250px" }}
+            style={{ height: "200px" }}
             src={image}
             alt={`Blog Post: ${title1}`}
             role="button"

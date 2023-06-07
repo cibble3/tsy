@@ -31,7 +31,7 @@ const LiveScreenVideo = ({
             height={500}
             src={`https:${image}`}
             alt={`${performerName}${title ? " : " + title : ""}`}
-            className="w-100"
+            className="w-100 video-thumb"
           />
           <Image
             width={500}

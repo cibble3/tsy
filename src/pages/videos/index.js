@@ -76,9 +76,7 @@ const DashbpardDarkTheme = ({ data, pathUrl }) => {
               <div className="py-4 px-3">
                 <div
                   className="siteContent"
-                  dangerouslySetInnerHTML={{
-                    __html: pageContent?.top_text,
-                  }}
+                  dangerouslySetInnerHTML={{ __html: pageContent?.top_text }}
                 />
 
                 <div className="row">
@@ -115,7 +113,7 @@ const DashbpardDarkTheme = ({ data, pathUrl }) => {
                 />
 
                 {blogs && (
-                  <div className="py-4 padding_container">
+                  <div className="py-4 mt-2 padding_container">
                     <div className="row">
                       <h2 align="center">
                         The MistressWorld Live{" "}
@@ -138,7 +136,7 @@ const DashbpardDarkTheme = ({ data, pathUrl }) => {
                 )}
 
                 {models && (
-                  <div className="py-4 padding_container">
+                  <div className="py-4 mt-2 padding_container">
                     <div className="row">
                       <h2 align="center">
                         The MistressWorld Live{" "}
