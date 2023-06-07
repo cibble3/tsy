@@ -10,9 +10,14 @@ const LiveScreenPhoto1 = ({
   age,
   ethnicity,
   isPageFree,
+  isRelated = false,
 }) => {
   return (
-    <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 mt-4 ">
+    <div
+      className={`${
+        isRelated ? "col-xl-4" : "col-xl-3"
+      } col-lg-4 col-md-6 col-sm-6 mt-4`}
+    >
       {isPageFree ? (
         <a
           target="_blank"

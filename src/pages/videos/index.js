@@ -4,22 +4,36 @@ import axiosInstance from "@/instance/axiosInstance";
 import HeadMeta from "@/components/HeadMeta";
 import { useEffect, useState } from "react";
 import LiveScreenVideo from "@/components/LiveScreenVideo";
+import DarkSingleBlogPost from "@/components/DarkSingleBlogPost";
+import LiveScreenPhoto1 from "@/components/LiveScreenPhoto1";
 
-const DashbpardDarkTheme = ({ data }) => {
+const DashbpardDarkTheme = ({ data, pathUrl }) => {
   const [videos, setVideos] = useState([]);
   const [pageContent, setPageContent] = useState([]);
   const [pageNo, setPageNo] = useState(2);
   const [loading, setLoading] = useState(false);
   const [isPageLoaded, setPageLoaded] = useState(false);
+  const [blogs, setBlogs] = useState([]);
+  const [models, setModels] = useState([]);
+  const [category, setCategory] = useState("");
 
   useEffect(() => {
     setVideos(data?.videos);
     setPageContent(data?.pageContent);
+    setBlogs(data?.articles);
+    setCategory(data?.category);
+    setModels(data?.performers);
+
     setTimeout(() => {
       setPageLoaded(true);
       syncVideos();
     }, 2000);
   }, [data]);
+
+  const isPageFree = pathUrl
+    .split("/")
+    .map((key) => ["free"].includes(key.toLowerCase()))
+    .includes(true);
 
   const syncVideos = async () => {
     try {
@@ -99,6 +113,53 @@ const DashbpardDarkTheme = ({ data }) => {
                     __html: pageContent?.bottom_text,
                   }}
                 />
+
+                {blogs && (
+                  <div className="py-4 padding_container">
+                    <div className="row">
+                      <h2 align="center">
+                        The MistressWorld Live{" "}
+                        <span className="blog_span">{category}</span> Blog
+                      </h2>
+                      {blogs?.map((element, i) => {
+                        return (
+                          <DarkSingleBlogPost
+                            key={i}
+                            image={element?.feature_image}
+                            title1={element?.post_title}
+                            post_url={element?.post_url}
+                            title2={element?.post_content}
+                            isRelated={true}
+                          />
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                {models && (
+                  <div className="py-4 padding_container">
+                    <div className="row">
+                      <h2 align="center">
+                        The MistressWorld Live{" "}
+                        <span className="blog_span">{category}</span> Models
+                      </h2>
+                      {models?.map((element, i) => {
+                        return (
+                          <LiveScreenPhoto1
+                            key={i}
+                            image={element?.profilePictureUrl?.size320x240}
+                            name={element?.displayName}
+                            age={element?.persons[0]?.age}
+                            tags={element?.details?.willingnesses}
+                            ethnicity={element?.ethnicity}
+                            isPageFree={isPageFree}
+                          />
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </>
@@ -117,6 +178,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       data: responseData,
+      pathUrl: context.req.url,
     },
   };
 }
