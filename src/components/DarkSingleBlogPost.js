@@ -8,7 +8,9 @@ const DarkSingleBlogPost = ({ image, title1, title2, post_url }) => {
     <div className="col-md-6 col-sm-12 col-lg-4 mt-4">
       <div className={styles?.Dashbpardcard}>
         <Link title={title1} href={`/blog/${post_url}`}>
-          <img
+          <Image
+            height={100}
+            width={100}
             className="card-img-top"
             style={{ height: "200px" }}
             src={image}
