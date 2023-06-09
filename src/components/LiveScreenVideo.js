@@ -20,22 +20,21 @@ const LiveScreenVideo = ({
   const friendlyUrlWithPerformer = `${performerNameWithoutSpaces}-${friendlyUrl}`;
   return (
     <div
-      className={`${
-        !isFeatured && "col-xl-3 col-lg-4"
-      } col-md-4 col-sm-6 mt-4 video-block`}
+      className={`${!isFeatured && "col-xl-3 col-lg-4"
+        } col-md-4 col-sm-6 mt-4 video-block`}
     >
       <div className="relative video-items">
         <Link href={`/${parent}/${friendlyUrlWithPerformer}`}>
           <Image
             width={500}
-            height={500}
+            height={250}
             src={`https:${image}`}
             alt={`${performerName}${title ? " : " + title : ""}`}
             className="w-100 video-thumb"
           />
           <Image
-            width={500}
-            height={500}
+            width={300}
+            height={300}
             src="/play_icon.png"
             className="video-icon"
             alt={`play ${performerName} free cam video`}

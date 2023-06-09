@@ -14,9 +14,8 @@ const LiveScreenPhoto1 = ({
 }) => {
   return (
     <div
-      className={`${
-        isRelated ? "col-xl-4" : "col-xl-3"
-      } col-lg-4 col-md-6 col-sm-6 mt-4`}
+      className={`${isRelated ? "col-xl-4" : "col-xl-3"
+        } col-lg-4 col-md-6 col-sm-6 mt-4`}
     >
       {isPageFree ? (
         <a
@@ -25,7 +24,7 @@ const LiveScreenPhoto1 = ({
           className="relative"
         >
           <Image
-            height={500}
+            height={250}
             width={500}
             src={`https:${image}`}
             alt={`live ${ethnicity} cam performance by ${name}`}
@@ -53,13 +52,13 @@ const LiveScreenPhoto1 = ({
       ) : (
         <Link href={`/chat/${name}`} className="relative">
           <Image
-            height={500}
+            height={250}
             width={500}
             src={`https:${image}`}
             alt={`live ${ethnicity} cam performance by ${name}`}
             className="w-100"
-            // loading="eager"
-            // priority={true}
+          // loading="eager"
+          // priority={true}
           />
           <div className="text-white px-2 bg-overlay">
             <div

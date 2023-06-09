@@ -17,15 +17,20 @@ const DropdownComponent = ({
   useEffect(() => {
     const currentPath = router.asPath.toLowerCase();
     const activeTab = currentPath.split("/")[1];
-
     if (activeTab === parentText.toLowerCase()) {
       setDropMenu(true);
     } else if (
       ["", "chat", "video", "models-wanted", "18-2257"].includes(activeTab)
     ) {
-      if (Object.keys(menuData).includes(parentText)) {
+      if (activeTab === "" && parentText == "Free") {
+        console.log('activeTab === "" && parentText == "Free"');
+        setDropMenu(true);
+      } else if (Object.keys(menuData).includes(parentText) && parentText !== "Free" && activeTab !== '') {
+
+        console.log('Object.keys(menuData).includes(parentText) && parentText != "Free"');
         setDropMenu(true);
       }
+
     } else if (currentPath.indexOf(parentText.toLowerCase()) >= 0) {
       setDropMenu(true);
     } else {
@@ -61,15 +66,14 @@ const DropdownComponent = ({
                 >
                   <div
                     key={key}
-                    className={`subMenu ${
-                      router.asPath
-                        .toLowerCase()
-                        .substring(
-                          router.asPath.toLowerCase().lastIndexOf("/") + 1
-                        ) === key.toLowerCase()
-                        ? "active"
-                        : ""
-                    }`}
+                    className={`subMenu ${router.asPath
+                      .toLowerCase()
+                      .substring(
+                        router.asPath.toLowerCase().lastIndexOf("/") + 1
+                      ) === key.toLowerCase()
+                      ? "active"
+                      : ""
+                      }`}
                   >
                     {menuItems[key]}
                   </div>

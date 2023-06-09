@@ -18,7 +18,6 @@ import { AiOutlineHeart } from "react-icons/ai";
 import menuData from "../../../context/menuData.json";
 import { Button, Nav, Tab } from "react-bootstrap";
 import { useRouter } from "next/router";
-import Image from "next/image";
 
 const SideBar = ({ collapse, setCollapse, parentMenuNames = [] }) => {
   const { width, height } = useWindowSize();
@@ -87,7 +86,7 @@ const SideBar = ({ collapse, setCollapse, parentMenuNames = [] }) => {
                       className="rounded-0"
                       eventKey={key.toLowerCase()}
                     >
-                      <Link href={`/${key.toLowerCase()}`}>{key}</Link>
+                      <Link href={`/free/${key.toLowerCase()}`}>{key}</Link>
                     </Nav.Link>
                   </Nav.Item>
                 )

@@ -186,7 +186,18 @@ export async function getServerSideProps(context) {
     "public, s-maxage=10, stale-while-revalidate=59"
   );
 
-  const response = await axiosInstance.get(`/${context.params.type}`);
+  let client_ip;
+
+  if (req.headers['x-forwarded-for']) {
+    client_ip = req.headers['x-forwarded-for'].split(',')[0];
+  } else if (req.headers['x-real-ip']) {
+    client_ip = req.connection.remoteAddress;
+  } else {
+    client_ip = req.connection.remoteAddress;
+  }
+
+
+  const response = await axiosInstance.get(`/${context.params.type}?client_ip=${client_ip}`);
   const responseData = response.data;
 
   // if (!responseData.status) {

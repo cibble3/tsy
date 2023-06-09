@@ -19,7 +19,7 @@ const DashbpardDarkTheme = () => {
 
   useEffect(() => {
     axiosInstance
-      .get("/")
+      .get("/free/trans")
       .then((response) => {
         setCategory(response.data.category);
         setModels(response.data.performers);
@@ -94,7 +94,7 @@ const DashbpardDarkTheme = () => {
                     })}
                 </div>
 
-                {isPageLoaded && (
+                {/* {isPageLoaded && models.length > 0 && (
                   <div className="parent-loadbtn">
                     <button
                       className="loading-btn"
@@ -104,7 +104,7 @@ const DashbpardDarkTheme = () => {
                       {loading ? "Loading..." : "Load More Models"}
                     </button>
                   </div>
-                )}
+                )} */}
 
                 <div
                   className="siteContent mt-5 padding_container"
