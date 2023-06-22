@@ -19,7 +19,7 @@ const DashbpardDarkTheme = () => {
 
   useEffect(() => {
     axiosInstance
-      .get("/free/trans")
+      .get("/trans")
       .then((response) => {
         setCategory(response.data.category);
         setModels(response.data.performers);
@@ -63,6 +63,7 @@ const DashbpardDarkTheme = () => {
     }
   };
 
+  if (isPageLoaded) console.log(pageContent);
   return (
     <div>
       {isPageLoaded && <HeadMeta pageContent={pageContent} />}

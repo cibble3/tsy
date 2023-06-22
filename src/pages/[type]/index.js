@@ -8,9 +8,9 @@ import LiveScreenVideo from "@/components/LiveScreenVideo";
 import DarkSingleBlogPost from "@/components/DarkSingleBlogPost";
 
 const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
-  const isPageFree = pathUrl
+  const isPagePremium = pathUrl
     .split("/")
-    .map((key) => ["free"].includes(key.toLowerCase()))
+    .map((key) => ["premium"].includes(key.toLowerCase()))
     .includes(true);
 
   const [models, setModels] = useState([]);
@@ -73,7 +73,7 @@ const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
               />
 
               <div className="row">
-                {isPageFree &&
+                {isPagePremium &&
                   models?.map((element, i) => {
                     return (
                       <LiveScreenPhoto
@@ -83,12 +83,12 @@ const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
                         age={element?.persons[0]?.age}
                         tags={element?.details?.willingnesses}
                         ethnicity={element?.ethnicity}
-                        isPageFree={isPageFree}
+                        isPagePremium={isPagePremium}
                       />
                     );
                   })}
 
-                {!isPageFree &&
+                {!isPagePremium &&
                   models?.map((element, i) => {
                     return (
                       <LiveScreenPhoto
@@ -98,13 +98,13 @@ const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
                         age={element?.persons[0]?.age}
                         tags={element?.details?.willingnesses}
                         ethnicity={element?.ethnicity}
-                        isPageFree={isPageFree}
+                        isPagePremium={isPagePremium}
                       />
                     );
                   })}
               </div>
 
-              {!isPageFree && isPageLoaded && (
+              {!isPagePremium && isPageLoaded && (
                 <div className="parent-loadbtn">
                   <button
                     className="loading-btn"
@@ -188,16 +188,17 @@ export async function getServerSideProps(context) {
 
   let client_ip;
 
-  if (req.headers['x-forwarded-for']) {
-    client_ip = req.headers['x-forwarded-for'].split(',')[0];
-  } else if (req.headers['x-real-ip']) {
+  if (req.headers["x-forwarded-for"]) {
+    client_ip = req.headers["x-forwarded-for"].split(",")[0];
+  } else if (req.headers["x-real-ip"]) {
     client_ip = req.connection.remoteAddress;
   } else {
     client_ip = req.connection.remoteAddress;
   }
 
-
-  const response = await axiosInstance.get(`/${context.params.type}?client_ip=${client_ip}`);
+  const response = await axiosInstance.get(
+    `/${context.params.type}?client_ip=${client_ip}`
+  );
   const responseData = response.data;
 
   // if (!responseData.status) {

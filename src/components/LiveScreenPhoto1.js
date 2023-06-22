@@ -9,18 +9,19 @@ const LiveScreenPhoto1 = ({
   tags,
   age,
   ethnicity,
-  isPageFree,
+  isPagePremium,
   isRelated = false,
 }) => {
   return (
     <div
-      className={`${isRelated ? "col-xl-4" : "col-xl-3"
-        } col-lg-4 col-md-6 col-sm-6 mt-4`}
+      className={`${
+        isRelated ? "col-xl-4" : "col-xl-3"
+      } col-lg-4 col-md-6 col-sm-6 mt-4`}
     >
-      {isPageFree ? (
+      {!isPagePremium ? (
         <a
           target="_blank"
-          href={`https://mistressworld.chaturbate.com/${name}/?tour=Limj&b=${name}&signup_notice=1&campaign=1f2Eo`}
+          href={`https://tsyum.chaturbate.com/${name}/?tour=Limj&b=${name}&signup_notice=1&campaign=1f2Eo`}
           className="relative"
         >
           <Image
@@ -57,8 +58,8 @@ const LiveScreenPhoto1 = ({
             src={`https:${image}`}
             alt={`live ${ethnicity} cam performance by ${name}`}
             className="w-100"
-          // loading="eager"
-          // priority={true}
+            // loading="eager"
+            // priority={true}
           />
           <div className="text-white px-2 bg-overlay">
             <div

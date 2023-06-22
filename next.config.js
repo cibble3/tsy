@@ -43,7 +43,8 @@ const nextConfig = {
       "nude-cam-model-pics.s3-us-west-2.amazonaws.com",
       "galleryn3.awemwh.com",
       "imgx0.dditscdn.com",
-      "www.mistressworld.xxx"
+      "tssx3.s3-us-west-2.amazonaws.com",
+      "s3-us-west-2.amazonaws.com",
     ],
   },
   // plugins: [

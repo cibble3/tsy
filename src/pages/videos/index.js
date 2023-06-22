@@ -30,9 +30,9 @@ const DashbpardDarkTheme = ({ data, pathUrl }) => {
     }, 2000);
   }, [data]);
 
-  const isPageFree = pathUrl
+  const isPagePremium = pathUrl
     .split("/")
-    .map((key) => ["free"].includes(key.toLowerCase()))
+    .map((key) => ["premium"].includes(key.toLowerCase()))
     .includes(true);
 
   const syncVideos = async () => {
@@ -151,7 +151,7 @@ const DashbpardDarkTheme = ({ data, pathUrl }) => {
                             age={element?.persons[0]?.age}
                             tags={element?.details?.willingnesses}
                             ethnicity={element?.ethnicity}
-                            isPageFree={isPageFree}
+                            isPagePremium={isPagePremium}
                           />
                         );
                       })}

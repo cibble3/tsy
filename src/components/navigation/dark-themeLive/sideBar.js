@@ -86,7 +86,7 @@ const SideBar = ({ collapse, setCollapse, parentMenuNames = [] }) => {
                       className="rounded-0"
                       eventKey={key.toLowerCase()}
                     >
-                      <Link href={`/free/${key.toLowerCase()}`}>{key}</Link>
+                      <Link href={`/${key.toLowerCase()}`}>{key}</Link>
                     </Nav.Link>
                   </Nav.Item>
                 )
@@ -99,7 +99,7 @@ const SideBar = ({ collapse, setCollapse, parentMenuNames = [] }) => {
                 key={itemkey.toLowerCase()}
               >
                 {Object.keys(menuData[itemkey].data).map((key) =>
-                  key.toLowerCase() === "categories" ? (
+                  key.toLowerCase() === "free" ? (
                     <DropdownComponent
                       key={key}
                       parentText={itemkey}
