@@ -6,6 +6,7 @@ import ChatWidget from "./ChatWidget";
 import HeadMeta from "@/components/HeadMeta";
 import Image from "next/image";
 import { RxDotFilled } from "react-icons/rx";
+import { capitalizeString } from "@/helper/helpers";
 
 const LiveStreamComponent = ({ data }) => {
   const { width, height } = useWindowSize();
@@ -178,6 +179,9 @@ const LiveStreamComponent = ({ data }) => {
                   {data?.modelData?.details?.about?.biography}
                 </p>
               )}
+
+              {/* BIO Table */}
+
               {/* <div className="mt-4">
             <h3 className={`${styles.content} mb-1`}>
               Exclusive Content<span> from OraPredictar</span>
@@ -187,6 +191,189 @@ const LiveStreamComponent = ({ data }) => {
               their exclusive content.
             </p>
           </div> */}
+            </div>
+            {/* BIO TABLE */}
+            <div className="model-tsyum-right">
+              <ul>
+                {/* Turn On */}
+                {data?.modelData?.details?.about?.turnsOn && (
+                  <li>
+                    <div className="model-label">
+                      <strong>Turn On: </strong>
+                    </div>
+                    <div className="model-value">
+                      {capitalizeString(
+                        data?.modelData?.details?.about?.turnsOn
+                      )}
+                    </div>
+                  </li>
+                )}
+                {/* Turn Off */}
+                {data?.modelData?.details?.about?.turnsOff && (
+                  <li>
+                    <div className="model-label">
+                      <strong>Turn Off: </strong>
+                    </div>
+                    <div className="model-value">
+                      {capitalizeString(
+                        data?.modelData?.details?.about?.turnsOff
+                      )}
+                    </div>
+                  </li>
+                )}
+                {/* Age */}
+                {data?.modelData?.persons[0]?.age && (
+                  <li>
+                    <div className="model-label">
+                      <strong>Age: </strong>
+                    </div>
+                    <div className="model-value">
+                      {capitalizeString(data?.modelData?.persons[0]?.age)}
+                    </div>
+                  </li>
+                )}
+                {/* Ethnicity */}
+                {data?.modelData?.ethnicity && (
+                  <li>
+                    <div className="model-label">
+                      <strong>Ethnicity: </strong>
+                    </div>
+                    <div className="model-value">
+                      {capitalizeString(data?.modelData?.ethnicity)}
+                    </div>
+                  </li>
+                )}
+                {/* category */}
+                {data?.modelData?.category && (
+                  <li>
+                    <div className="model-label">
+                      <strong>Category: </strong>
+                    </div>
+                    <div className="model-value">
+                      {capitalizeString(data?.modelData?.category)}
+                    </div>
+                  </li>
+                )}
+                {/* Languages */}
+                {data?.modelData?.details?.languages && (
+                  <li>
+                    <div className="model-label">
+                      <strong>Languages: </strong>
+                    </div>
+                    <div className="model-value">
+                      {capitalizeString(
+                        Object.values(data?.modelData?.details?.languages)
+                          .filter((value) => value !== "")
+                          .join(", ")
+                      )}
+                    </div>
+                  </li>
+                )}
+                {/* Breast */}
+                {data?.modelData?.persons[0]?.body?.breastSize !== "" && (
+                  <li>
+                    <div className="model-label">
+                      <strong>Breast: </strong>
+                    </div>
+                    <div className="model-value">
+                      {capitalizeString(
+                        data?.modelData?.persons[0]?.body?.breastSize
+                      )}
+                    </div>
+                  </li>
+                )}
+                {/* Penis */}
+                {data?.modelData?.persons[0]?.body?.penisSize !== "" && (
+                  <li>
+                    <div className="model-label">
+                      <strong>Penis: </strong>
+                    </div>
+                    <div className="model-value">
+                      {capitalizeString(
+                        data?.modelData?.persons[0]?.body?.penisSize
+                      )}
+                    </div>
+                  </li>
+                )}
+                {/* Eye Color */}
+                {data?.modelData?.persons[0]?.body?.eyeColor !== "" && (
+                  <li>
+                    <div className="model-label">
+                      <strong>Eye Color: </strong>
+                    </div>
+                    <div className="model-value">
+                      {capitalizeString(
+                        data?.modelData?.persons[0]?.body?.eyeColor
+                      )}
+                    </div>
+                  </li>
+                )}
+                {/* Hair Length */}
+                {data?.modelData?.persons[0]?.body?.hairLength !== "" && (
+                  <li>
+                    <div className="model-label">
+                      <strong>Hair Length: </strong>
+                    </div>
+                    <div className="model-value">
+                      {capitalizeString(
+                        data?.modelData?.persons[0]?.body?.hairLength
+                      )}
+                    </div>
+                  </li>
+                )}
+                {/* Hair Color */}
+                {data?.modelData?.persons[0]?.body?.hairColor !== "" && (
+                  <li>
+                    <div className="model-label">
+                      <strong>Hair Color: </strong>
+                    </div>
+                    <div className="model-value">
+                      {capitalizeString(
+                        data?.modelData?.persons[0]?.body?.hairColor
+                      )}
+                    </div>
+                  </li>
+                )}
+                {/* Build */}
+                {data?.modelData?.persons[0]?.body?.build !== "" && (
+                  <li>
+                    <div className="model-label">
+                      <strong>Build: </strong>
+                    </div>
+                    <div className="model-value">
+                      {capitalizeString(
+                        data?.modelData?.persons[0]?.body?.build
+                      )}
+                    </div>
+                  </li>
+                )}
+                {/* Tags */}
+                {data?.modelData?.details?.willingnesses.length && (
+                  <li>
+                    <div className="model-label">
+                      <strong>Tags: </strong>
+                    </div>
+                    <div className="model-value">
+                      {Object.values(data?.modelData?.details?.willingnesses)
+                        .filter((value) => value !== "")
+                        .join(", ")}
+                    </div>
+                  </li>
+                )}
+                {/* Appearances */}
+                {data?.modelData?.details?.appearances.length && (
+                  <li>
+                    <div className="model-label">
+                      <strong>Appearances: </strong>
+                    </div>
+                    <div className="model-value">
+                      {Object.values(data?.modelData?.details?.appearances)
+                        .filter((value) => value !== "")
+                        .join(", ")}
+                    </div>
+                  </li>
+                )}
+              </ul>
             </div>
           </div>
         </div>
