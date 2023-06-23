@@ -4,6 +4,9 @@ import { useRouter } from "next/router";
 
 const HeadMeta = ({ pageContent }) => {
   const { asPath } = useRouter();
+  const canonicalUrl =
+    typeof window !== "undefined" ? window.location.origin + asPath : "";
+
   // console.log(window.location.origin + asPath);
   return (
     <Head>
@@ -43,7 +46,7 @@ const HeadMeta = ({ pageContent }) => {
       <meta name="twitter:title" content={pageContent.meta_title} />
       <meta name="twitter:description" content={pageContent.meta_desc} />
       <meta name="twitter:image" content="" />
-      <link rel="canonical" href={window.location.origin + asPath} />
+      <link rel="canonical" href={canonicalUrl} />
     </Head>
   );
 };
