@@ -16,7 +16,10 @@ const HeadMeta = ({ pageContent }) => {
       <meta name="dc.language" content="US" />
       <meta name="description" content={pageContent.meta_desc} />
       {pageContent.meta_keywords && (
-        <meta name="keywords" content={pageContent.meta_keywords} />
+        <>
+          <meta name="keywords" content={pageContent.meta_keywords} />
+          <meta property="dc.keywords" content={pageContent.meta_keywords} />
+        </>
       )}
 
       <meta name="robots" content="index, follow" />
@@ -27,9 +30,7 @@ const HeadMeta = ({ pageContent }) => {
       />
 
       {/* <!--DC meta tags--> */}
-      <meta name="dc.source" content="" />
       <meta name="dc.title" content={pageContent.meta_title} />
-      <meta property="dc.keywords" content={pageContent.meta_keywords} />
       <meta name="dc.subject" content={pageContent.meta_desc} />
       <meta name="dc.description" content={pageContent.meta_desc} />
       {/* <!--item prop--> */}
