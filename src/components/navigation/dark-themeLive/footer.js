@@ -3,12 +3,10 @@ import styles from "./dashbpard-dark-theme.module.css";
 import Link from "next/link";
 
 const Footer = () => {
-
   return (
     <div>
       <div className="footer-container pb-4">
-
-        <div id="copyrights" className={styles.copyrights_dark}>
+        {/* <div id="copyrights" className={styles.copyrights_dark}>
           <div className="container clearfix">
             <div className={styles.footer_menu}>
               <Link className={styles.footer_menu_item} href="/sitemap">Sitemap</Link>
@@ -71,16 +69,20 @@ const Footer = () => {
               </a>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className={styles.bottom_statement}>
-          <Link className={styles.statement_content} tab="_blank" href="/18-2257">
+          <Link
+            className={styles.statement_content}
+            tab="_blank"
+            href="/18-2257"
+          >
             18 U.S.C. 2257 RECORD-KEEPING REQUIREMENTS COMPLIANCE STATEMENT:
           </Link>
           <br />
           <br />
           <p className={styles.copy_right}>
-            Copyrights © 2023 &amp; All Rights Reserved by MistressWorld
+            Copyrights © 2023 &amp; All Rights Reserved by TSYUM
           </p>
         </div>
       </div>

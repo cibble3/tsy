@@ -121,7 +121,7 @@ const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
                   <div className="py-4 mt-2 padding_container">
                     <div className="row">
                       <h2 align="center">
-                        The MistressWorld Live{" "}
+                        The TSYUM Live{" "}
                         <span className="blog_span">{category}</span> Blog
                       </h2>
                       {blogs?.map((element, i) => {
@@ -143,7 +143,7 @@ const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
                   <div className="py-4 mt-2 padding_container">
                     <div className="row">
                       <h2 align="center">
-                        The MistressWorld Live{" "}
+                        The TSYUM Live{" "}
                         <span className="blog_span">{category}</span> Models
                       </h2>
                       {models?.map((element, i) => {

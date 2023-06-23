@@ -7,13 +7,10 @@ const DashbpardDarkTheme = () => {
       <DarkTheme>
         <>
           <div id="container" className="h-100">
-            <div
-              id="header-text"
-              className="header-text bg-black"
-            >
-              <div className="headlines" >
+            <div id="header-text" className="header-text bg-black">
+              <div className="headlines">
                 <h1 align="center" className="pt-5">
-                  18-2257 Compliance Statement - MistressWorld.xxx
+                  18-2257 Compliance Statement - TSYUM
                 </h1>
               </div>
             </div>
