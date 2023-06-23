@@ -1,6 +1,10 @@
+"use client";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
-const HeadMeta = ({ pageContent, canonical }) => {
+const HeadMeta = ({ pageContent }) => {
+  const { asPath } = useRouter();
+  // console.log(window.location.origin + asPath);
   return (
     <Head>
       <title>{pageContent?.meta_title}</title>
@@ -28,7 +32,7 @@ const HeadMeta = ({ pageContent, canonical }) => {
       <meta itemProp="image" content="" />
       {/* <!--Facebook meta tags--> */}
       <meta property="og:type" content="website" />
-      <meta property="og:site_name" content="mistressworld.xxx" />
+      <meta property="og:site_name" content="TsYum.com" />
       <meta property="og:url" content="" />
       <meta property="og:title" content={pageContent.meta_title} />
       <meta property="og:description" content={pageContent.meta_desc} />
@@ -39,7 +43,7 @@ const HeadMeta = ({ pageContent, canonical }) => {
       <meta name="twitter:title" content={pageContent.meta_title} />
       <meta name="twitter:description" content={pageContent.meta_desc} />
       <meta name="twitter:image" content="" />
-      <link rel="canonical" href={canonical} />
+      <link rel="canonical" href={window.location.origin + asPath} />
     </Head>
   );
 };
