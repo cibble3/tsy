@@ -1201,7 +1201,7 @@
   }
   .mulVodMainXcraveXcavelogoIcon {
     width: auto;
-    height: 70px;
+    height: 45px;
   }
 
   .menuRight {
@@ -1233,7 +1233,7 @@
 @media (max-width: 416px) {
   .mulVodMainXcraveXcavelogoIcon {
     width: auto;
-    height: 70px;
+    height: 30px;
   }
 
   .menuRight {
@@ -1244,7 +1244,7 @@
 @media (max-width: 376px) {
   .mulVodMainXcraveXcavelogoIcon {
     width: auto;
-    height: 60px;
+    height: 25px;
   }
 
   .menuRight {
@@ -1255,7 +1255,7 @@
 @media (max-width: 347px) {
   .mulVodMainXcraveXcavelogoIcon {
     width: auto;
-    height: 60px;
+    height: 16px;
   }
 
   .menuRight {

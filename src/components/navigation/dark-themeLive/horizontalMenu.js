@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { BsBroadcast, BsCaretDownFill } from "react-icons/bs";
-import { MdApps, MdNotificationsNone } from "react-icons/md";
+import { BsCaretDownFill } from "react-icons/bs";
 
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import Link from "next/link";
 import styles from "./dashbpard-dark-theme.module.css";
-import { RiMessage2Line } from "react-icons/ri";
 import Image from "next/image";
 import { FaHeart, FaTrophy } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
@@ -46,8 +44,9 @@ const HorizontalMenu = ({ collapse, setCollapse }) => {
 
           <Link href={"/"}>
             <Image
-              height={50}
-              width={50}
+              quality={100}
+              height={100}
+              width={100}
               alt="logo"
               src={colorMode === "dark" ? "/logo.png" : "/logo.png"}
               className={styles.mulVodMainXcraveXcavelogoIcon}
@@ -101,10 +100,7 @@ const HorizontalMenu = ({ collapse, setCollapse }) => {
                   onClick={toggleDropdown}
                   className={styles.navPerson}
                 />
-                {/* <BsCaretDownFill
-                  onClick={toggleDropdown}
-                  className={styles.navDown1}
-                /> */}
+
                 {showDropdown && (
                   <ul className={styles.dropdownMenu}>
                     <li>Promotions</li>
@@ -135,31 +131,7 @@ const HorizontalMenu = ({ collapse, setCollapse }) => {
               localStorage.setItem("collapse", !collapse);
             }}
           />
-          {/* <div className="d-flex">
-            <div
-              className="mx-3"
-              onClick={() => router.push("/User/user-profile/")}
-            >
-              <Image
-                alt="user"
-                height={50}
-                width={50}
-                src="/mask-group-37@2x.png"
-              />
-            </div>
-            <Image
-              alt="button"
-              height={50}
-              width={50}
-              src="/nounmenu6294661.svg"
-              className={styles.menuRight}
-              style={{ cursor: "pointer" }}
-              onClick={() => {
-                setCollapse(!collapse);
-                localStorage.setItem("collapse", !collapse);
-              }}
-            />
-          </div> */}
+
           <style jsx global>{`
             :root {
               --color-white: ${colorMode === "light" ? "#fff" : "#303030"};
@@ -183,7 +155,6 @@ const HorizontalMenu = ({ collapse, setCollapse }) => {
                 : "radial-gradient(50% 50%at 50% 50%, #ed135d, var(--color-white))"};
               --color-light-200: ${colorMode === "light" ? "#000" : "#9a9a9a"};
             }
-
             body {
               background-color: var(--bg-color);
               color: var(--text-color);
