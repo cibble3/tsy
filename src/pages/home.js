@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import HeadMeta from "@/components/HeadMeta";
 import LiveScreenVideo from "@/components/LiveScreenVideo";
 import DarkSingleBlogPost from "@/components/DarkSingleBlogPost";
+import TopText from "@/components/TopText";
 
 const DashbpardDarkTheme = () => {
   const [models, setModels] = useState([]);
@@ -72,12 +73,7 @@ const DashbpardDarkTheme = () => {
           {isPageLoaded && (
             <div className={styles?.dasboardMain2}>
               <div className="py-4 px-3">
-                <div
-                  className="siteContent"
-                  dangerouslySetInnerHTML={{
-                    __html: pageContent?.top_text,
-                  }}
-                />
+                <TopText html={pageContent?.top_text} />
 
                 <div className="row">
                   {models &&

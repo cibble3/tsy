@@ -4,6 +4,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import DarkSingleBlogPost from "@/components/DarkSingleBlogPost";
 import axiosInstance from "@/instance/axiosInstance";
 import HeadMeta from "@/components/HeadMeta";
+import TopText from "@/components/TopText";
 
 const DashbpardDarkTheme = ({ data }) => {
   return (
@@ -13,12 +14,7 @@ const DashbpardDarkTheme = ({ data }) => {
         <DarkTheme>
           <div className={styles?.dasboardMain}>
             <Container>
-              <div
-                className="siteContent"
-                dangerouslySetInnerHTML={{
-                  __html: data?.pageContent?.top_text,
-                }}
-              />
+              <TopText html={pageContent?.top_text} />
               <div className="row">
                 {data?.articles?.map((element, i) => {
                   return (
