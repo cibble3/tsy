@@ -7,7 +7,9 @@ module.exports = withPWA({
     register: true,
     skipWaiting: true,
   },
+  outputStandalone: true
 });
+
 
 const nextConfig = {
   async rewrites() {
