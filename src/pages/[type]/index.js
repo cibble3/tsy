@@ -7,6 +7,7 @@ import HeadMeta from "@/components/HeadMeta";
 import LiveScreenVideo from "@/components/LiveScreenVideo";
 import DarkSingleBlogPost from "@/components/DarkSingleBlogPost";
 import TopText from "@/components/TopText";
+import SkeletonLiveScreenPhoto1 from "@/components/SkeletonLiveScreenPhoto1";
 
 const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
   const isPagePremium = pathUrl
@@ -31,7 +32,7 @@ const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
     setVideos(data.videos);
     setTimeout(() => {
       setPageLoaded(true);
-    }, 2000);
+    }, 3000);
   }, [data]);
 
   const loadMoreModels = async () => {
@@ -61,111 +62,123 @@ const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
 
   return (
     <div>
-      <HeadMeta pageContent={pageContent} />
+      {isPageLoaded && <HeadMeta pageContent={pageContent} />}
       <DarkTheme>
         <>
-          <div className={styles?.dasboardMain2}>
-            <div className="py-4 px-3">
-              <TopText html={pageContent?.top_text} />
+          {isPageLoaded ? (
+            <div className={styles?.dasboardMain2}>
+              <div className="py-4 px-3">
+                <TopText html={pageContent?.top_text} />
 
-              <div className="row">
-                {isPagePremium &&
-                  models?.map((element, i) => {
-                    return (
-                      <LiveScreenPhoto
-                        key={i}
-                        image={element?.profilePictureUrl?.size320x240}
-                        name={element?.displayName}
-                        age={element?.persons[0]?.age}
-                        tags={element?.details?.willingnesses}
-                        ethnicity={element?.ethnicity}
-                        isPagePremium={isPagePremium}
-                      />
-                    );
-                  })}
+                <div className="row">
+                  {isPagePremium &&
+                    models?.map((element, i) => {
+                      return (
+                        <LiveScreenPhoto
+                          key={i}
+                          image={element?.profilePictureUrl?.size320x240}
+                          name={element?.displayName}
+                          age={element?.persons[0]?.age}
+                          tags={element?.details?.willingnesses}
+                          ethnicity={element?.ethnicity}
+                          isPagePremium={isPagePremium}
+                        />
+                      );
+                    })}
 
-                {!isPagePremium &&
-                  models?.map((element, i) => {
-                    return (
-                      <LiveScreenPhoto
-                        key={i}
-                        image={element?.profilePictureUrl?.size320x240}
-                        name={element?.displayName}
-                        age={element?.persons[0]?.age}
-                        tags={element?.details?.willingnesses}
-                        ethnicity={element?.ethnicity}
-                        isPagePremium={isPagePremium}
-                      />
-                    );
-                  })}
+                  {!isPagePremium &&
+                    models?.map((element, i) => {
+                      return (
+                        <LiveScreenPhoto
+                          key={i}
+                          image={element?.profilePictureUrl?.size320x240}
+                          name={element?.displayName}
+                          age={element?.persons[0]?.age}
+                          tags={element?.details?.willingnesses}
+                          ethnicity={element?.ethnicity}
+                          isPagePremium={isPagePremium}
+                        />
+                      );
+                    })}
+                </div>
+
+                {!isPagePremium && isPageLoaded && (
+                  <div className="parent-loadbtn">
+                    <button
+                      className="loading-btn"
+                      onClick={loadMoreModels}
+                      disabled={loading}
+                    >
+                      {loading ? "Loading..." : "Load More Models"}
+                    </button>
+                  </div>
+                )}
+
+                <div
+                  className="siteContent mt-5 padding_container"
+                  dangerouslySetInnerHTML={{
+                    __html: pageContent?.bottom_text,
+                  }}
+                />
+
+                {blogs && (
+                  <div className="py-4  mt-2 padding_container">
+                    <div className="row">
+                      <h2 align="center">
+                        The TSYUM Live{" "}
+                        <span className="blog_span">{category}</span> Blog
+                      </h2>
+                      {blogs?.map((element, i) => {
+                        return (
+                          <DarkSingleBlogPost
+                            key={i}
+                            image={element?.feature_image}
+                            title1={element?.post_title}
+                            post_url={element?.post_url}
+                            title2={element?.post_content}
+                          />
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                {videos && (
+                  <div className="py-4  mt-2 padding_container">
+                    <div className="row">
+                      <h2 align="center">
+                        TSYUM Free BDSM Cam &{" "}
+                        <span className="blog_span">{category}</span> Webcam
+                        Model Videos
+                      </h2>
+                      {videos?.map((element, i) => {
+                        return (
+                          <LiveScreenVideo
+                            isFeatured={true}
+                            key={i}
+                            title={element?.title}
+                            image={element?.thumbImage}
+                            targetUrl={element?.targetUrl}
+                            parent={"video"}
+                          />
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
               </div>
-
-              {!isPagePremium && isPageLoaded && (
-                <div className="parent-loadbtn">
-                  <button
-                    className="loading-btn"
-                    onClick={loadMoreModels}
-                    disabled={loading}
-                  >
-                    {loading ? "Loading..." : "Load More Models"}
-                  </button>
-                </div>
-              )}
-
-              <div
-                className="siteContent mt-5 padding_container"
-                dangerouslySetInnerHTML={{
-                  __html: pageContent?.bottom_text,
-                }}
-              />
-
-              {blogs && (
-                <div className="py-4  mt-2 padding_container">
-                  <div className="row">
-                    <h2 align="center">
-                      The TSYUM Live{" "}
-                      <span className="blog_span">{category}</span> Blog
-                    </h2>
-                    {blogs?.map((element, i) => {
-                      return (
-                        <DarkSingleBlogPost
-                          key={i}
-                          image={element?.feature_image}
-                          title1={element?.post_title}
-                          post_url={element?.post_url}
-                          title2={element?.post_content}
-                        />
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
-
-              {videos && (
-                <div className="py-4  mt-2 padding_container">
-                  <div className="row">
-                    <h2 align="center">
-                      TSYUM Free BDSM Cam &{" "}
-                      <span className="blog_span">{category}</span> Webcam Model
-                      Videos
-                    </h2>
-                    {videos?.map((element, i) => {
-                      return (
-                        <LiveScreenVideo
-                          isFeatured={true}
-                          key={i}
-                          title={element?.title}
-                          image={element?.thumbImage}
-                          targetUrl={element?.targetUrl}
-                          parent={"video"}
-                        />
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
             </div>
-          </div>
+          ) : (
+            <div className={styles?.dasboardMain2}>
+              <div className="py-4 px-3">
+                <div className="row">
+                  {Array.from({ length: 8 }).map((_, i) => (
+                    <SkeletonLiveScreenPhoto1 key={i} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
         </>
       </DarkTheme>
     </div>

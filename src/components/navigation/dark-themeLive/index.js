@@ -31,11 +31,9 @@ const Index = ({ children }) => {
                 : "col-sm-9 col-md-9 col-lg-10 "
             } p-0  pb-4 col-12`}
             style={{ ...style, height: height - 50, overflowY: "scroll" }}
-          > 
-          <div className={styles.main_wrapper}>
-            <div className={styles.children_wrap}>
-              {children}
-              </div>
+          >
+            <div className={styles.main_wrapper}>
+              <div className={styles.children_wrap}>{children}</div>
               <Footer />
             </div>
           </div>

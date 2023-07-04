@@ -7,8 +7,9 @@ import HeadMeta from "@/components/HeadMeta";
 import LiveScreenVideo from "@/components/LiveScreenVideo";
 import DarkSingleBlogPost from "@/components/DarkSingleBlogPost";
 import TopText from "@/components/TopText";
+import SkeletonLiveScreenPhoto1 from "@/components/SkeletonLiveScreenPhoto1";
 
-const DashbpardDarkTheme = () => {
+const Home = () => {
   const [models, setModels] = useState([]);
   const [pageContent, setPageContent] = useState([]);
   const [blogs, setBlogs] = useState([]);
@@ -20,14 +21,14 @@ const DashbpardDarkTheme = () => {
 
   useEffect(() => {
     axiosInstance
-      .get("/trans")
+      .get("/trans/asian")
       .then((response) => {
         setCategory(response.data.category);
         setModels(response.data.performers);
         setPageContent(response.data.pageContent);
         setBlogs(response.data.articles);
         setVideos(response.data.videos);
-        setPageLoaded(true);
+        // setPageLoaded(true);
       })
       .catch((error) => {
         console.error(error);
@@ -35,42 +36,41 @@ const DashbpardDarkTheme = () => {
 
     setTimeout(() => {
       setPageLoaded(true);
-    }, 5000);
+    }, 3000);
   }, []);
 
-  const loadMoreModels = async () => {
-    if (!loading) {
-      setLoading(true);
-      try {
-        const response = await axiosInstance.post("/fetch-more-models", {
-          category: pageContent?.category,
-          page: pageNo,
-        });
-        const data = response?.data?.performers;
-        if (data === "") {
-          console.log("No more models found");
-        } else {
-          if (Array.isArray(data)) {
-            setModels((prevModels) => [...prevModels, ...data]);
-          } else {
-            setModels((prevModels) => [...prevModels, data]);
-          }
-          setPageNo((prevPageNo) => prevPageNo + 1);
-        }
-      } catch (error) {
-        console.error("Error loading models:", error);
-      }
-      setLoading(false);
-    }
-  };
+  // const loadMoreModels = async () => {
+  //   if (!loading) {
+  //     setLoading(true);
+  //     try {
+  //       const response = await axiosInstance.post("/fetch-more-models", {
+  //         category: pageContent?.category,
+  //         page: pageNo,
+  //       });
+  //       const data = response?.data?.performers;
+  //       if (data === "") {
+  //         console.log("No more models found");
+  //       } else {
+  //         if (Array.isArray(data)) {
+  //           setModels((prevModels) => [...prevModels, ...data]);
+  //         } else {
+  //           setModels((prevModels) => [...prevModels, data]);
+  //         }
+  //         setPageNo((prevPageNo) => prevPageNo + 1);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error loading models:", error);
+  //     }
+  //     setLoading(false);
+  //   }
+  // };
 
-  if (isPageLoaded) console.log(pageContent);
   return (
     <div>
       {isPageLoaded && <HeadMeta pageContent={pageContent} />}
       <DarkTheme>
         <>
-          {isPageLoaded && (
+          {isPageLoaded ? (
             <div className={styles?.dasboardMain2}>
               <div className="py-4 px-3">
                 <TopText html={pageContent?.top_text} />
@@ -157,6 +157,16 @@ const DashbpardDarkTheme = () => {
                 )}
               </div>
             </div>
+          ) : (
+            <div className={styles?.dasboardMain2}>
+              <div className="py-4 px-3">
+                <div className="row">
+                  {Array.from({ length: 8 }).map((_, i) => (
+                    <SkeletonLiveScreenPhoto1 key={i} />
+                  ))}
+                </div>
+              </div>
+            </div>
           )}
         </>
       </DarkTheme>
@@ -164,4 +174,4 @@ const DashbpardDarkTheme = () => {
   );
 };
 
-export default DashbpardDarkTheme;
+export default Home;
