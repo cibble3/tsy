@@ -35,9 +35,6 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    console.log(Object.keys(pageContent).length);
-    console.log(Object.keys(models).length);
-
     if (Object.keys(pageContent).length || Object.keys(models).length)
       setPageLoaded(true);
   }, [pageContent, models]);
