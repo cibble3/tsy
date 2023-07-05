@@ -35,9 +35,12 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    Object.keys(pageContent).length ||
-      (Object.keys(models).length && setPageLoaded(true));
-  }, [pageContent]);
+    console.log(Object.keys(pageContent).length);
+    console.log(Object.keys(models).length);
+
+    if (Object.keys(pageContent).length || Object.keys(models).length)
+      setPageLoaded(true);
+  }, [pageContent, models]);
 
   // const loadMoreModels = async () => {
   //   if (!loading) {
