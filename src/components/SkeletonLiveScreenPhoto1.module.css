@@ -2,10 +2,26 @@
   height: 175px;
   max-height: 100%;
   background: "#ddd";
-  background: linear-gradient(90deg, #f0f0f0 25%, #f8f8f8 50%, #f0f0f0 75%);
+  /* background: linear-gradient(90deg, #f0f0f0 25%, #f8f8f8 50%, #f0f0f0 75%); */
+  background: linear-gradient(
+    90deg,
+    #f0f0f02b 25%,
+    #f8f8f812 50%,
+    #f0f0f02b 75%
+  );
   background-size: 500px 100%;
   animation: shimmer 2s infinite;
   margin-top: 10px;
+}
+
+.textShimmer {
+  background: linear-gradient(
+    90deg,
+    #f0f0f02b 25%,
+    #f8f8f812 50%,
+    #f0f0f02b 75%
+  );
+  animation: shimmer 2s infinite;
 }
 
 @media (max-width: 376px) {

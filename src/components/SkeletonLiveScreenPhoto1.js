@@ -10,11 +10,10 @@ const SkeletonLiveScreenPhoto1 = () => {
         style={{ fontSize: "11px", opacity: 0.6 }}
       >
         <div
-          style={{ height: "24px", width: "80px", background: "#ddd" }}
+          className={styles.textShimmer}
+          style={{ height: "24px", width: "80px" }}
         ></div>
-        <div
-          style={{ height: "24px", width: "60px", background: "#ddd" }}
-        ></div>
+        <div style={{ height: "24px", width: "60px" }}></div>
       </div>
     </div>
   );
