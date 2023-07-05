@@ -14,30 +14,30 @@ const Home = () => {
   const [pageContent, setPageContent] = useState([]);
   const [blogs, setBlogs] = useState([]);
   const [videos, setVideos] = useState([]);
-  const [pageNo, setPageNo] = useState(2);
-  const [loading, setLoading] = useState(false);
+  // const [pageNo, setPageNo] = useState(2);
+  // const [loading, setLoading] = useState(false);
   const [isPageLoaded, setPageLoaded] = useState(false);
   const [category, setCategory] = useState("");
 
   useEffect(() => {
     axiosInstance
-      .get("/trans")
+      .get("/trans/asian")
       .then((response) => {
         setCategory(response.data.category);
         setModels(response.data.performers);
         setPageContent(response.data.pageContent);
         setBlogs(response.data.articles);
         setVideos(response.data.videos);
-        // setPageLoaded(true);
       })
       .catch((error) => {
         console.error(error);
       });
-
-    setTimeout(() => {
-      setPageLoaded(true);
-    }, 3000);
   }, []);
+
+  useEffect(() => {
+    Object.keys(pageContent).length ||
+      (Object.keys(models).length && setPageLoaded(true));
+  }, [pageContent]);
 
   // const loadMoreModels = async () => {
   //   if (!loading) {
@@ -67,30 +67,29 @@ const Home = () => {
 
   return (
     <div>
-      {isPageLoaded && <HeadMeta pageContent={pageContent} />}
+      {isPageLoaded ? <HeadMeta pageContent={pageContent} /> : null}
       <DarkTheme>
         <>
           {isPageLoaded ? (
             <div className={styles?.dasboardMain2}>
               <div className="py-4 px-3">
-                <TopText html={pageContent?.top_text} />
-
+                {pageContent?.top_text ? (
+                  <TopText html={pageContent?.top_text} />
+                ) : null}
                 <div className="row">
-                  {models &&
-                    models?.map((element, i) => {
-                      return (
-                        <LiveScreenPhoto
-                          key={i}
-                          image={element?.profilePictureUrl?.size320x240}
-                          name={element?.displayName}
-                          age={element?.persons[0]?.age}
-                          tags={element?.details?.willingnesses}
-                          ethnicity={element?.ethnicity}
-                        />
-                      );
-                    })}
+                  {models?.map((element, i) => {
+                    return (
+                      <LiveScreenPhoto
+                        key={i}
+                        image={element?.profilePictureUrl?.size320x240}
+                        name={element?.displayName}
+                        age={element?.persons[0]?.age}
+                        tags={element?.details?.willingnesses}
+                        ethnicity={element?.ethnicity}
+                      />
+                    );
+                  })}
                 </div>
-
                 {/* {isPageLoaded && models.length > 0 && (
                   <div className="parent-loadbtn">
                     <button
@@ -102,15 +101,15 @@ const Home = () => {
                     </button>
                   </div>
                 )} */}
-
-                <div
-                  className="siteContent mt-5 padding_container"
-                  dangerouslySetInnerHTML={{
-                    __html: pageContent?.bottom_text,
-                  }}
-                />
-
-                {blogs && (
+                {pageContent?.bottom_text ? (
+                  <div
+                    className="siteContent mt-5 padding_container"
+                    dangerouslySetInnerHTML={{
+                      __html: pageContent?.bottom_text,
+                    }}
+                  />
+                ) : null}
+                {blogs.length ? (
                   <div className="py-4 mt-2padding_container">
                     <div className="row">
                       <h2 align="center">
@@ -130,9 +129,8 @@ const Home = () => {
                       })}
                     </div>
                   </div>
-                )}
-
-                {videos && (
+                ) : null}
+                {videos.length ? (
                   <div className="py-4  mt-2 padding_container">
                     <div className="row">
                       <h2 align="center">
@@ -154,14 +152,14 @@ const Home = () => {
                       })}
                     </div>
                   </div>
-                )}
+                ) : null}
               </div>
             </div>
           ) : (
             <div className={styles?.dasboardMain2}>
               <div className="py-4 px-3">
                 <div className="row">
-                  {Array.from({ length: 8 }).map((_, i) => (
+                  {Array.from({ length: 12 }).map((_, i) => (
                     <SkeletonLiveScreenPhoto1 key={i} />
                   ))}
                 </div>

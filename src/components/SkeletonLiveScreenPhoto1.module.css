@@ -8,6 +8,20 @@
   margin-top: 10px;
 }
 
+@media (max-width: 376px) {
+  .PhotoPlaceholder {
+    height: 300px;
+  }
+}
+
+@media (max-width: 416px) {
+  .PhotoPlaceholder {
+    margin-top: 5px;
+    margin-bottom: 0px;
+    height: 280px;
+  }
+}
+
 @keyframes shimmer {
   0% {
     background-position: -200px 0;

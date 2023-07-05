@@ -43,11 +43,12 @@ const TopText = ({ html }) => {
         {isMobile && (
           <>
             {" "}
-            {html.includes("<h2>") && isExpanded ? (
-              <AiFillCaretUp size={30} onClick={handleToggle} />
-            ) : (
-              <AiFillCaretDown size={30} onClick={handleToggle} />
-            )}
+            {html?.includes("<h2>") &&
+              (isExpanded ? (
+                <AiFillCaretUp size={30} onClick={handleToggle} />
+              ) : (
+                <AiFillCaretDown size={30} onClick={handleToggle} />
+              ))}
           </>
         )}
       </h1>
