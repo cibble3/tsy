@@ -7,7 +7,7 @@ import LiveScreenVideo from "@/components/LiveScreenVideo";
 import DarkSingleBlogPost from "@/components/DarkSingleBlogPost";
 import LiveScreenPhoto1 from "@/components/LiveScreenPhoto1";
 import TopText from "@/components/TopText";
-import SkeletonLiveScreenVideo from "@/components/SkeletonLiveScreenVideo";
+import SkeletonLiveScreenVideo from "@/components/Skeletons/SkeletonLiveScreenVideo";
 
 const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
   const [videos, setVideos] = useState([]);
@@ -29,7 +29,7 @@ const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
     setTimeout(() => {
       setPageLoaded(true);
       syncVideos();
-    }, 2000);
+    }, 1000);
   }, [data]);
 
   const isPagePremium = pathUrl

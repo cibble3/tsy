@@ -9,11 +9,9 @@ const SkeletonLiveScreenPhoto1 = () => {
         className="mt-3 d-flex gap-1 flex-wrap"
         style={{ fontSize: "11px", opacity: 0.6 }}
       >
-        <div
-          className={styles.textShimmer}
-          style={{ height: "24px", width: "80px" }}
-        ></div>
-        <div style={{ height: "24px", width: "60px" }}></div>
+        <div className={`${styles.textShimmer} rounded-3`}></div>
+        <div className={`${styles.textShimmer} rounded-3`}></div>
+        <div className={`${styles.textShimmer} rounded-3`}></div>
       </div>
     </div>
   );

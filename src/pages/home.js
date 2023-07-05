@@ -7,7 +7,8 @@ import HeadMeta from "@/components/HeadMeta";
 import LiveScreenVideo from "@/components/LiveScreenVideo";
 import DarkSingleBlogPost from "@/components/DarkSingleBlogPost";
 import TopText from "@/components/TopText";
-import SkeletonLiveScreenPhoto1 from "@/components/SkeletonLiveScreenPhoto1";
+import SkeletonLiveScreenPhoto1 from "@/components/Skeletons/SkeletonLiveScreenPhoto1";
+import SkeletonTopText from "@/components/Skeletons/SkeletonTopText";
 
 const Home = () => {
   const [models, setModels] = useState([]);
@@ -158,6 +159,7 @@ const Home = () => {
           ) : (
             <div className={styles?.dasboardMain2}>
               <div className="py-4 px-3">
+                <SkeletonTopText />
                 <div className="row">
                   {Array.from({ length: 12 }).map((_, i) => (
                     <SkeletonLiveScreenPhoto1 key={i} />

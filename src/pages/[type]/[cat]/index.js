@@ -7,7 +7,7 @@ import HeadMeta from "@/components/HeadMeta";
 import LiveScreenVideo from "@/components/LiveScreenVideo";
 import DarkSingleBlogPost from "@/components/DarkSingleBlogPost";
 import TopText from "@/components/TopText";
-import SkeletonLiveScreenPhoto1 from "@/components/SkeletonLiveScreenPhoto1";
+import SkeletonLiveScreenPhoto1 from "@/components/Skeletons/SkeletonLiveScreenPhoto1";
 
 const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
   const [models, setModels] = useState([]);
@@ -33,7 +33,7 @@ const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
 
     setTimeout(() => {
       setPageLoaded(true);
-    }, 2000);
+    }, 1000);
   }, [data]);
 
   const loadMoreModels = async () => {
