@@ -21,7 +21,7 @@ import { useRouter } from "next/router";
 
 const SideBar = ({ collapse, setCollapse, parentMenuNames = [] }) => {
   const { width, height } = useWindowSize();
-  const colorMode = useSelector((state) => state.darklight);
+  // const colorMode = useSelector((state) => state.darklight);
   const router = useRouter();
   const activeTab = router.asPath.split("/");
   const lowercaseKeys = Object.keys(menuData).map(
@@ -51,14 +51,14 @@ const SideBar = ({ collapse, setCollapse, parentMenuNames = [] }) => {
             <div
               className={`d-flex justify-content-between ${styles.sign_btn_group}`}
             >
-              <Button
+              {/* <Button
                 className={`bg-transparent border-0 ${styles.sidebar_login}`}
               >
                 Login
               </Button>
               <Button className={styles.sidebar_register}>
                 Join Now for Free
-              </Button>
+              </Button> */}
             </div>
             <IoCloseSharp
               color="#818181"

@@ -102,7 +102,7 @@ const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
                     })}
                 </div>
 
-                {!isPagePremium && isPageLoaded && (
+                {isPagePremium && isPageLoaded && (
                   <div className="parent-loadbtn">
                     <button
                       className="loading-btn"
@@ -114,12 +114,14 @@ const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
                   </div>
                 )}
 
-                <div
-                  className="siteContent mt-5 padding_container"
-                  dangerouslySetInnerHTML={{
-                    __html: pageContent?.bottom_text,
-                  }}
-                />
+                {pageContent?.bottom_text ? (
+                  <div
+                    className="siteContent mt-5 padding_container"
+                    dangerouslySetInnerHTML={{
+                      __html: pageContent?.bottom_text,
+                    }}
+                  />
+                ) : null}
 
                 {blogs && (
                   <div className="py-4  mt-2 padding_container">

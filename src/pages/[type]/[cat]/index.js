@@ -103,8 +103,8 @@ const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
                     })}
                 </div>
 
-                {!isPagePremium && isPageLoaded && (
-                  <div className="parent-loadbtn">
+                {isPagePremium && isPageLoaded && (
+                  <div className="parent-loadbtn mb-3">
                     <button
                       className="loading-btn"
                       onClick={loadMoreModels}
@@ -115,12 +115,14 @@ const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
                   </div>
                 )}
 
-                <div
-                  className="siteContent mt-5 padding_container"
-                  dangerouslySetInnerHTML={{
-                    __html: pageContent?.bottom_text,
-                  }}
-                />
+                {pageContent?.bottom_text ? (
+                  <div
+                    className="siteContent mt-5 padding_container"
+                    dangerouslySetInnerHTML={{
+                      __html: pageContent?.bottom_text,
+                    }}
+                  />
+                ) : null}
 
                 {blogs && (
                   <div className="py-4 mt-2 padding_container">
@@ -209,6 +211,7 @@ export async function getServerSideProps(context) {
   const response = await axiosInstance.get(
     `/${context.params.type}/${context.params.cat}?client_ip=${client_ip}`
   );
+
   const responseData = response.data;
 
   // if (!responseData.status) {

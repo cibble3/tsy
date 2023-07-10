@@ -1,25 +1,25 @@
 import React, { useState } from "react";
-import { BsCaretDownFill } from "react-icons/bs";
+// import { BsCaretDownFill } from "react-icons/bs";
 
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import Link from "next/link";
 import styles from "./dashbpard-dark-theme.module.css";
 import Image from "next/image";
-import { FaHeart, FaTrophy } from "react-icons/fa";
-import { IoIosMail } from "react-icons/io";
-import { GiUsaFlag } from "react-icons/gi";
-import { IoPersonCircleSharp } from "react-icons/io5";
+// import { FaHeart, FaTrophy } from "react-icons/fa";
+// import { IoIosMail } from "react-icons/io";
+// import { GiUsaFlag } from "react-icons/gi";
+// import { IoPersonCircleSharp } from "react-icons/io5";
 
 const HorizontalMenu = ({ collapse, setCollapse }) => {
-  const router = useRouter();
+  // const router = useRouter();
   const colorMode = useSelector((state) => state.darklight);
 
-  const [showDropdown, setShowDropdown] = useState(false);
+  // const [showDropdown, setShowDropdown] = useState(false);
 
-  const toggleDropdown = () => {
-    setShowDropdown(!showDropdown);
-  };
+  // const toggleDropdown = () => {
+  //   setShowDropdown(!showDropdown);
+  // };
 
   return (
     <div
@@ -45,8 +45,8 @@ const HorizontalMenu = ({ collapse, setCollapse }) => {
           <Link href={"/"}>
             <Image
               quality={100}
-              height={100}
-              width={100}
+              height={300}
+              width={300}
               alt="logo"
               src={colorMode === "dark" ? "/logo.png" : "/logo.png"}
               className={styles.mulVodMainXcraveXcavelogoIcon}
@@ -54,7 +54,7 @@ const HorizontalMenu = ({ collapse, setCollapse }) => {
           </Link>
         </div>
         <div className="d-flex justify-contant-center align-items-center flex-wrap">
-          <ul className={styles.navList}>
+          {/* <ul className={styles.navList}>
             <li
               className={`${styles.tabletVisible} ${styles.mobileVisible} me-4`}
             >
@@ -113,12 +113,12 @@ const HorizontalMenu = ({ collapse, setCollapse }) => {
                 )}
               </div>
             </li>
-          </ul>
-          <button
+          </ul> */}
+          {/* <button
             className={`${styles.navBtn} ${styles.tabletVisible} ${styles.mobileVisible} mx-4`}
           >
             Join Now for FREE
-          </button>
+          </button> */}
           <Image
             alt="button"
             height={30}

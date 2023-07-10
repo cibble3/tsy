@@ -62,6 +62,10 @@ body {
   }
 }
 
+.siteContent > p {
+  color: white;
+}
+
 a.blog-title {
   color: #fff;
 }
