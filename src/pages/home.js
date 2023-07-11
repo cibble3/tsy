@@ -22,7 +22,7 @@ const Home = () => {
 
   useEffect(() => {
     axiosInstance
-      .get("/trans/asian")
+      .get("/trans")
       .then((response) => {
         setCategory(response.data.category);
         setModels(response.data.performers);
