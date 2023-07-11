@@ -14,7 +14,9 @@ const DashbpardDarkTheme = ({ data }) => {
         <DarkTheme>
           <div className={styles?.dasboardMain}>
             <Container>
-              <TopText html={pageContent?.top_text} />
+              {data?.pageContent?.top_text ? (
+                <TopText html={data?.pageContent?.top_text} />
+              ) : null}
               <div className="row">
                 {data?.articles?.map((element, i) => {
                   return (
