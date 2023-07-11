@@ -1,25 +1,12 @@
-import React, { useState } from "react";
-// import { BsCaretDownFill } from "react-icons/bs";
+import React from "react";
 
-import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import Link from "next/link";
 import styles from "./dashbpard-dark-theme.module.css";
 import Image from "next/image";
-// import { FaHeart, FaTrophy } from "react-icons/fa";
-// import { IoIosMail } from "react-icons/io";
-// import { GiUsaFlag } from "react-icons/gi";
-// import { IoPersonCircleSharp } from "react-icons/io5";
 
 const HorizontalMenu = ({ collapse, setCollapse }) => {
-  // const router = useRouter();
   const colorMode = useSelector((state) => state.darklight);
-
-  // const [showDropdown, setShowDropdown] = useState(false);
-
-  // const toggleDropdown = () => {
-  //   setShowDropdown(!showDropdown);
-  // };
 
   return (
     <div

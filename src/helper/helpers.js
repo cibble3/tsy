@@ -35,3 +35,18 @@ export const slugify = (str) => {
 export const capitalizeString = (str) => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
+
+export const checkCommonWords = (string1, string2) => {
+  const words1 = new Set(string1.replace("/", "").split("/"));
+  const words2 = new Set(string2.split("/"));
+  let commonCount = 0;
+  for (const word of words2) {
+    if (words1.has(word)) {
+      commonCount++;
+      if (commonCount >= 2) {
+        return true;
+      }
+    }
+  }
+  return false;
+};
