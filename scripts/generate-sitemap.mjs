@@ -13,7 +13,7 @@ async function generate() {
     '!pages/404.js',
   ]);
 
-  const siteUrl = '';
+  const siteUrl = 'http://tsyum.com/';
  
   const sitemap = `
     <?xml version="1.0" encoding="UTF-8"?>
