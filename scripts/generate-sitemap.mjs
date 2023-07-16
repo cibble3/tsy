@@ -12,6 +12,8 @@ async function generate() {
     '!pages/api',
     '!pages/404.js',
   ]);
+
+  const siteUrl = '';
  
   const sitemap = `
     <?xml version="1.0" encoding="UTF-8"?>
@@ -27,7 +29,7 @@ async function generate() {
  
             return `
               <url>
-                  <loc>${`https://leerob.io${route}`}</loc>
+                  <loc>${siteUrl}${route}</loc>
               </url>
             `;
           })
@@ -41,7 +43,7 @@ async function generate() {
   });
  
   // eslint-disable-next-line no-sync
-  writeFileSync('public/sitemap.xml', formatted);
+  writeFileSync('public/sitemap.xml', formatted.resolve());
 }
  
 generate();
