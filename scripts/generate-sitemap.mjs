@@ -6,6 +6,7 @@ async function generate() {
     // Home
     './src/pages/index.js',
     './src/pages/models-wanted.js',
+    './src/pages/18-2257',
     // Free and Premium
     './src/pages/[type]/*.js',
     './src/pages/[type]/[cat]/*.js',
