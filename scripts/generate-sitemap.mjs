@@ -1,44 +1,53 @@
-import { writeFileSync } from 'fs';
+import fs from 'fs';
 import { globby } from 'globby';
-import prettier from 'prettier';
- 
+
 async function generate() {
-  //const prettierConfig = await prettier.resolveConfig('./.prettierrc.js');
   const pages = await globby([
-    'pages/*.js',
-    'data/**/*.mdx',
-    '!data/*.mdx',
-    '!pages/_*.js',
-    '!pages/api',
-    '!pages/404.js',
+    // Home
+    './src/pages/index.js',
+    './src/pages/models-wanted.js',
+    // Free and Premium
+    './src/pages/[type]/*.js',
+    './src/pages/[type]/[cat]/*.js',
+    './src/pages/[type]/[cat]/[sub_cat]/*.js',
+    // Blogs
+    './src/pages/blog/*.js',
+    './src/pages/blog/categories/*.js',
+    './src/pages/blog/tag/*.js',
+    // Videos
+    './src/pages/video/[page_name]/*.js',
+    './src/pages/videos/*.js',
+    './src/pages/videos/[cat]/*.js',
+    './src/pages/videos/[cat]/[sub_cat]]/*.js',
   ]);
 
-  const siteUrl = 'http://tsyum.com/';
- 
+  //const pages = walk('./src/pages/');
+
+  const siteUrl = 'http://tsyum.com';
   const sitemap = `
     <?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
         ${pages
           .map((page) => {
+            
             const path = page
+              .replace('./src/', '')
               .replace('pages', '')
               .replace('data', '')
               .replace('.js', '')
               .replace('.mdx', '');
             const route = path === '/index' ? '' : path;
- 
-            return `
-              <url>
-                  <loc>${siteUrl}${route}</loc>
-              </url>
-            `;
+            
+            console.log('page: ', `${siteUrl}${route}`);
+
+            return `<url><loc>${siteUrl}${route}</loc></url>`;
           })
           .join('')}
     </urlset>
     `;
 
   // eslint-disable-next-line no-sync
-  writeFileSync('public/sitemap.xml', sitemap);
+  fs.writeFileSync('public/sitemap.xml', sitemap);
 }
  
 generate();
