@@ -32,10 +32,10 @@ async function generate() {
   for (let i in menuJsonData.Girls.data.Premium) {
     pages.push(`/premium/girls/${i}`);
   }
-
+ //console.log(process.env);return;
   const axiosInstance = axios.create({
-    //baseURL: 'https://system.mistressworld.xxx/api/app2/v1',
-    baseURL: `${process.env.NEXT_PUBLIC_BASE_API_URL}`,
+    baseURL: 'https://system.mistressworld.xxx/api/app2/v1',
+    //baseURL: `${process.env.NEXT_PUBLIC_BASE_API_URL}`,
   });
   const response = await axiosInstance.get(`/blog?limit=100`);
   const responseData = response.data;
