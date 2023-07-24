@@ -12,11 +12,23 @@ module.exports = withPWA({
 
 
 const nextConfig = {
+  // i18n: {
+  //   locales: ["default", "en", "de", "fr", "da", "es", "is", "it", "nl", "sv"], // Add more locales if needed
+  //   defaultLocale: "default",
+  // },
   async rewrites() {
     return [
       {
         source: "/robots.txt",
         destination: "/api/robots",
+      },
+      {
+        source: "/sitemap.xml",
+        destination: "/api/sitemap",
+      },
+      {
+        source: '/sitemap-:lang.xml',
+        destination: '/api/sitemap/:lang',
       },
     ];
   },
