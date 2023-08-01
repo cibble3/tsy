@@ -10,7 +10,7 @@ const CookiesModal = ({ onAccept }) => {
             <h2>18+</h2>
           </div>
           <div className={styles.heading}>
-            <b>mistressworld.xxx contains adult content</b>
+            <b>tsyum contains adult content</b>
             <p>By using the website you acknowledge that you are over 18.</p>
           </div>
         </div>
