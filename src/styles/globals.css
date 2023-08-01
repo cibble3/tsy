@@ -290,6 +290,10 @@ a.blog-title:hover {
   color: #fff;
 }
 
+.subMenu:hover {
+  background-color: #606060;
+}
+
 .nav-tabs .nav-link {
   color: #ffffff;
   border: none !important;
