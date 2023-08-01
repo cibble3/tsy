@@ -9,6 +9,7 @@ import DarkSingleBlogPost from "@/components/DarkSingleBlogPost";
 import TopText from "@/components/TopText";
 import SkeletonLiveScreenPhoto1 from "@/components/Skeletons/SkeletonLiveScreenPhoto1";
 import SkeletonTopText from "@/components/Skeletons/SkeletonTopText";
+import CookiesModal from "@/components/CookiesModal/CookiesModal";
 
 const Home = () => {
   const [models, setModels] = useState([]);
@@ -18,7 +19,15 @@ const Home = () => {
   // const [pageNo, setPageNo] = useState(2);
   // const [loading, setLoading] = useState(false);
   const [isPageLoaded, setPageLoaded] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [category, setCategory] = useState("");
+
+  useEffect(() => {
+    const cookiesAccepted = localStorage.getItem('cookiesAccepted');
+    if (!cookiesAccepted) {
+      setShowModal(true);
+    }
+  }, []);
 
   useEffect(() => {
     axiosInstance
@@ -66,8 +75,14 @@ const Home = () => {
   //   }
   // };
 
+  const handleAccept = () => {
+    localStorage.setItem('cookiesAccepted', 'true');
+    setShowModal(false);
+  };
+
   return (
     <div>
+      {showModal && <CookiesModal onAccept={handleAccept} />}
       {isPageLoaded ? <HeadMeta pageContent={pageContent} /> : null}
       <DarkTheme>
         <>

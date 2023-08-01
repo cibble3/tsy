@@ -489,7 +489,7 @@
 
   .topView {
     position: absolute;
-    z-index: 999999;
+    z-index: 9;
     top: 0;
     right: 0;
     width: 270px;
