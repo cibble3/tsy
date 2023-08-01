@@ -22,14 +22,14 @@ const LiveScreenPhoto1 = ({
         <a
           target="_blank"
           href={`https://tsyum.chaturbate.com/${name}/?tour=Limj&b=${name}&signup_notice=1&campaign=1f2Eo`}
-          className="relative"
+          className="relative block"
         >
           <Image
             height={250}
             width={500}
             src={`https:${image}`}
             alt={`live ${ethnicity} cam performance by ${name}`}
-            className="w-100"
+            className="h-70"
             loading="eager"
             priority={true}
           />
@@ -51,7 +51,7 @@ const LiveScreenPhoto1 = ({
           </div>
         </a>
       ) : (
-        <Link href={`/chat/${name}`} className="relative">
+        <Link href={`/chat/${name}`} className="relative inline-block">
           <Image
             height={250}
             width={500}
