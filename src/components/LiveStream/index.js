@@ -98,7 +98,7 @@ const LiveStreamComponent = ({ data }) => {
               ) : null}
             </div>
             <div
-              className="col-xl-3 col-lg-4 col-md-4 col-sm-11 mt-2 related-models"
+              className="col-xl-3 col-lg-4 col-md-4 col-sm-11 mt-2 related-models side-images"
               style={{ height: videoHeight, maxHeight: 800 }}
             >
               <div
@@ -133,57 +133,60 @@ const LiveStreamComponent = ({ data }) => {
               </div>
             </div>
           </div>
-          <div className="px-4">
-            {width < 992 && width > 767 ? null : (
-              <div className={`d-flex mt-5 ${styles.userView}`}>
-                <div>
-                  <img
-                    src={data?.modelData?.profilePictureUrl?.size1024x768}
-                    style={{
-                      width: "48px",
-                      height: "48px",
-                      borderRadius: "50%",
-                    }}
-                  />
-                </div>
-                <div className="ps-3">
-                  <h1 className={`${styles.userName} m-0`}>
-                    {data?.modelData?.displayName}
-                  </h1>
-                  <div className="d-flex align-items-end rating">
-                    <Rating
-                      value={rating}
-                      onStarClick={(nextValue, prevValue, name) =>
-                        handleStarClick(nextValue, prevValue, name)
-                      }
-                      starCount={5}
-                      starColor={"#ffb400"}
-                      emptyStarColor={"#ccc"}
-                    />
+          <div>
+            <div className="box-main">
+              <div className="box">
+                <div className="box-content">
+                  <div className="row mt-5">
+                    <div className="col-lg-4 mb-3 mb-md-0">
+                      {width < 992 && width > 767 ? null : (
+                        <div className={`d-flex ${styles.userView}`}>
+                          <div className="flex-none">
+                            <img
+                              src={data?.modelData?.profilePictureUrl?.size1024x768}
+                              style={{
+                                width: "48px",
+                                height: "48px",
+                                borderRadius: "50%",
+                              }}
+                            />
+                          </div>
+                          <div className="ps-3">
+                            <h1 className={`${styles.userName} m-0`}>
+                              {data?.modelData?.displayName}
+                            </h1>
+                            <div className="d-flex align-items-end rating">
+                              <Rating
+                                value={rating}
+                                onStarClick={(nextValue, prevValue, name) =>
+                                  handleStarClick(nextValue, prevValue, name)
+                                }
+                                starCount={5}
+                                starColor={"#ffb400"}
+                                emptyStarColor={"#ccc"}
+                              />
 
-                    <p className={`${styles.rating} m-0 ms-2`}>
-                      Ratings :{" "}
-                      <strong>
-                        {Number(data?.modelData?.details?.modelRating).toFixed(
-                          1
-                        )}
-                      </strong>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            )}
-            <div className="mt-2 pb-4">
-              {width < 992 && width > 767 ? null : (
-                <p className={` ${styles.userView}`}>
-                  {data?.modelData?.details?.about?.biography}
-                </p>
-              )}
+                              <p className={`${styles.rating} m-0 ms-2`}>
+                                Ratings :{" "}
+                                <strong>
+                                  {Number(data?.modelData?.details?.modelRating).toFixed(
+                                    1
+                                  )}
+                                </strong>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
 
-              {/* BIO Table */}
-
-              {/* <div className="mt-4">
-            <h3 className={`${styles.content} mb-1`}>
+                      )}
+                    </div>
+                    {width < 992 && width > 767 ? null : (
+                      <div className="pb-4 px-3 col-lg-8 align-items-center">
+                        <p className={` ${styles.userView}`}>
+                          {data?.modelData?.details?.about?.biography}
+                        </p>
+                        {/* <div className="mt-4">
+                <h3 className={`${styles.content} mb-1`}>
               Exclusive Content<span> from OraPredictar</span>
             </h3>
             <p>
@@ -191,192 +194,215 @@ const LiveStreamComponent = ({ data }) => {
               their exclusive content.
             </p>
           </div> */}
-            </div>
-            {/* BIO TABLE */}
-            <div className="model-tsyum-right">
-              <ul>
-                {/* Turn On */}
-                {data?.modelData?.details?.about?.turnsOn && (
-                  <li>
-                    <div className="model-label">
-                      <strong>Turn On: </strong>
+                      </div>
+                    )}
+
+                  </div>
+                  <div className="box-listing-main row">
+                    <div className="col-md-6">
+                      <div className="box-listing-data ">
+                        <ul className="box-listing-wrapper">
+                          {/* Age */}
+                          {data?.modelData?.persons[0]?.age && (
+                            <li>
+                              <div className="box-listing-description">
+                                {capitalizeString(data?.modelData?.persons[0]?.age)}
+                              </div>
+                              <div className="box-listing-box-heading">Age</div>
+                            </li>
+                          )}
+                          {/* Ethnicity */}
+                          {data?.modelData?.ethnicity && (
+                            <li>
+                              <div className="box-listing-description">
+                                {capitalizeString(data?.modelData?.ethnicity)}
+                              </div>
+                              <div className="box-listing-box-heading">Ethnicity</div>
+
+                            </li>
+                          )}
+                          {/* Category */}
+                          {data?.modelData?.category && (
+                            <li>
+                              <div className="box-listing-description">
+                                {capitalizeString(data?.modelData?.category)}
+                              </div>
+                              <div className="box-listing-box-heading">Category</div>
+                            </li>
+                          )}
+                          {/* Languages */}
+                          {data?.modelData?.details?.languages && (
+                            <li className="language">
+                              <div className="box-listing-description">
+                                {capitalizeString(
+                                  Object.values(data?.modelData?.details?.languages)
+                                    .filter((value) => value !== "")
+                                    .join(", ")
+                                )}
+                              </div>
+                              <div className="box-listing-box-heading">Languages</div>
+                            </li>
+                          )}
+                        </ul>
+                      </div>
                     </div>
-                    <div className="model-value">
-                      {capitalizeString(
-                        data?.modelData?.details?.about?.turnsOn
-                      )}
+                    <div className="col-md-6">
+                      <div className="box-listing-data">
+                        <ul className="box-listing-wrapper">
+                          {/* Breast */}
+                          {data?.modelData?.persons[0]?.body?.breastSize !== "" && (
+                            <li>
+                              <div className="box-listing-description">
+                                {capitalizeString(
+                                  data?.modelData?.persons[0]?.body?.breastSize
+                                )}
+                              </div>
+                              <div className="box-listing-box-heading">Breast </div>
+                            </li>
+                          )}
+                          {/* Penis */}
+                          {data?.modelData?.persons[0]?.body?.penisSize !== "" && (
+                            <li>
+                              <div className="box-listing-description">
+                                {capitalizeString(
+                                  data?.modelData?.persons[0]?.body?.penisSize
+                                )}
+                              </div>
+                              <div className="box-listing-box-heading">Penis</div>
+                            </li>
+                          )}
+                          {/* Eye Color */}
+                          {data?.modelData?.persons[0]?.body?.eyeColor !== "" && (
+                            <li>
+                              <div className="box-listing-description">
+                                {capitalizeString(
+                                  data?.modelData?.persons[0]?.body?.eyeColor
+                                )}
+                              </div>
+                              <div className="box-listing-box-heading">Eye Color</div>
+                            </li>
+                          )}
+                          {/* Hair Length */}
+                          {data?.modelData?.persons[0]?.body?.hairLength !== "" && (
+                            <li>
+                              <div className="box-listing-description">
+                                {capitalizeString(
+                                  data?.modelData?.persons[0]?.body?.hairLength
+                                )}
+                              </div>
+                              <div className="box-listing-box-heading">Hair Length</div>
+                            </li>
+                          )}
+                          {/* Hair Color */}
+                          {data?.modelData?.persons[0]?.body?.hairColor !== "" && (
+                            <li>
+                              <div className="box-listing-description">
+                                {capitalizeString(
+                                  data?.modelData?.persons[0]?.body?.hairColor
+                                )}
+                              </div>
+                              <div className="box-listing-box-heading">Hair Color</div>
+                            </li>
+                          )}
+                          {/* Build */}
+                          {data?.modelData?.persons[0]?.body?.build !== "" && (
+                            <li>
+                              <div className="box-listing-description">
+                                {capitalizeString(
+                                  data?.modelData?.persons[0]?.body?.build
+                                )}
+                              </div>
+                              <div className="box-listing-box-heading">Build</div>
+                            </li>
+                          )}
+                        </ul>
+                      </div>
                     </div>
-                  </li>
-                )}
-                {/* Turn Off */}
-                {data?.modelData?.details?.about?.turnsOff && (
-                  <li>
-                    <div className="model-label">
-                      <strong>Turn Off: </strong>
+                  </div>
+                  {/* Turn on */}
+                  {data?.modelData?.details?.about?.turnsOn && (
+                    <div>
+                      <div className="box-heading">Turn On: </div>
+                      <div className="box-description">
+                        {capitalizeString(
+                          data?.modelData?.details?.about?.turnsOn
+                        )}
+                      </div>
                     </div>
-                    <div className="model-value">
-                      {capitalizeString(
-                        data?.modelData?.details?.about?.turnsOff
-                      )}
+                  )}
+                  {/* Turn off */}
+                  {data?.modelData?.details?.about?.turnsOff && (
+                    <div>
+                      <div className="box-heading">Turn Off:</div>
+                      <div className="box-description">
+                        {capitalizeString(
+                          data?.modelData?.details?.about?.turnsOff
+                        )}
+                      </div>
                     </div>
-                  </li>
-                )}
-                {/* Age */}
-                {data?.modelData?.persons[0]?.age && (
-                  <li>
-                    <div className="model-label">
-                      <strong>Age: </strong>
+                  )}
+                  {/* Tags */}
+                  {data?.modelData?.details?.willingnesses.length > 0 && (
+                    <div className="box-listing-tags">
+                      <div className="box-tag-heading">Tags: </div>
+                      <div className="box-tag-data">
+                        <ul className="box-tag-data-list">
+                          {Object.values(data?.modelData?.details?.willingnesses).map(tag => <li>{tag}</li>)}
+                        </ul>
+                      </div>
                     </div>
-                    <div className="model-value">
-                      {capitalizeString(data?.modelData?.persons[0]?.age)}
+                  )}
+               {/* Appearances */}
+                  {data?.modelData?.details?.appearances.length > 0 && (
+                    <div className="box-listing-tags">
+                      <div className="box-tag-heading">Appearances: </div>
+                      <div className="box-tag-data">
+                        <ul className="box-tag-data-list">
+                          {Object.values(data?.modelData?.details?.appearances).map(appearance => <li>{appearance}</li>)}
+                        </ul>
+                      </div>
                     </div>
-                  </li>
-                )}
-                {/* Ethnicity */}
-                {data?.modelData?.ethnicity && (
-                  <li>
-                    <div className="model-label">
-                      <strong>Ethnicity: </strong>
-                    </div>
-                    <div className="model-value">
-                      {capitalizeString(data?.modelData?.ethnicity)}
-                    </div>
-                  </li>
-                )}
-                {/* category */}
-                {data?.modelData?.category && (
-                  <li>
-                    <div className="model-label">
-                      <strong>Category: </strong>
-                    </div>
-                    <div className="model-value">
-                      {capitalizeString(data?.modelData?.category)}
-                    </div>
-                  </li>
-                )}
-                {/* Languages */}
-                {data?.modelData?.details?.languages && (
-                  <li>
-                    <div className="model-label">
-                      <strong>Languages: </strong>
-                    </div>
-                    <div className="model-value">
-                      {capitalizeString(
-                        Object.values(data?.modelData?.details?.languages)
-                          .filter((value) => value !== "")
-                          .join(", ")
-                      )}
-                    </div>
-                  </li>
-                )}
-                {/* Breast */}
-                {data?.modelData?.persons[0]?.body?.breastSize !== "" && (
-                  <li>
-                    <div className="model-label">
-                      <strong>Breast: </strong>
-                    </div>
-                    <div className="model-value">
-                      {capitalizeString(
-                        data?.modelData?.persons[0]?.body?.breastSize
-                      )}
-                    </div>
-                  </li>
-                )}
-                {/* Penis */}
-                {data?.modelData?.persons[0]?.body?.penisSize !== "" && (
-                  <li>
-                    <div className="model-label">
-                      <strong>Penis: </strong>
-                    </div>
-                    <div className="model-value">
-                      {capitalizeString(
-                        data?.modelData?.persons[0]?.body?.penisSize
-                      )}
-                    </div>
-                  </li>
-                )}
-                {/* Eye Color */}
-                {data?.modelData?.persons[0]?.body?.eyeColor !== "" && (
-                  <li>
-                    <div className="model-label">
-                      <strong>Eye Color: </strong>
-                    </div>
-                    <div className="model-value">
-                      {capitalizeString(
-                        data?.modelData?.persons[0]?.body?.eyeColor
-                      )}
-                    </div>
-                  </li>
-                )}
-                {/* Hair Length */}
-                {data?.modelData?.persons[0]?.body?.hairLength !== "" && (
-                  <li>
-                    <div className="model-label">
-                      <strong>Hair Length: </strong>
-                    </div>
-                    <div className="model-value">
-                      {capitalizeString(
-                        data?.modelData?.persons[0]?.body?.hairLength
-                      )}
-                    </div>
-                  </li>
-                )}
-                {/* Hair Color */}
-                {data?.modelData?.persons[0]?.body?.hairColor !== "" && (
-                  <li>
-                    <div className="model-label">
-                      <strong>Hair Color: </strong>
-                    </div>
-                    <div className="model-value">
-                      {capitalizeString(
-                        data?.modelData?.persons[0]?.body?.hairColor
-                      )}
-                    </div>
-                  </li>
-                )}
-                {/* Build */}
-                {data?.modelData?.persons[0]?.body?.build !== "" && (
-                  <li>
-                    <div className="model-label">
-                      <strong>Build: </strong>
-                    </div>
-                    <div className="model-value">
-                      {capitalizeString(
-                        data?.modelData?.persons[0]?.body?.build
-                      )}
-                    </div>
-                  </li>
-                )}
-                {/* Tags */}
-                {data?.modelData?.details?.willingnesses.length && (
-                  <li>
-                    <div className="model-label">
-                      <strong>Tags: </strong>
-                    </div>
-                    <div className="model-value">
-                      {Object.values(data?.modelData?.details?.willingnesses)
-                        .filter((value) => value !== "")
-                        .join(", ")}
-                    </div>
-                  </li>
-                )}
-                {/* Appearances */}
-                {data?.modelData?.details?.appearances.length && (
-                  <li>
-                    <div className="model-label">
-                      <strong>Appearances: </strong>
-                    </div>
-                    <div className="model-value">
-                      {Object.values(data?.modelData?.details?.appearances)
-                        .filter((value) => value !== "")
-                        .join(", ")}
-                    </div>
-                  </li>
-                )}
-              </ul>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        <div
+              className="related-models side-images-mobile"
+              style={{ height: videoHeight, maxHeight: 800 }}
+            >
+              <div
+                style={{ position: "relative" }}
+                className="side-images-wrapper"
+              >
+                {data.relatedModels?.map((element, i) => {
+                  if (element.title != "")
+                    return (
+                      <a href={`https:${element.chatRoomUrl}`} target="_blank">
+                        <Image
+                          height={200}
+                          width={200}
+                          src={`https:${element.profilePictureUrl.size320x240}`}
+                          alt=""
+                          // className="mb-1"
+                          style={{
+                            // height: (videoHeight - 12) / 4,
+                            width: "100%",
+                            // maxHeight: 162,
+                          }}
+                        />
+                        <div className="d-flex align-items-center d-flex align-items-center model-name">
+                          <RxDotFilled color="#8FC400" fontSize="22px" />
+                          <span>
+                            {element.displayName} ({element?.persons[0]?.age})
+                          </span>
+                        </div>
+                      </a>
+                    );
+                })}
+              </div>
+            </div>
         {/* <div className="mt-5 px-4">
           <div className="d-flex justify-content-end mb-3">
             <Button className={styles.activeBtn}>All content</Button>
