@@ -55,14 +55,14 @@ const TopText = ({ html }) => {
       {isMobile ? (
         <>
           {isExpanded && (
-            <h2 style={{ display: "block" }}>{extractH2Text()}</h2>
+            <p style={{ display: "block" }}>{extractH2Text()}</p>
           )}
           {!isExpanded && (
-            <h2 style={{ display: "none" }}>{extractH2Text()}</h2>
+            <p style={{ display: "none" }}>{extractH2Text()}</p>
           )}
         </>
       ) : (
-        <h2>{extractH2Text()}</h2>
+        <p>{extractH2Text()}</p>
       )}
     </div>
   );
