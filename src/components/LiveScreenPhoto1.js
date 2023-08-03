@@ -22,7 +22,7 @@ const LiveScreenPhoto1 = ({
         <a
           target="_blank"
           href={`https://tsyum.chaturbate.com/${name}/?tour=Limj&b=${name}&signup_notice=1&campaign=1f2Eo`}
-          className="relative block"
+          className="relative inline-block"
         >
           <Image
             height={250}
