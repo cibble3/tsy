@@ -7,7 +7,6 @@ import LiveScreenVideo from "@/components/LiveScreenVideo";
 import LiveScreenPhoto1 from "@/components/LiveScreenPhoto1";
 import DarkSingleBlogPost from "@/components/DarkSingleBlogPost";
 import TopText from "@/components/TopText";
-import SkeletonLiveScreenVideo from "@/components/Skeletons/SkeletonLiveScreenVideo";
 
 const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
   const [videos, setVideos] = useState([]);
@@ -76,7 +75,7 @@ const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
       <div>
         <DarkTheme>
           <>
-            {isPageLoaded ? (
+            {isPageLoaded && (
               <div className={styles?.dasboardMain2}>
                 <div className="py-4 px-3">
                   <TopText html={pageContent?.top_text} />
@@ -161,16 +160,6 @@ const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
                       </div>
                     </div>
                   )}
-                </div>
-              </div>
-            ) : (
-              <div className={styles?.dasboardMain2}>
-                <div className="py-4 px-3">
-                  <div className="row">
-                    {Array.from({ length: 12 }).map((_, i) => (
-                      <SkeletonLiveScreenVideo key={i} />
-                    ))}
-                  </div>
                 </div>
               </div>
             )}

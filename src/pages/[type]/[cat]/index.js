@@ -7,7 +7,6 @@ import HeadMeta from "@/components/HeadMeta";
 import LiveScreenVideo from "@/components/LiveScreenVideo";
 import DarkSingleBlogPost from "@/components/DarkSingleBlogPost";
 import TopText from "@/components/TopText";
-import SkeletonLiveScreenPhoto1 from "@/components/Skeletons/SkeletonLiveScreenPhoto1";
 
 const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
   const [models, setModels] = useState([]);
@@ -66,7 +65,7 @@ const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
       {isPageLoaded && <HeadMeta pageContent={pageContent} />}
       <DarkTheme>
         <>
-          {isPageLoaded ? (
+          {isPageLoaded && (
             <div className={styles?.dasboardMain2}>
               <div className="py-4 px-3">
                 <TopText html={pageContent?.top_text} />
@@ -169,16 +168,6 @@ const DashbpardDarkTheme = ({ data, params, pathUrl }) => {
                     </div>
                   </div>
                 )}
-              </div>
-            </div>
-          ) : (
-            <div className={styles?.dasboardMain2}>
-              <div className="py-4 px-3">
-                <div className="row">
-                  {Array.from({ length: 8 }).map((_, i) => (
-                    <SkeletonLiveScreenPhoto1 key={i} />
-                  ))}
-                </div>
               </div>
             </div>
           )}
