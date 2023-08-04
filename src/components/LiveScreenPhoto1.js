@@ -57,7 +57,7 @@ const LiveScreenPhoto1 = ({
             width={500}
             src={`https:${image}`}
             alt={`live ${ethnicity} cam performance by ${name}`}
-            className="w-100"
+            className="h-70"
             loading="eager"
             priority={true}
           />
