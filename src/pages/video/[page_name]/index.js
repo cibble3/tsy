@@ -26,8 +26,8 @@ const LiveStream = ({
   // };
 
   const modifiedPlayerEmbedUrl = videoDetails?.playerEmbedUrl.replace(
-    "https://pt.cdctwm.com/embed/tbplyr",
-    "https://pt.cdctwm.com/tube-player"
+    "embed/tbplyr",
+    "tube-player"
   );
 
   return (
